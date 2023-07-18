@@ -11,6 +11,7 @@ type SiteInfo = {
 	description: string;
 	imageSrc: string;
 	socialLinks: Readonly<SocialLink[]>;
+	rizesqlLink: SocialLink;
 };
 
 export const siteInfo: SiteInfo = {
@@ -36,4 +37,10 @@ export const siteInfo: SiteInfo = {
 			href: "https://tiktok.com/@team_clockworks_ro108",
 		},
 	],
+	// pentru viitori sincaisti, am facut site-ul asta pe gratis acolo un credit
+	// merit si eu. Spor la cafelutsa
+	rizesqlLink: {
+		platform: "@rizesql",
+		href: "https://www.github.com/rizesql",
+	},
 } as const;

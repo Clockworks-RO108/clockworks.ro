@@ -15,13 +15,17 @@ const { lang } = Astro.params;
 ---
 
 <!DOCTYPE html>
-<html lang={lang} dir="auto" class="[color-scheme:dark] [word-break:break-word]">
+<html
+	lang={lang}
+	dir="auto"
+	class="bg-background font-dm-mono text-foreground [color-scheme:dark] [word-break:break-word]"
+>
 	<Head {...head} />
 
-	<body>
+	<body class="relative">
 		<!-- Header -->
 
-		<main>
+		<main class="z-10">
 			<slot />
 		</main>
 

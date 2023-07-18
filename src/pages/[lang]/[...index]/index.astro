@@ -1,0 +1,10 @@
+---
+import Layout from "~/layouts/layout.astro";
+import { generateStaticPaths } from "~/lib/i18n";
+
+export const getStaticPaths = generateStaticPaths;
+---
+
+<Layout>
+	<h1>index</h1>
+</Layout>
