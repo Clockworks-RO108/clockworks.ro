@@ -20,7 +20,8 @@ const {
 
 const title = [Astro.props.title, siteInfo.name].filter(Boolean).join(" | ");
 const resolvedImage: Image = {
-	src: new URL(image.src, Astro.site).toString(),
+	src: image.src,
+	// src: new URL(image.src, Astro.site).toString(),
 	alt: image.alt,
 };
 ---

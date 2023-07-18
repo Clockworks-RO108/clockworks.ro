@@ -1,0 +1,13 @@
+---
+import Layout from "~/layouts/layout.astro";
+import { generateStaticPaths, useTranslations } from "~/lib/i18n";
+
+export const getStaticPaths = generateStaticPaths;
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+---
+
+<Layout>
+	<h1>{t("page.title")}</h1>
+</Layout>

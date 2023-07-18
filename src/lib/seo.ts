@@ -1,15 +1,17 @@
+import type { Locale } from "./i18n";
+
 export type Image = {
 	src: string;
 	alt: string;
 };
+
 export type SEOMetadata = {
 	name: string;
 	title: string;
 	description: string;
 	image: Image;
 	canonicalURL?: URL | string | null;
-	// TODO change to designated type when adding i18n
-	locale?: string | undefined;
+	locale?: Locale | undefined;
 };
 
 export type OpenGraph = Partial<SEOMetadata> & {
