@@ -1,0 +1,24 @@
+---
+import Head from "~/components/head.astro";
+import type { Props as HeadProps } from "~/components/head.astro";
+
+export type Props = HeadProps;
+
+const { ...head } = Astro.props;
+---
+
+<!DOCTYPE html>
+<!-- TODO change lang when you add i18n -->
+<html lang="en" dir="auto" class="[color-scheme:dark] [word-break:break-word]">
+	<Head {...head} />
+
+	<body>
+		<!-- Header -->
+
+		<main>
+			<slot />
+		</main>
+
+		<!-- Footer -->
+	</body>
+</html>

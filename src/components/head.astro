@@ -1,0 +1,51 @@
+---
+import type { Image } from "~/lib/seo";
+import Seo from "./seo.astro";
+import { siteInfo } from "~/lib/site-info";
+
+export type Props = {
+	title?: string;
+	description?: string;
+	image?: Image;
+	canonicalURL?: URL | null;
+	pageType?: "website" | "article";
+};
+
+const {
+	description = siteInfo.description,
+	image = siteInfo.image,
+	canonicalURL = new URL(Astro.request.url, Astro.site),
+	pageType = "website",
+} = Astro.props;
+
+const title = [Astro.props.title, siteInfo.name].filter(Boolean).join(" | ");
+const resolvedImage: Image = {
+	src: new URL(image.src, Astro.site).toString(),
+	alt: image.alt,
+};
+---
+
+<head>
+	<!-- High priority metadata -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>{title}</title>
+	<!-- TODO add meta theme-color -->
+	<meta name="generator" content={Astro.generator} />
+
+	<!-- TODO add fonts -->
+
+	<!-- Low priority metadata -->
+	<!-- TODO change favicon -->
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<!-- TODO add sitemap -->
+
+	<Seo
+		name={siteInfo.name}
+		title={title}
+		description={description}
+		image={resolvedImage}
+		og={{ type: pageType }}
+		canonicalURL={canonicalURL}
+	/>
+</head>

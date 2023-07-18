@@ -1,0 +1,79 @@
+---
+import type { SEOMetadata, OpenGraph, Twitter } from "~/lib/seo";
+
+export type Props = SEOMetadata & {
+	og?: OpenGraph;
+	twitter?: Twitter;
+};
+
+const {
+	name,
+	title,
+	description,
+	image,
+	locale,
+	canonicalURL = new URL(Astro.url.pathname, Astro.site),
+} = Astro.props;
+
+const og = {
+	name,
+	title,
+	description,
+	image,
+	locale,
+	canonicalURL,
+	type: "website",
+	...Astro.props.og,
+} satisfies OpenGraph;
+
+const twitter = {
+	name,
+	title,
+	description,
+	image,
+	locale,
+	canonicalURL,
+	type: "website",
+	...Astro.props.twitter,
+} satisfies OpenGraph;
+
+const ensureTrailingSlash = (url: string | URL) =>
+	url.toString().replace(/\/$/, "") + "/";
+---
+
+{canonicalURL && <link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />}
+<meta name="description" content={description} />
+
+<!-- OpenGraph tags -->
+<meta property="og:title" content={og.title} />
+<meta property="og:type" content={og.type} />
+{
+	og.canonicalURL && (
+		<meta property="og:url" content={ensureTrailingSlash(og.canonicalURL)} />
+	)
+}
+<meta property="og:locale" content={og.locale} />
+<meta property="og:description" content={og.description} />
+<meta property="og:site_name" content={og.name} />
+{
+	og.image && (
+		<>
+			<meta property="og:image" content={og.image.src} />
+			<meta property="og:image:alt" content={og.image.alt} />
+		</>
+	)
+}
+
+<!-- Twitter tags -->
+{twitter.card && <meta name="twitter:card" content={twitter.card} />}
+{twitter.handle && <meta name="twitter:site" content={twitter.handle} />}
+<meta name="twitter:title" content={twitter.title} />
+<meta name="twitter:description" content={twitter.description} />
+{
+	twitter.image && (
+		<>
+			<meta name="twitter:image" content={twitter.image.src} />
+			<meta name="twitter:image:alt" content={twitter.image.alt} />
+		</>
+	)
+}
