@@ -8,6 +8,12 @@ export const isLocale = (value: string | undefined): value is Locale => {
 	return locales.includes(value as any);
 };
 
+export const toLocale = (value: string | undefined) => {
+	if (isLocale(value)) return value;
+
+	return "en";
+};
+
 export const slugToLocale = (slug: string) => {
 	const baseSegment = slug.split("/")[0];
 

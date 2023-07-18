@@ -1,5 +1,3 @@
-import type { Image } from "./seo";
-
 type SocialLink = {
 	platform: string;
 	href: string;
@@ -11,7 +9,7 @@ type SiteInfo = {
 	name: string;
 	title: string;
 	description: string;
-	image: Image;
+	imageSrc: string;
 	socialLinks: Readonly<SocialLink[]>;
 };
 
@@ -19,10 +17,7 @@ export const siteInfo: SiteInfo = {
 	name: "Clockworks",
 	title: "",
 	description: "",
-	image: {
-		src: "",
-		alt: "",
-	},
+	imageSrc: "",
 	socialLinks: [
 		{
 			platform: "facebook",

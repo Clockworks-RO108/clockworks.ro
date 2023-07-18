@@ -2,6 +2,7 @@
 import type { Image } from "~/lib/seo";
 import Seo from "./seo.astro";
 import { siteInfo } from "~/lib/site-info";
+import { useTranslations, toLocale } from "~/lib/i18n";
 
 export type Props = {
 	title?: string;
@@ -11,9 +12,15 @@ export type Props = {
 	pageType?: "website" | "article";
 };
 
+const locale = toLocale(Astro.params.lang);
+const t = useTranslations(locale);
+
 const {
-	description = siteInfo.description,
-	image = siteInfo.image,
+	description = t("siteInfo.description"),
+	image = {
+		src: siteInfo.imageSrc,
+		alt: t("siteInfo.image.alt"),
+	},
 	canonicalURL = new URL(Astro.request.url, Astro.site),
 	pageType = "website",
 } = Astro.props;
@@ -31,10 +38,8 @@ const resolvedImage: Image = {
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
 	<title>{title}</title>
-	<!-- TODO add meta theme-color -->
+	<meta name="theme-color" content="#E36D0B" />
 	<meta name="generator" content={Astro.generator} />
-
-	<!-- TODO add fonts -->
 
 	<!-- Low priority metadata -->
 	<!-- TODO change favicon -->
@@ -46,7 +51,7 @@ const resolvedImage: Image = {
 		title={title}
 		description={description}
 		image={resolvedImage}
-		og={{ type: pageType }}
+		og={{ type: pageType, locale }}
 		canonicalURL={canonicalURL}
 	/>
 </head>
