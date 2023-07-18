@@ -3,9 +3,8 @@ import type { Image } from "./seo";
 type SocialLink = {
 	platform: string;
 	href: string;
-	me?: string;
-	text: string;
-	icon: string;
+	// text: string;
+	// icon: string;
 };
 
 type SiteInfo = {
@@ -24,5 +23,22 @@ export const siteInfo: SiteInfo = {
 		src: "",
 		alt: "",
 	},
-	socialLinks: [],
+	socialLinks: [
+		{
+			platform: "facebook",
+			href: "https://facebook.com/teamclockworks",
+		},
+		{
+			platform: "instagram",
+			href: "https://instagram.com/ro108clockworks",
+		},
+		{
+			platform: "youtube",
+			href: "https://youtube.com/@ro108clockworks?sub_confirmation=1",
+		},
+		{
+			platform: "tiktok",
+			href: "https://tiktok.com/@team_clockworks_ro108",
+		},
+	],
 } as const;
