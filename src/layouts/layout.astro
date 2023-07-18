@@ -2,6 +2,11 @@
 import Head from "~/components/head.astro";
 import type { Props as HeadProps } from "~/components/head.astro";
 
+// Font imports
+import "@fontsource/dm-mono";
+import "@fontsource-variable/jetbrains-mono";
+import "@fontsource-variable/inter";
+
 export type Props = HeadProps;
 
 const { ...head } = Astro.props;
