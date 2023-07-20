@@ -4,5 +4,10 @@
   "siteInfo.image.alt": "",
 
   "home.title": "Acasa",
-  "page.title": "salut lume"
+  "page.title": "salut lume",
+
+  "navLink.soon": "Curand",
+  "navLink.about": "Despre noi",
+  "navLink.work": "Proiecte",
+  "navLink.blog": "Blog"
 }

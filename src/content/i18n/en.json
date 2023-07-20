@@ -4,5 +4,10 @@
   "siteInfo.image.alt": "",
 
   "home.title": "Home",
-  "page.title": "hello world"
+  "page.title": "hello world",
+
+  "navLink.soon": "Soon",
+  "navLink.about": "About",
+  "navLink.work": "Our Work",
+  "navLink.blog": "Blog"
 }

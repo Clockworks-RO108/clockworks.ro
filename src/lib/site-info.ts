@@ -14,7 +14,7 @@ type SiteInfo = {
 	rizesqlLink: SocialLink;
 };
 
-export const siteInfo: SiteInfo = {
+export const siteInfo = {
 	name: "Clockworks",
 	title: "",
 	description: "",
@@ -43,4 +43,24 @@ export const siteInfo: SiteInfo = {
 		platform: "@rizesql",
 		href: "https://www.github.com/rizesql",
 	},
-} as const;
+} as const satisfies SiteInfo;
+
+export type NavLink = {
+	label: string;
+	href: string;
+};
+
+export const navLinks = [
+	{
+		label: "navLink.about",
+		href: "/about",
+	},
+	{
+		label: "navLink.work",
+		href: "/works",
+	},
+	{
+		label: "navLink.blog",
+		href: "/blog",
+	},
+] as const;

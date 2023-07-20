@@ -1,0 +1,15 @@
+---
+import { Flex, NavLink } from "~/components/ui";
+import { siteInfo } from "~/lib";
+---
+
+<Flex
+	as={NavLink}
+	href="/"
+	inline
+	alignment="center/between"
+	className="gap-x-3 rounded-lg bg-dark-blue-900 px-4 py-2 ring-1 ring-border transition-colors hover:bg-dark-blue-700"
+>
+	<div class="aspect-square h-6 w-6 rounded-sm bg-orange"></div>
+	<span class="text-foreground">{siteInfo.name}</span>
+</Flex>

@@ -1,0 +1,59 @@
+---
+import { useTranslations, navLinks, siteInfo } from "~/lib";
+import Logo from "./logo.astro";
+import DesktopNav from "./navigation/desktop-nav.astro";
+import { MobileNav } from "./navigation/mobile-nav";
+import { Flex, NavLink } from "~/components/ui";
+
+const t = useTranslations(Astro.params.lang);
+---
+
+<header class="sticky inset-0 z-20">
+	<div
+		class="bg-gradient-to-b from-background to-transparent px-6 pb-4 pt-6 lg:px-16 lg:pt-8 lg:backdrop-blur-md"
+	>
+		<DesktopNav />
+
+		<Flex alignment="center/between" className="lg:hidden">
+			<Logo />
+
+			<!-- client:media="(max-width: 1023px)" -->
+			<MobileNav client:load>
+				<Flex as="nav" direction="col" className="gap-y-3">
+					{
+						navLinks.map((link) => (
+							<NavLink
+								href={link.href}
+								className="font-dm-mono text-3xl font-semibold tracking-wider"
+							>
+								{t(link.label)}
+							</NavLink>
+						))
+					}
+				</Flex>
+
+				<Flex direction="col" className="gap-y-4">
+					<!-- TODO translate -->
+					<h3
+						class="font-jetbrains-mono text-xs uppercase tracking-wide text-text-secondary"
+					>
+						Social
+					</h3>
+					{
+						//TODO create social link component
+						siteInfo.socialLinks.map((link) => (
+							<a
+								target="_blank"
+								referrerpolicy="no-referrer"
+								class="font-dm-mono uppercase tracking-wider"
+								href={link.href}
+							>
+								{link.platform}
+							</a>
+						))
+					}
+				</Flex>
+			</MobileNav>
+		</Flex>
+	</div>
+</header>

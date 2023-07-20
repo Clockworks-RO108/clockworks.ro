@@ -22,11 +22,11 @@ export const slugToLocale = (slug: string) => {
 	return "en";
 };
 
-export const localizedSlug = (slug: string, locale: string | undefined) => {
+export const localizedSlug = (slug: string, locale: Locale | undefined) => {
 	const slugLocale = slugToLocale(slug);
 	if (slugLocale === locale) return slug;
 
-	locale = locale ?? "";
+	locale = locale ?? "en";
 	if (slugLocale === slug) return locale;
 
 	if (slugLocale)
