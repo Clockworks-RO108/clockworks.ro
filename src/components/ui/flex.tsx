@@ -8,6 +8,8 @@ import type {
 	PolymorphicRef,
 } from "./polymorphic-component";
 
+export type Direction = "row" | "col" | "row-reverse" | "col-reverse";
+
 type Justify =
 	| "normal"
 	| "start"
@@ -23,17 +25,15 @@ type Align = "start" | "end" | "center" | "baseline" | "stretch";
 type Alignment = `${Align}/${Justify}`;
 
 type Props = Partial<{
-	direction: "row" | "col" | "row-reverse" | "col-reverse";
+	direction: Direction;
 	wrap: boolean;
 	inline: boolean;
 	alignment: Alignment;
 	className?: string;
 }>;
 
-type FlexProps<T extends React.ElementType = "div"> = PolymorphicComponentPropsWithRef<
-	T,
-	Props
->;
+export type FlexProps<T extends React.ElementType = "div"> =
+	PolymorphicComponentPropsWithRef<T, Props>;
 
 type FlexComponent = <T extends React.ElementType = "div">(
 	props: FlexProps<T>,
@@ -55,58 +55,28 @@ const flexVariants = cva("", {
 			true: "flex-wrap",
 			false: "flex-nowrap",
 		},
-		alignment: {
-			"start/normal": "items-start justify-normal",
-			"start/start": "items-start justify-start",
-			"start/end": "items-start justify-end",
-			"start/center": "items-start justify-center",
-			"start/between": "items-start justify-between",
-			"start/around": "items-start justify-around",
-			"start/evenly": "items-start justify-evenly",
-			"start/stretch": "items-start justify-stretch",
-
-			"end/normal": "items-end justify-normal",
-			"end/start": "items-end justify-start",
-			"end/end": "items-end justify-end",
-			"end/center": "items-end justify-center",
-			"end/between": "items-end justify-between",
-			"end/around": "items-end justify-around",
-			"end/evenly": "items-end justify-evenly",
-			"end/stretch": "items-end justify-stretch",
-
-			"center/normal": "items-center justify-normal",
-			"center/start": "items-center justify-start",
-			"center/end": "items-center justify-end",
-			"center/center": "items-center justify-center",
-			"center/between": "items-center justify-between",
-			"center/around": "items-center justify-around",
-			"center/evenly": "items-center justify-evenly",
-			"center/stretch": "items-center justify-stretch",
-
-			"baseline/normal": "items-baseline justify-normal",
-			"baseline/start": "items-baseline justify-start",
-			"baseline/end": "items-baseline justify-end",
-			"baseline/center": "items-baseline justify-center",
-			"baseline/between": "items-baseline justify-between",
-			"baseline/around": "items-baseline justify-around",
-			"baseline/evenly": "items-baseline justify-evenly",
-			"baseline/stretch": "items-baseline justify-stretch",
-
-			"stretch/normal": "items-stretch justify-normal",
-			"stretch/start": "items-stretch justify-start",
-			"stretch/end": "items-stretch justify-end",
-			"stretch/center": "items-stretch justify-center",
-			"stretch/between": "items-stretch justify-between",
-			"stretch/around": "items-stretch justify-around",
-			"stretch/evenly": "items-stretch justify-evenly",
-			"stretch/stretch": "items-stretch justify-stretch",
+		align: {
+			start: "items-start",
+			end: "items-end",
+			center: "items-center",
+			baseline: "items-baseline",
+			stretch: "items-stretch",
+		},
+		justify: {
+			normal: "justify-normal",
+			start: "justify-start",
+			end: "justify-end",
+			center: "justify-center",
+			between: "justify-between",
+			around: "justify-around",
+			evenly: "justify-evenly",
+			stretch: "justify-stretch",
 		},
 	},
 	defaultVariants: {
 		direction: "row",
 		wrap: true,
 		inline: false,
-		alignment: "start/start",
 	},
 });
 
@@ -115,15 +85,27 @@ export const Flex: FlexComponent = React.forwardRef(
 		props: FlexProps<T>,
 		ref?: PolymorphicRef<T>,
 	) => {
-		const { children, className, as, direction, wrap, inline, alignment, ...other } =
-			props;
+		const {
+			children,
+			className,
+			as,
+			direction,
+			wrap,
+			inline,
+			alignment = "start/start",
+			...other
+		} = props;
 
 		const Element = as || "div";
+		const [align, justify] = alignment?.split("/") as [Align, Justify];
 
 		return (
 			<Element
 				ref={ref}
-				className={cn(flexVariants({ direction, wrap, inline, alignment }), className)}
+				className={cn(
+					flexVariants({ direction, wrap, inline, align, justify }),
+					className,
+				)}
 				{...other}
 			>
 				{children}

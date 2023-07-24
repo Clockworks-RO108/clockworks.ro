@@ -1,0 +1,22 @@
+---
+import { ArrowRight } from "lucide-react";
+import { Button, NavLink } from "~/components/ui";
+---
+
+<!-- TODO use latest blog post -->
+<Button
+	as={NavLink}
+	href="/blog/hello-world"
+	variant="darker"
+	size="wide"
+	rounded
+	className="group gap-x-4 transition-all duration-300 hover:scale-105"
+>
+	<!-- TODO translate -->
+	<p class="text-center font-medium text-dark-blue-100">
+		Blog
+		<span class="text-dark-blue-200">•</span>
+	</p>
+	<span class="font-normal">Hello world</span>
+	<ArrowRight className="transition-all group-hover:translate-x-3" />
+</Button>

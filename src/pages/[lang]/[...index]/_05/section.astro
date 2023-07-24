@@ -1,0 +1,108 @@
+---
+import {
+	CTAButton,
+	Center,
+	Flex,
+	Grid,
+	Section as SectionLayout,
+	Text,
+} from "~/components/ui";
+import { cn } from "~/lib/cn";
+import { DepartmentCard } from "./department-card";
+import { Laptop } from "lucide-react";
+---
+
+<SectionLayout className="relative mt-32 h-auto">
+	<div
+		class={cn(
+			"bg-gradient",
+			"pointer-events-none absolute inset-0 select-none overflow-visible",
+		)}
+	>
+	</div>
+
+	<Center direction="col" className="z-10 gap-20">
+		<Flex
+			direction="col"
+			alignment="center/center"
+			className="max-w-prose gap-10 text-center"
+		>
+			<Center className="gap-6">
+				<Text.H2
+					className="text-center font-inter text-4xl font-bold leading-tight tracking-tight"
+				>
+					Departamente
+				</Text.H2>
+				<Text.P className="text-text-secondary">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum voluptate
+					molestiae aliquid autem
+				</Text.P>
+			</Center>
+
+			<CTAButton href="/members">Descopera toti membrii</CTAButton>
+		</Flex>
+
+		<Center className="w-screen">
+			<Grid rows={2} cols={3} className="mx-6 w-full gap-6 lg:max-w-[70vw]">
+				<DepartmentCard
+					icon={Laptop}
+					title="Foo fighters"
+					description="Lorem ipsum dolor sit amet consectetur adipisicing elit"
+				/>
+				<DepartmentCard
+					icon={Laptop}
+					title="Foo fighters"
+					description="Lorem ipsum dolor sit amet consectetur adipisicing elit"
+				/>
+				<DepartmentCard
+					icon={Laptop}
+					title="Foo fighters"
+					description="Lorem ipsum dolor sit amet consectetur adipisicing elit"
+				/>
+				<DepartmentCard
+					icon={Laptop}
+					title="Foo fighters"
+					description="Lorem ipsum dolor sit amet consectetur adipisicing elit"
+				/>
+				<DepartmentCard
+					icon={Laptop}
+					title="Foo fighters"
+					description="Lorem ipsum dolor sit amet consectetur adipisicing elit"
+				/>
+				<DepartmentCard
+					icon={Laptop}
+					title="Foo fighters"
+					description="Lorem ipsum dolor sit amet consectetur adipisicing elit"
+				/>
+			</Grid>
+		</Center>
+	</Center>
+</SectionLayout>
+
+<style>
+	.bg-gradient::before {
+		--page-edge: calc((100vw - 1200px) / 2);
+		content: "";
+		position: absolute;
+		opacity: 0.25;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) translateZ(0px);
+		width: calc(100vw - 50px);
+		height: 100vh;
+		filter: blur(80px);
+		background: radial-gradient(
+				400px circle at calc(100% - var(--page-edge) - 10%) 45%,
+				hsl(var(--brand-secondary)),
+				70%,
+				transparent
+			),
+			radial-gradient(400px circle at 50% 55%, hsl(var(--brand)), 60%, transparent),
+			radial-gradient(
+				350px circle at calc(var(--page-edge) + 15%) 40%,
+				#0c0c0e,
+				60%,
+				transparent
+			);
+	}
+</style>

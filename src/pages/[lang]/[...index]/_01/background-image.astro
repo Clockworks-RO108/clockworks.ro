@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+
+import heroGridMobile from "~/assets/index/hero-grid.mobile.svg";
+import heroGridTablet from "~/assets/index/hero-grid.tablet.svg";
+import heroGridDesktop from "~/assets/index/hero-grid.desktop.svg";
+---
+
+<div
+	class="pointer-events-none absolute inset-0 max-h-screen w-full select-none bg-background bg-cover bg-center bg-no-repeat"
+>
+	<Image
+		src={heroGridMobile}
+		alt=""
+		class="block md:hidden"
+		loading="eager"
+		fetchpriority="high"
+	/>
+	<Image
+		src={heroGridTablet}
+		alt=""
+		class="hidden md:block lg:hidden"
+		loading="eager"
+		fetchpriority="high"
+	/>
+	<Image
+		src={heroGridDesktop}
+		alt=""
+		class="hidden lg:block"
+		loading="eager"
+		fetchpriority="high"
+	/>
+</div>

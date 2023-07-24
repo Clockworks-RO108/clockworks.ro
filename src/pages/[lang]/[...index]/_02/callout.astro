@@ -1,0 +1,19 @@
+---
+import { Flex } from "~/components/ui";
+
+export type Props = {
+	title: string;
+	subtitle: string;
+};
+const { title, subtitle } = Astro.props;
+---
+
+<Flex
+	inline
+	direction="col"
+	alignment="start/center"
+	className="gap-y-2 border-l pl-8 lg:gap-y-4"
+>
+	<h3 class="text-lg lg:text-2xl">{title}</h3>
+	<p class="text-xs text-text-secondary lg:text-base">{subtitle}</p>
+</Flex>

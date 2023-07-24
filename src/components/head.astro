@@ -24,7 +24,7 @@ const {
 	pageType = "website",
 } = Astro.props;
 
-const title = [Astro.props.title, siteInfo.name].filter(Boolean).join(" | ");
+const title = [Astro.props.title, siteInfo.name].filter(Boolean).join(" - ");
 const resolvedImage: Image = {
 	src: image.src,
 	// src: new URL(image.src, Astro.site).toString(),
@@ -37,12 +37,13 @@ const resolvedImage: Image = {
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
 	<title>{title}</title>
-	<meta name="theme-color" content="#E36D0B" />
+	<meta name="theme-color" content="#0C0C0E" />
 	<meta name="generator" content={Astro.generator} />
 
 	<!-- Low priority metadata -->
 	<!-- TODO change favicon -->
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="sitemap" href="/sitemap-index.xml" />
 	<!-- TODO add sitemap -->
 
 	<Seo

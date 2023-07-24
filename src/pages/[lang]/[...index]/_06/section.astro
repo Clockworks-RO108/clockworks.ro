@@ -1,0 +1,40 @@
+---
+import { Card, Flex, Text, Section as SectionLayout } from "~/components/ui";
+import { InfiniteScroll } from "./infinite-scroll";
+---
+
+<!-- TODO translate -->
+<SectionLayout className="mt-32">
+	<Flex alignment="center/center" direction="col" className="w-full gap-5">
+		<Text.H2 className="mx-auto px-6 text-center mb-8">
+			What people think about us
+		</Text.H2>
+
+		<InfiniteScroll>
+			{
+				new Array(10)
+					.fill(0)
+					.map(() => (
+						<Card.Root className="w-80 max-w-prose">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sit,
+							nulla unde vel molestiae fuga amet blanditiis sed iusto tempora, voluptas
+							maiores quidem cumque molestias alias ullam repudiandae odio impedit!
+						</Card.Root>
+					))
+			}
+		</InfiniteScroll>
+		<InfiniteScroll direction="reverse">
+			{
+				new Array(10)
+					.fill(0)
+					.map(() => (
+						<Card.Root className="w-80 max-w-prose">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sit,
+							nulla unde vel molestiae fuga amet blanditiis sed iusto tempora, voluptas
+							maiores quidem cumque molestias alias ullam repudiandae odio impedit!
+						</Card.Root>
+					))
+			}
+		</InfiniteScroll>
+	</Flex>
+</SectionLayout>

@@ -13,7 +13,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				"dm-mono": "'DM Mono', monospace",
-				"jetbrains-mono": "'JetBrains Mono', monospace",
+				"jetbrains-mono": "'JetBrains Mono Variable', monospace",
 				inter: "'Inter', sans-serif",
 			},
 
@@ -37,12 +37,14 @@ module.exports = {
 
 				"off-white": {
 					100: "#F7F8F8",
+					200: "#C9C9C9",
 					300: "#7D7E82",
 					600: "#3D3F43",
 					900: "#2C2D33",
 				},
 
-				orange: "#E36D0B",
+				brand: "hsl(var(--brand))",
+				"brand-secondary": "hsl(var(--brand-secondary))",
 
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
@@ -92,10 +94,20 @@ module.exports = {
 					from: { height: "var(--radix-accordion-content-height)" },
 					to: { height: 0 },
 				},
+				loop: {
+					from: { transform: "translateX(0)" },
+					to: { transform: "translateX(calc(-50% - 10px))" },
+				},
+				"loop-reverse": {
+					from: { transform: "translateX(calc(-50% - 10px))" },
+					to: { transform: "translateX(0)" },
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
+				loop: "loop 50s linear infinite",
+				"loop-reverse": "loop-reverse 50s linear infinite",
 			},
 
 			typography: (theme) => ({

@@ -1,0 +1,46 @@
+---
+import { Text, Section as SectionLayout, Flex, Center } from "~/components/ui";
+import BackgroundImage from "./background-image.astro";
+import LatestBlogPost from "./latest-blogpost.astro";
+import { siteInfo, useTranslations } from "~/lib";
+
+const currentYear = new Date(Date.now()).getFullYear();
+
+const t = useTranslations(Astro.params.lang);
+---
+
+<SectionLayout className="relative">
+	<BackgroundImage />
+
+	<Flex direction="col" alignment="center/center" className="z-[1] gap-y-4">
+		<LatestBlogPost />
+
+		<Text.H1
+			gradient="to-top-left"
+			className="from-off-white-300 to-off-white-100 text-center font-inter text-5xl font-bold leading-tight tracking-tight lg:text-7xl"
+		>
+			<span>{t("index.landing.we-are")}</span>
+
+			<br class="hidden lg:block" />
+
+			<!-- <Flex alignment="center/center"> -->
+			<Center>
+				<span>{siteInfo.name}</span>
+
+				<span class="hidden font-jetbrains-mono lg:inline-flex">
+					<p>[</p>
+					<Text.P
+						gradient="to-top"
+						className="from-brand to-brand-secondary font-jetbrains-mono"
+					>
+						{currentYear}
+					</Text.P>
+					<p>]</p>
+				</span>
+			</Center>
+			<!-- </Flex> -->
+		</Text.H1>
+
+		<p class="text-lg text-text-secondary">{t("index.landing.subtitle")}</p>
+	</Flex>
+</SectionLayout>

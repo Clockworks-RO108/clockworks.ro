@@ -1,7 +1,9 @@
 ---
 import "~/styles/globals.css";
+
 // Font imports
-import "@fontsource/dm-mono";
+import "@fontsource/dm-mono/400.css";
+import "@fontsource/dm-mono/500.css";
 import "@fontsource-variable/jetbrains-mono";
 import "@fontsource-variable/inter";
 
@@ -9,15 +11,11 @@ import Head from "~/components/head.astro";
 import type { Props as HeadProps } from "~/components/head.astro";
 import Header from "~/components/header.astro";
 
-import { currentURLAtom } from "~/lib/current-url";
-
 export type Props = HeadProps;
 
 const { ...head } = Astro.props;
 
 const { lang } = Astro.params;
-
-currentURLAtom.set(Astro.url.pathname);
 ---
 
 <!DOCTYPE html>
@@ -39,7 +37,7 @@ currentURLAtom.set(Astro.url.pathname);
 		<!-- Footer -->
 
 		<script>
-			import { currentURLAtom } from "~/lib/current-url";
+			import { currentURLAtom } from "../../lib/current-url";
 			currentURLAtom.set(window.location.pathname);
 		</script>
 	</body>

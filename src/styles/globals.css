@@ -4,6 +4,13 @@
 
 @layer base {
 	:root {
+		--off-white-100: 0 0% 97.3%;
+		--off-white-200: 228 2% 50%;
+		--off-white-900: 231.4 7.4% 18.6%;
+
+		--brand: 27.2 90.8% 46.7%;
+		--brand-secondary: 38.9 90.8% 46.7%;
+
 		--background: 240 7.7% 5.1%;
 
 		--foreground: 180 6.7% 97.1%;

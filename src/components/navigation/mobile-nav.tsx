@@ -2,8 +2,8 @@ import { useStore } from "@nanostores/react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 import { Flex, Button, Sheet, Dropdown, NavLink } from "~/components/ui";
-import { currentPathnameAtom } from "~/lib/current-url";
 import { locales } from "~/lib";
+import { currentPathnameAtom } from "~/lib/current-url";
 
 export const MobileNav = ({ children }: { children: React.ReactNode }) => {
 	const pathname = useStore(currentPathnameAtom);
@@ -11,7 +11,7 @@ export const MobileNav = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<Sheet.Root>
 			<Sheet.Trigger asChild>
-				<Button size="square">
+				<Button size="square" role="navigation">
 					<Menu />
 				</Button>
 			</Sheet.Trigger>

@@ -1,0 +1,180 @@
+---
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+	Badge,
+	Button,
+	Card,
+	Center,
+	Flex,
+	Grid,
+	NavLink,
+	Section as SectionLayout,
+	Text,
+} from "~/components/ui";
+---
+
+<SectionLayout className="mt-32 h-auto">
+	<Grid
+		cols={6}
+		className="mx-6 w-full grid-rows-[repeat(4,1fr)] gap-4 lg:aspect-[5/4] lg:h-[85vh] lg:max-h-[85vh] lg:max-w-min"
+	>
+		<Card.Root
+			variant="alternative"
+			shape="square"
+			className="col-span-full row-span-1 lg:col-span-3"
+		>
+			<Center className="relative z-[9] my-auto">
+				<Text.H2
+					gradient="to-top"
+					className="z-[12] inline-block from-off-white-300 to-off-white-100 text-center font-inter font-bold leading-tight tracking-tight lg:text-5xl"
+				>
+					<!-- TODO translate -->
+					Colegiul National Gh. Sincai
+				</Text.H2>
+				<span class="absolute -top-2 left-12 -rotate-6 text-lg lg:left-16 lg:text-2xl">
+					💚
+				</span>
+				<span class="absolute bottom-0 right-10 rotate-12 text-4xl lg:right-20">🤑</span>
+				<span
+					class="absolute -top-1 right-20 z-[-1] rotate-3 text-xl lg:right-24 lg:text-2xl"
+				>
+					🐸
+				</span>
+				<span
+					class="absolute bottom-4 left-20 -rotate-6 text-xl lg:bottom-3 lg:left-20 lg:text-3xl"
+				>
+					🤩
+				</span>
+			</Center>
+		</Card.Root>
+
+		<Card.Root
+			variant="alternative"
+			shape="square"
+			className="col-span-full row-span-2 lg:col-span-3"
+		>
+			un chat sa mimam o colaborare in echipa? Also link catre about
+		</Card.Root>
+
+		<Card.Root
+			variant="alternative"
+			shape="square"
+			className="col-span-full row-span-1 lg:col-span-3"
+		>
+			nu stiu
+		</Card.Root>
+
+		<!-- <Card.Root
+			variant="alternative"
+			shape="square"
+			className="col-span-full row-span-2 lg:col-span-2"
+		>
+			ceva pattern
+		</Card.Root> -->
+
+		<Card.Root
+			variant="alternative"
+			shape="square"
+			className="col-span-full row-span-2 lg:col-span-2"
+		>
+			<!-- TODO get latest blog post -->
+			<Card.Header>latest blog article</Card.Header>
+			<Card.Content
+				variant="alternative"
+				className="aspect-square bg-gradient-to-b from-dark-blue-800 to-background"
+			>
+				<Flex
+					as={NavLink}
+					href="/blog/latest"
+					direction="col"
+					alignment="start/end"
+					className="h-full w-full"
+				>
+					<Flex alignment="center/between" className="w-full p-4">
+						<Flex direction="col">
+							<p class="text-lg text-off-white-200">title</p>
+							<p class="text-sm text-text-secondary">description</p>
+						</Flex>
+
+						<ArrowRight />
+					</Flex>
+				</Flex>
+			</Card.Content>
+		</Card.Root>
+
+		<Card.Root
+			variant="alternative"
+			shape="square"
+			className="col-span-full row-span-2 bg-gradient-to-br from-brand/90 to-brand-secondary/90 lg:col-span-2"
+		>
+			<!-- TODO obviously schimba textul -->
+			<Text.H2 className="m-auto">the more you fuck around the more you find out</Text.H2>
+			<Button
+				variant="alternative"
+				as={NavLink}
+				href="/team"
+				fullWidth
+				className="group scale-95 rounded-xl transition-transform hover:scale-100"
+			>
+				Descopera echipa <ArrowRight
+					className="transition-transform group-hover:translate-x-2"
+				/>
+			</Button>
+		</Card.Root>
+
+		<!-- <Card.Root
+			variant="alternative"
+			shape="square"
+			className="col-span-full row-span-1 lg:col-span-2"
+		>
+			dracu stie
+		</Card.Root> -->
+
+		<Card.Root
+			variant="alternative"
+			shape="square"
+			className="col-span-full row-span-2 lg:col-span-2"
+		>
+			<Card.Content
+				variant="alternative"
+				className="aspect-square bg-gradient-to-b from-dark-blue-800 to-background"
+			>
+				<!-- TODO make carousel component -->
+				<Flex direction="col" alignment="start/end" className="h-full w-full">
+					<Flex alignment="center/start" className="w-full gap-x-2 p-4">
+						<ChevronLeft className="lg:h-5 lg:w-5" />
+						<ChevronRight className="lg:h-5 lg:w-5" />
+
+						<Badge className="text-sm">
+							<span class="text-brand">•</span>
+							<span>•</span>
+							<span>•</span>
+							<span>•</span>
+						</Badge>
+					</Flex>
+				</Flex>
+			</Card.Content>
+			<Card.Header>plm</Card.Header>
+		</Card.Root>
+
+		<!-- <Card.Root
+			variant="alternative"
+			shape="square"
+			className="col-span-full row-span-2 lg:col-span-2"
+		>
+			citat?
+		</Card.Root> -->
+
+		<!-- <Card.Root
+			variant="alternative"
+			shape="square"
+			className="col-span-full row-span-1 lg:col-span-2"
+		>
+			<Text.H2
+				className="m-auto text-center font-inter font-bold leading-tight tracking-tight text-off-white-200"
+			>
+				#Robotics
+			</Text.H2>
+		</Card.Root> -->
+	</Grid>
+</SectionLayout>
