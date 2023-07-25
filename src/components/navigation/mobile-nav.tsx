@@ -1,11 +1,15 @@
 import { useStore } from "@nanostores/react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
-import { Flex, Button, Sheet, Dropdown, NavLink } from "~/components/ui";
-import { locales } from "~/lib";
+import { Flex, Button, Sheet, Dropdown, NavLink, SocialLink } from "~/components/ui";
+import { locales, navLinks, siteInfo } from "~/lib";
 import { currentPathnameAtom } from "~/lib/current-url";
 
-export const MobileNav = ({ children }: { children: React.ReactNode }) => {
+export const MobileNav = ({
+	labels,
+}: {
+	labels: { translate: string; navLinks: string[] };
+}) => {
 	const pathname = useStore(currentPathnameAtom);
 
 	return (
@@ -29,7 +33,7 @@ export const MobileNav = ({ children }: { children: React.ReactNode }) => {
 					<Dropdown.Root>
 						<Dropdown.Trigger asChild>
 							<Button size="large" fullWidth>
-								Languages
+								{labels.translate}
 								<ChevronDown />
 							</Button>
 						</Dropdown.Trigger>
@@ -49,7 +53,32 @@ export const MobileNav = ({ children }: { children: React.ReactNode }) => {
 						</Dropdown.Content>
 					</Dropdown.Root>
 
-					{children}
+					<Flex as="nav" direction="col" className="gap-y-3">
+						{navLinks.map((link, i) => (
+							<NavLink
+								href={link.href}
+								className="font-dm-mono text-3xl font-semibold uppercase tracking-wider"
+								key={`mobile-nav.nav-links.${i}`}
+							>
+								{labels.navLinks[i]}
+							</NavLink>
+						))}
+					</Flex>
+
+					<Flex direction="col" className="gap-y-4">
+						<h3 className="font-jetbrains-mono text-xs uppercase tracking-wide text-text-secondary">
+							Social
+						</h3>
+						{siteInfo.socialLinks.map((link, i) => (
+							<SocialLink
+								href={link.href}
+								key={`mobile-nav.social-links.${i}`}
+								className="font-dm-mono uppercase tracking-wider"
+							>
+								{link.platform}
+							</SocialLink>
+						))}
+					</Flex>
 				</Flex>
 			</Sheet.Content>
 		</Sheet.Root>

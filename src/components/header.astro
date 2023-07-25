@@ -1,14 +1,15 @@
 ---
-import { useTranslations, navLinks, siteInfo, toLocale } from "~/lib";
+import { useTranslations, navLinks, toLocale } from "~/lib";
 import Logo from "./logo.astro";
 import DesktopNav from "./navigation/desktop-nav.astro";
 import { MobileNav } from "./navigation/mobile-nav";
-import { Flex, NavLink } from "~/components/ui";
+import { Flex } from "~/components/ui";
 
 const locale = toLocale(Astro.params.lang);
 const t = useTranslations(locale);
 
-// TODO try to get labels here on server side and pass as props to mobile nav
+const navLinkslabels = navLinks.map((link) => t(link.label));
+const translateLabel = t("mobileNav.languages");
 ---
 
 <header class="sticky inset-0 z-20">
@@ -20,42 +21,10 @@ const t = useTranslations(locale);
 		<Flex alignment="center/between" className="lg:hidden">
 			<Logo />
 
-			<MobileNav client:idle>
-				<Flex as="nav" direction="col" className="gap-y-3">
-					{
-						navLinks.map((link) => (
-							<NavLink
-								href={link.href}
-								className="font-jetbrains-mono text-3xl font-semibold tracking-wider"
-							>
-								{t(link.label)}
-							</NavLink>
-						))
-					}
-				</Flex>
-
-				<Flex direction="col" className="gap-y-4">
-					<!-- TODO translate -->
-					<h3
-						class="font-jetbrains-mono text-xs uppercase tracking-wide text-text-secondary"
-					>
-						Social
-					</h3>
-					{
-						//TODO create social link component
-						siteInfo.socialLinks.map((link) => (
-							<a
-								target="_blank"
-								referrerpolicy="no-referrer"
-								class="font-dm-mono uppercase tracking-wider"
-								href={link.href}
-							>
-								{link.platform}
-							</a>
-						))
-					}
-				</Flex>
-			</MobileNav>
+			<MobileNav
+				client:idle
+				labels={{ navLinks: navLinkslabels, translate: translateLabel }}
+			/>
 		</Flex>
 	</div>
 </header>
