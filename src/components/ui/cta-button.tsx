@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "./button";
-import { NavLink } from "./nav-link";
+import { NavLink } from "./link";
 
 export const CTAButton = ({
 	href,

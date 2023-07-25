@@ -3,13 +3,13 @@ import { useStore } from "@nanostores/react";
 import { cn } from "~/lib";
 import { currentLocaleAtom } from "~/lib/current-url";
 
-type Props = {
+type NavLinkProps = {
 	withI18n?: boolean;
 	disabled?: boolean;
 	href: string;
 } & React.ComponentPropsWithRef<"a">;
 
-export const NavLink = React.forwardRef<HTMLAnchorElement, Props>(
+export const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(
 	({ disabled, withI18n = true, className, ...props }, ref?) => {
 		if (disabled) return <span ref={ref} {...props} />;
 
@@ -26,6 +26,24 @@ export const NavLink = React.forwardRef<HTMLAnchorElement, Props>(
 					className ?? "",
 				)}
 				{...other}
+			/>
+		);
+	},
+);
+
+// TODO should be named ExternalLink?
+type SocialLinkProps = { href: string } & React.ComponentPropsWithRef<"a">;
+
+export const SocialLink = React.forwardRef<HTMLAnchorElement, SocialLinkProps>(
+	({ href, className, ...props }, ref?) => {
+		return (
+			<a
+				ref={ref}
+				target="_blank"
+				referrerPolicy="no-referrer"
+				className={className}
+				href={href}
+				{...props}
 			/>
 		);
 	},

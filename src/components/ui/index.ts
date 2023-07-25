@@ -8,6 +8,6 @@ export * from "./flex";
 export * from "./grid";
 export * from "./polymorphic-component";
 export * from "./section";
-export * from "./nav-link";
+export * from "./link";
 export * from "./sheet";
 export * from "./text";
