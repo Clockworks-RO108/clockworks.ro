@@ -9,7 +9,7 @@ import Section05 from "./_05/section.astro";
 import Section06 from "./_06/section.astro";
 
 export const getStaticPaths = generateStaticPaths;
-const t = useTranslations(Astro.params.lang);
+const t = useTranslations();
 ---
 
 <Layout title={t("siteInfo.title")}>

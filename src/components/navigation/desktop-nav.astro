@@ -10,7 +10,7 @@ import { currentLocaleAtom, currentPathnameAtom } from "~/lib/current-url";
 const locale = currentLocaleAtom.get() === "en" ? "ro" : "en";
 const slug = currentPathnameAtom.get();
 
-const t = useTranslations(Astro.params.lang);
+const t = useTranslations();
 ---
 
 <Flex alignment="center/between" className="hidden lg:flex">

@@ -12,7 +12,7 @@ export type Props = {
 };
 
 const locale = toLocale(Astro.params.lang);
-const t = useTranslations(locale);
+const t = useTranslations();
 
 const {
 	description = t("siteInfo.description"),

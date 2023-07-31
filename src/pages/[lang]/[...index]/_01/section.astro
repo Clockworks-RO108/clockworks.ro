@@ -1,18 +1,18 @@
 ---
-import { Text, Section as SectionLayout, Flex, Center } from "~/components/ui";
+import { Text, Section as SectionLayout, Center } from "~/components/ui";
 import BackgroundImage from "./background-image.astro";
 import LatestBlogPost from "./latest-blogpost.astro";
 import { siteInfo, useTranslations } from "~/lib";
 
 const currentYear = new Date(Date.now()).getFullYear();
 
-const t = useTranslations(Astro.params.lang);
+const t = useTranslations();
 ---
 
 <SectionLayout className="relative">
 	<BackgroundImage />
 
-	<Flex direction="col" alignment="center/center" className="z-[1] gap-y-4">
+	<Center direction="col" className="z-[1] gap-y-4">
 		<LatestBlogPost />
 
 		<Text.H1
@@ -23,7 +23,6 @@ const t = useTranslations(Astro.params.lang);
 
 			<br class="hidden lg:block" />
 
-			<!-- <Flex alignment="center/center"> -->
 			<Center>
 				<span>{siteInfo.name}</span>
 
@@ -38,9 +37,8 @@ const t = useTranslations(Astro.params.lang);
 					<p>]</p>
 				</span>
 			</Center>
-			<!-- </Flex> -->
 		</Text.H1>
 
 		<p class="text-lg text-text-secondary">{t("index.landing.subtitle")}</p>
-	</Flex>
+	</Center>
 </SectionLayout>

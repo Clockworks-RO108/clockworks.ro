@@ -1,12 +1,11 @@
 ---
-import { useTranslations, navLinks, toLocale } from "~/lib";
+import { useTranslations, navLinks } from "~/lib";
 import Logo from "./logo.astro";
 import DesktopNav from "./navigation/desktop-nav.astro";
 import { MobileNav } from "./navigation/mobile-nav";
 import { Flex } from "~/components/ui";
 
-const locale = toLocale(Astro.params.lang);
-const t = useTranslations(locale);
+const t = useTranslations();
 
 const navLinkslabels = navLinks.map((link) => t(link.label));
 const translateLabel = t("mobileNav.languages");
