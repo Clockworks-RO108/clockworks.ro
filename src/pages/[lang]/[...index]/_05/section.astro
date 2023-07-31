@@ -7,19 +7,13 @@ import {
 	Section as SectionLayout,
 	Text,
 } from "~/components/ui";
-import { cn } from "~/lib/cn";
 import { DepartmentCard } from "./department-card";
 import { Laptop } from "lucide-react";
+import BgGradient from "~/components/bg-gradient.astro";
 ---
 
 <SectionLayout className="relative mt-32 h-auto">
-	<div
-		class={cn(
-			"bg-gradient",
-			"pointer-events-none absolute inset-0 select-none overflow-visible",
-		)}
-	>
-	</div>
+	<BgGradient />
 
 	<Center direction="col" className="z-10 gap-20">
 		<Flex
@@ -78,31 +72,3 @@ import { Laptop } from "lucide-react";
 		</Center>
 	</Center>
 </SectionLayout>
-
-<style>
-	.bg-gradient::before {
-		--page-edge: calc((100vw - 1200px) / 2);
-		content: "";
-		position: absolute;
-		opacity: 0.25;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%) translateZ(0px);
-		width: calc(100vw - 50px);
-		height: 100vh;
-		filter: blur(80px);
-		background: radial-gradient(
-				400px circle at calc(100% - var(--page-edge) - 10%) 45%,
-				hsl(var(--brand-secondary)),
-				70%,
-				transparent
-			),
-			radial-gradient(400px circle at 50% 55%, hsl(var(--brand)), 60%, transparent),
-			radial-gradient(
-				350px circle at calc(var(--page-edge) + 15%) 40%,
-				#0c0c0e,
-				60%,
-				transparent
-			);
-	}
-</style>
