@@ -2,7 +2,7 @@
 import { Globe } from "lucide-react";
 
 import Logo from "~/components/logo.astro";
-import { Flex, Button, Badge, Link } from "~/components/ui";
+import { Flex, Button, Badge, Link, HStack } from "~/components/ui";
 import { navLinks, useTranslations, cn } from "~/lib";
 import { currentLocaleAtom, currentPathnameAtom } from "~/lib/current-url";
 
@@ -12,10 +12,10 @@ const slug = currentPathnameAtom.get();
 const t = useTranslations();
 ---
 
-<Flex alignment="center/between" className="hidden lg:flex">
+<HStack alignment="center/between" className="hidden lg:flex">
 	<Logo />
 
-	<Flex direction="row" alignment="center/between" className="gap-x-6">
+	<HStack alignment="center/between" className="gap-x-6">
 		<Flex
 			as="nav"
 			alignment="center/between"
@@ -55,5 +55,5 @@ const t = useTranslations();
 				className="h-5 w-5 text-text-secondary transition-all duration-300 group-hover:scale-110 group-hover:text-foreground"
 			/>
 		</Button>
-	</Flex>
-</Flex>
+	</HStack>
+</HStack>

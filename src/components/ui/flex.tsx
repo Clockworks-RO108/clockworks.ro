@@ -23,7 +23,7 @@ type Justify =
 
 type Align = "start" | "end" | "center" | "baseline" | "stretch";
 
-type Alignment = `${Align}/${Justify}`;
+export type Alignment = `${Align}/${Justify}`;
 
 type Props = Partial<{
 	direction: Direction;

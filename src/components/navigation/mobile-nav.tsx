@@ -1,7 +1,7 @@
 import { useStore } from "@nanostores/react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
-import { Flex, Button, Sheet, Dropdown, Link } from "~/components/ui";
+import { Flex, Button, Sheet, Dropdown, Link, VStack } from "~/components/ui";
 import { locales, navLinks, siteInfo } from "~/lib";
 import { currentPathnameAtom } from "~/lib/current-url";
 
@@ -21,7 +21,7 @@ export const MobileNav = ({
 			</Sheet.Trigger>
 
 			<Sheet.Content side="left" className="w-screen bg-background px-6">
-				<Flex direction="col" className="gap-y-8">
+				<VStack className="gap-y-8">
 					<Flex direction="row-reverse" alignment="start/between" className="w-full">
 						<Sheet.Close asChild>
 							<Button size="square">
@@ -53,7 +53,7 @@ export const MobileNav = ({
 						</Dropdown.Content>
 					</Dropdown.Root>
 
-					<Flex as="nav" direction="col" className="gap-y-3">
+					<VStack as="nav" className="gap-y-3">
 						{navLinks.map((link, i) => (
 							<Link.Nav
 								href={link.href}
@@ -63,9 +63,9 @@ export const MobileNav = ({
 								{labels.navLinks[i]}
 							</Link.Nav>
 						))}
-					</Flex>
+					</VStack>
 
-					<Flex direction="col" className="gap-y-4">
+					<VStack className="gap-y-4">
 						<h3 className="font-jetbrains-mono text-xs uppercase tracking-wide text-text-secondary">
 							Social
 						</h3>
@@ -78,8 +78,8 @@ export const MobileNav = ({
 								{link.platform}
 							</Link.Social>
 						))}
-					</Flex>
-				</Flex>
+					</VStack>
+				</VStack>
 			</Sheet.Content>
 		</Sheet.Root>
 	);

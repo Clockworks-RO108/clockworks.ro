@@ -1,16 +1,18 @@
 ---
 import { InfiniteScroll } from "./infinite-scroll";
 
-import { Card, Flex, Text, Section as SectionLayout } from "~/components/ui";
+import { Card, Text, Section as SectionLayout, VStack } from "~/components/ui";
 ---
 
 <!-- TODO translate -->
 <SectionLayout className="mt-32">
-	<Flex alignment="center/center" direction="col" className="w-full gap-5">
+	<VStack alignment="center/center" className="w-full gap-5">
 		<Text.H2 className="mx-auto mb-8 px-6 text-center">
 			What people think about us
 		</Text.H2>
 
+		<!-- TODO create a content collection for cards content -->
+		<!-- TODO split cards content in half and use in both scrolls -->
 		<InfiniteScroll>
 			{
 				new Array(10)
@@ -24,6 +26,7 @@ import { Card, Flex, Text, Section as SectionLayout } from "~/components/ui";
 					))
 			}
 		</InfiniteScroll>
+
 		<InfiniteScroll direction="reverse">
 			{
 				new Array(10)
@@ -37,5 +40,5 @@ import { Card, Flex, Text, Section as SectionLayout } from "~/components/ui";
 					))
 			}
 		</InfiniteScroll>
-	</Flex>
+	</VStack>
 </SectionLayout>

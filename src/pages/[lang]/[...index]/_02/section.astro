@@ -7,6 +7,7 @@ import {
 	CTAButton,
 	Flex,
 	Grid,
+	HStack,
 	Section as SectionLayout,
 	Text,
 } from "~/components/ui";
@@ -17,7 +18,7 @@ import {
 	<BgGradient />
 
 	<Center className="absolute left-0 h-full w-screen lg:w-[50vw]">
-		<Flex className="max-w-prose gap-y-20 px-8 lg:pl-11">
+		<HStack className="max-w-prose gap-y-20 px-8 lg:pl-11">
 			<Flex className="gap-6 text-center lg:text-start">
 				<Text.H1
 					gradient="to-top"
@@ -40,7 +41,7 @@ import {
 				<Callout title="Title 3" subtitle="some small text" />
 				<Callout title="Title 4" subtitle="some small text" />
 			</Grid>
-		</Flex>
+		</HStack>
 	</Center>
 
 	<!-- TODO add code-block -->

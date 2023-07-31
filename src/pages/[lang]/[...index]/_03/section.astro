@@ -8,6 +8,7 @@ import {
 	Grid,
 	Section as SectionLayout,
 	Text,
+	VStack,
 } from "~/components/ui";
 import { cn } from "~/lib";
 ---
@@ -16,7 +17,7 @@ import { cn } from "~/lib";
 <SectionLayout
 	className={cn("bg-gradient", "h-auto mx-6 lg:mt-32 lg:h-[90vh] rounded-b-3xl")}
 >
-	<Flex direction="col" alignment="center/start" className="gap-20 pb-8">
+	<VStack alignment="center/start" className="gap-20 pb-8">
 		<Flex className="w-full flex-col items-center gap-4 lg:flex-row lg:items-start">
 			<Center className="mx-auto rounded-xl border-2 border-border lg:m-1">
 				<Center
@@ -26,7 +27,7 @@ import { cn } from "~/lib";
 				</Center>
 			</Center>
 
-			<Flex direction="col" alignment="start/center" className="gap-4">
+			<VStack alignment="start/center" className="gap-4">
 				<Text.H2
 					gradient="to-top"
 					className="mx-auto from-off-white-300 to-off-white-100 text-center font-inter font-bold leading-tight tracking-tight lg:text-left lg:text-4xl"
@@ -36,7 +37,7 @@ import { cn } from "~/lib";
 				<Text.P className="mx-auto text-text-secondary lg:m-0">
 					Cea mai echipa din Bucuresti
 				</Text.P>
-			</Flex>
+			</VStack>
 		</Flex>
 
 		<Grid cols={12} className="max-w-[1240px] gap-6">
@@ -68,7 +69,7 @@ import { cn } from "~/lib";
 				/>
 			</Card.Root>
 		</Grid>
-	</Flex>
+	</VStack>
 </SectionLayout>
 
 <style>

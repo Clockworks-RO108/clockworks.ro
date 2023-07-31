@@ -10,4 +10,5 @@ export * from "./polymorphic-component";
 export * from "./section";
 export * from "./link";
 export * from "./sheet";
+export * from "./stack";
 export * from "./text";

@@ -6,11 +6,12 @@ import {
 	Button,
 	Card,
 	Center,
-	Flex,
 	Grid,
+	HStack,
 	Link,
 	Section as SectionLayout,
 	Text,
+	VStack,
 } from "~/components/ui";
 ---
 
@@ -84,22 +85,21 @@ import {
 				variant="alternative"
 				className="aspect-square bg-gradient-to-b from-dark-blue-800 to-background"
 			>
-				<Flex
+				<HStack
 					as={Link.Nav}
 					href="/blog/latest"
-					direction="col"
 					alignment="start/end"
 					className="h-full w-full"
 				>
-					<Flex alignment="center/between" className="w-full p-4">
-						<Flex direction="col">
+					<HStack alignment="center/between" className="w-full p-4">
+						<VStack>
 							<p class="text-lg text-off-white-200">title</p>
 							<p class="text-sm text-text-secondary">description</p>
-						</Flex>
+						</VStack>
 
 						<ArrowRight />
-					</Flex>
-				</Flex>
+					</HStack>
+				</HStack>
 			</Card.Content>
 		</Card.Root>
 
@@ -141,8 +141,8 @@ import {
 				className="aspect-square bg-gradient-to-b from-dark-blue-800 to-background"
 			>
 				<!-- TODO make carousel component -->
-				<Flex direction="col" alignment="start/end" className="h-full w-full">
-					<Flex alignment="center/start" className="w-full gap-x-2 p-4">
+				<VStack alignment="start/end" className="h-full w-full">
+					<HStack alignment="center/start" className="w-full gap-x-2 p-4">
 						<ChevronLeft className="lg:h-5 lg:w-5" />
 						<ChevronRight className="lg:h-5 lg:w-5" />
 
@@ -152,8 +152,8 @@ import {
 							<span>•</span>
 							<span>•</span>
 						</Badge>
-					</Flex>
-				</Flex>
+					</HStack>
+				</VStack>
 			</Card.Content>
 			<Card.Header>plm</Card.Header>
 		</Card.Root>
