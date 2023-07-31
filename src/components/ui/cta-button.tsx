@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 
 import { Button } from "./button";
-import { NavLink } from "./link";
+import { Link } from "./link";
 
 export const CTAButton = ({
 	href,
@@ -10,7 +10,7 @@ export const CTAButton = ({
 	return (
 		<Button
 			variant="alternative"
-			as={NavLink}
+			as={Link.Nav}
 			href={href}
 			className="group mx-auto scale-95 rounded-xl transition-transform hover:scale-100 lg:mx-0"
 		>

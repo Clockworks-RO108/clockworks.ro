@@ -1,7 +1,7 @@
 import { useStore } from "@nanostores/react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
-import { Flex, Button, Sheet, Dropdown, NavLink, SocialLink } from "~/components/ui";
+import { Flex, Button, Sheet, Dropdown, Link } from "~/components/ui";
 import { locales, navLinks, siteInfo } from "~/lib";
 import { currentPathnameAtom } from "~/lib/current-url";
 
@@ -45,9 +45,9 @@ export const MobileNav = ({
 									className="py-2 uppercase"
 									asChild
 								>
-									<NavLink withI18n={false} href={`/${locale}${pathname}`}>
+									<Link.Nav withI18n={false} href={`/${locale}${pathname}`}>
 										{locale}
-									</NavLink>
+									</Link.Nav>
 								</Dropdown.Item>
 							))}
 						</Dropdown.Content>
@@ -55,13 +55,13 @@ export const MobileNav = ({
 
 					<Flex as="nav" direction="col" className="gap-y-3">
 						{navLinks.map((link, i) => (
-							<NavLink
+							<Link.Nav
 								href={link.href}
 								className="font-dm-mono text-3xl font-semibold uppercase tracking-wider"
 								key={`mobile-nav.nav-links.${i}`}
 							>
 								{labels.navLinks[i]}
-							</NavLink>
+							</Link.Nav>
 						))}
 					</Flex>
 
@@ -70,13 +70,13 @@ export const MobileNav = ({
 							Social
 						</h3>
 						{siteInfo.socialLinks.map((link, i) => (
-							<SocialLink
+							<Link.Social
 								href={link.href}
 								key={`mobile-nav.social-links.${i}`}
 								className="font-dm-mono uppercase tracking-wider"
 							>
 								{link.platform}
-							</SocialLink>
+							</Link.Social>
 						))}
 					</Flex>
 				</Flex>

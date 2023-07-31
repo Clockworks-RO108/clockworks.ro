@@ -2,7 +2,7 @@
 import { Globe } from "lucide-react";
 
 import Logo from "~/components/logo.astro";
-import { Flex, Button, Badge, NavLink } from "~/components/ui";
+import { Flex, Button, Badge, Link } from "~/components/ui";
 import { navLinks, useTranslations, cn } from "~/lib";
 import { currentLocaleAtom, currentPathnameAtom } from "~/lib/current-url";
 
@@ -29,7 +29,7 @@ const t = useTranslations();
 					return (
 						<div class="pl-2">
 							<Button
-								as={NavLink}
+								as={Link.Nav}
 								href={href}
 								disabled={disabled}
 								variant="ghost"

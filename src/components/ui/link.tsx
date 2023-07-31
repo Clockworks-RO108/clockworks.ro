@@ -11,7 +11,7 @@ type NavLinkProps = {
 	href: string;
 } & React.ComponentPropsWithRef<"a">;
 
-export const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(
+const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(
 	({ disabled, withI18n = true, className, ...props }, ref?) => {
 		if (disabled) return <span ref={ref} {...props} />;
 
@@ -36,7 +36,7 @@ export const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(
 // TODO should be named ExternalLink?
 type SocialLinkProps = { href: string } & React.ComponentPropsWithRef<"a">;
 
-export const SocialLink = React.forwardRef<HTMLAnchorElement, SocialLinkProps>(
+const SocialLink = React.forwardRef<HTMLAnchorElement, SocialLinkProps>(
 	({ href, className, ...props }, ref?) => {
 		return (
 			<a
@@ -50,3 +50,8 @@ export const SocialLink = React.forwardRef<HTMLAnchorElement, SocialLinkProps>(
 		);
 	},
 );
+
+export const Link = {
+	Nav: NavLink,
+	Social: SocialLink,
+};

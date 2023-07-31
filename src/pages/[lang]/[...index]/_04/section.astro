@@ -8,7 +8,7 @@ import {
 	Center,
 	Flex,
 	Grid,
-	NavLink,
+	Link,
 	Section as SectionLayout,
 	Text,
 } from "~/components/ui";
@@ -85,7 +85,7 @@ import {
 				className="aspect-square bg-gradient-to-b from-dark-blue-800 to-background"
 			>
 				<Flex
-					as={NavLink}
+					as={Link.Nav}
 					href="/blog/latest"
 					direction="col"
 					alignment="start/end"
@@ -112,7 +112,7 @@ import {
 			<Text.H2 className="m-auto">the more you fuck around the more you find out</Text.H2>
 			<Button
 				variant="alternative"
-				as={NavLink}
+				as={Link.Nav}
 				href="/team"
 				fullWidth
 				className="group scale-95 rounded-xl transition-transform hover:scale-100"
