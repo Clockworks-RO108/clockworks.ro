@@ -1,12 +1,13 @@
 import React from "react";
-import { cva } from "class-variance-authority";
 
-import { cn } from "~/lib";
+import { cva } from "class-variance-authority";
 
 import type {
 	PolymorphicComponentPropsWithRef,
 	PolymorphicRef,
 } from "./polymorphic-component";
+
+import { cn } from "~/lib";
 
 export type Direction = "row" | "col" | "row-reverse" | "col-reverse";
 

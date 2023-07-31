@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+
 import { Badge, Button, Card, Flex, Text } from "~/components/ui";
 
 export const DepartmentCard = ({

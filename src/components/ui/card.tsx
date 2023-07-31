@@ -1,13 +1,14 @@
+import React from "react";
+
+import { cva, type VariantProps } from "class-variance-authority";
+
+import { Flex, type FlexProps } from "./flex";
 import type {
 	PolymorphicComponentPropsWithRef,
 	PolymorphicRef,
 } from "./polymorphic-component";
-import { Flex } from "./flex";
-import type { FlexProps } from "./flex";
+
 import { cn } from "~/lib";
-import React from "react";
-import { cva } from "class-variance-authority";
-import type { VariantProps } from "class-variance-authority";
 
 const rootVariants = cva("gap-4 rounded-lg px-2 pb-2 pt-6 ring-2", {
 	variants: {

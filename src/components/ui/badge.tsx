@@ -1,9 +1,11 @@
 import React from "react";
+
 import { Flex } from "./flex";
 import type {
 	PolymorphicComponentPropsWithRef,
 	PolymorphicRef,
 } from "./polymorphic-component";
+
 import { cn } from "~/lib";
 
 type BadgeProps<C extends React.ElementType = "span"> =

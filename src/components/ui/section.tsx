@@ -1,5 +1,6 @@
-import { cn } from "~/lib";
 import { Center } from "./center";
+
+import { cn } from "~/lib";
 
 export const Section = ({
 	className,
@@ -15,6 +16,7 @@ export const Section = ({
 		// />
 		<Center
 			as="section"
+			// TODO use dvh if supported
 			className={cn("h-[calc(100vh-82px)] lg:h-[calc(100vh-90px)]", className)}
 			{...props}
 		/>

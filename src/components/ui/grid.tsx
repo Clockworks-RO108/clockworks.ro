@@ -1,9 +1,12 @@
+import React from "react";
+
 import { cva } from "class-variance-authority";
+
 import type {
 	PolymorphicComponentPropsWithRef,
 	PolymorphicRef,
 } from "./polymorphic-component";
-import React from "react";
+
 import { cn } from "~/lib";
 
 type Props = Partial<{
@@ -70,7 +73,7 @@ export const Grid: GridComponent = React.forwardRef(
 		return (
 			<Element
 				ref={ref}
-				className={cn(gridVariants({ cols, rows, inline }), "grid-rows-", className)}
+				className={cn(gridVariants({ cols, rows, inline }), className)}
 				{...other}
 			>
 				{children}

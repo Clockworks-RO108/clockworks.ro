@@ -1,12 +1,13 @@
 ---
-import Layout from "~/components/ui/layout.astro";
-import { generateStaticPaths, useTranslations } from "~/lib";
 import Section01 from "./_01/section.astro";
 import Section02 from "./_02/section.astro";
 import Section03 from "./_03/section.astro";
 import Section04 from "./_04/section.astro";
 import Section05 from "./_05/section.astro";
 import Section06 from "./_06/section.astro";
+
+import Layout from "~/components/ui/layout.astro";
+import { generateStaticPaths, useTranslations } from "~/lib";
 
 export const getStaticPaths = generateStaticPaths;
 const t = useTranslations();

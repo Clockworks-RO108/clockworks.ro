@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+
 import en from "./en.json";
 
 type Keys = Array<keyof typeof en>;

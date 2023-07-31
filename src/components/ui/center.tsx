@@ -1,9 +1,10 @@
 import React from "react";
+
+import { type Direction, Flex } from "./flex";
 import type {
 	PolymorphicComponentPropsWithRef,
 	PolymorphicRef,
 } from "./polymorphic-component";
-import { Direction, Flex } from "./flex";
 
 type Props = Partial<{
 	inline: boolean;

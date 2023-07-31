@@ -1,13 +1,14 @@
 import React from "react";
-import { cva } from "class-variance-authority";
-import type { VariantProps } from "class-variance-authority";
 
-import { cn } from "~/lib";
+import { cva, type VariantProps } from "class-variance-authority";
+
 import { Flex } from "./flex";
 import type {
 	PolymorphicComponentPropsWithRef,
 	PolymorphicRef,
 } from "./polymorphic-component";
+
+import { cn } from "~/lib";
 
 const buttonVariants = cva("gap-x-2 border ring-2", {
 	variants: {
