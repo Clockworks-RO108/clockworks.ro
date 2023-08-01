@@ -2,17 +2,19 @@
   "siteInfo.title": "",
   "siteInfo.description": "",
   "siteInfo.image.alt": "",
-
   "mobileNav.languages": "Limbi",
-
   "home.title": "Acasa",
   "page.title": "salut lume",
-
   "index.landing.we-are": "Noi suntem",
   "index.landing.subtitle": "",
-
   "navLink.soon": "Curand",
   "navLink.about": "Despre noi",
   "navLink.work": "Proiecte",
-  "navLink.blog": "Blog"
+  "navLink.blog": "Blog",
+  "footer.madeBy": "Creat de",
+  "footer.languages.title": "Traduceri",
+  "footer.locales.en": "Engleză",
+  "footer.locales.ro": "Română",
+  "footer.navigation.title": "Navigare",
+  "footer.social.title": "Social"
 }

@@ -1,0 +1,61 @@
+---
+import BgGradient from "./bg-gradient.astro";
+import { FooterCol } from "./footer-col";
+import Logo from "./logo.astro";
+
+import { Center, Flex, HStack, Link, VStack } from "~/components/ui";
+import { locales, navLinks, siteInfo, useTranslations } from "~/lib";
+import { currentPathnameAtom } from "~/lib/current-url";
+
+const pathname = currentPathnameAtom.get();
+const t = useTranslations();
+
+const languagesLinks = locales.map((locale) => ({
+	href: `/${locale}${pathname}`,
+	label: t(`footer.locales.${locale}`),
+}));
+
+const navigationLinks = navLinks.map((link) => ({
+	href: link.href,
+	label: t(link.label),
+}));
+---
+
+<Center
+	stretch="all"
+	className="fixed bottom-0 -z-10 bg-off-white-100 p-4 pt-[10vh] text-off-white-900 lg:pt-[40vh]"
+>
+	<Center as="footer" stretch="all">
+		<BgGradient />
+
+		<VStack stretch="all" alignment="center/between" className="gap-4">
+			<Flex grow stretch="width" alignment="center/start">
+				<HStack className="gap-8">
+					<FooterCol
+						title={t("footer.languages.title")}
+						links={languagesLinks}
+						withI18n={false}
+					/>
+					<FooterCol title={t("footer.navigation.title")} links={navigationLinks} />
+					<FooterCol title={t("footer.social.title")} links={siteInfo.socialLinks} />
+				</HStack>
+			</Flex>
+
+			<HStack alignment="center/between" stretch="width">
+				<Flex className="flex-col items-start gap-4 lg:flex-row lg:items-center">
+					<Logo variant="small" />
+					<p class="text-xs text-text-secondary">{siteInfo.trademark}</p>
+				</Flex>
+
+				<Link.Social
+					href={siteInfo.rizesqlLink.href}
+					className="self-end text-sm text-text-secondary lg:self-center"
+				>
+					{t("footer.madeBy")}
+					{" "}
+					{siteInfo.rizesqlLink.platform}
+				</Link.Social>
+			</HStack>
+		</VStack>
+	</Center>
+</Center>

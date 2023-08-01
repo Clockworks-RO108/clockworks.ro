@@ -2,17 +2,19 @@
   "siteInfo.title": "",
   "siteInfo.description": "",
   "siteInfo.image.alt": "",
-
   "mobileNav.languages": "Languages",
-
   "home.title": "Home",
   "page.title": "hello world",
-
   "index.landing.we-are": "We are",
   "index.landing.subtitle": "Dream. Build. Inspire. Repeat.",
-
   "navLink.soon": "Soon",
   "navLink.about": "About",
   "navLink.work": "Our Work",
-  "navLink.blog": "Blog"
+  "navLink.blog": "Blog",
+  "footer.madeBy": "Made by",
+  "footer.languages.title": "Languages",
+  "footer.locales.en": "English",
+  "footer.locales.ro": "Romanian",
+  "footer.navigation.title": "Navigation",
+  "footer.social.title": "Social"
 }

@@ -7,8 +7,8 @@ import "@fontsource/dm-mono/500.css";
 import "@fontsource-variable/jetbrains-mono";
 import "@fontsource-variable/inter";
 
-import Head from "~/components/head.astro";
-import type { Props as HeadProps } from "~/components/head.astro";
+import Footer from "~/components/footer.astro";
+import Head, { type Props as HeadProps } from "~/components/head.astro";
 import Header from "~/components/header.astro";
 import { currentURLAtom } from "~/lib/current-url";
 
@@ -32,12 +32,15 @@ currentURLAtom.set(pathname);
 	<body class="relative">
 		<Header />
 
-		<main class="z-10">
+		<main class="z-10 mb-[90vh] lg:mb-[60vh]">
 			<slot />
+
+			<div class="bg-off-white-100">
+				<div class="h-[82px] w-screen rounded-b-2xl bg-background lg:h-[90px]"></div>
+			</div>
 		</main>
 
-		<!-- TODO create footer -->
-		<!-- Footer -->
+		<Footer />
 
 		<script define:vars={{ pathname }}>
 			import { currentURLAtom } from "../../lib/current-url";

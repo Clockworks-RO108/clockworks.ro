@@ -1,6 +1,38 @@
 ---
+import { cva, type VariantProps } from "class-variance-authority";
+
 import { Flex, Link } from "~/components/ui";
 import { siteInfo } from "~/lib";
+
+const logoVariants = cva(
+	" bg-dark-blue-900 ring-1 ring-border transition-colors hover:bg-dark-blue-700",
+	{
+		variants: {
+			variant: {
+				small: "gap-x-2 rounded-md px-2 py-1 text-sm",
+				default: "gap-x-3 rounded-lg px-4 py-2",
+			},
+		},
+		defaultVariants: {
+			variant: "default",
+		},
+	},
+);
+
+const iconVariants = cva("aspect-square rounded-sm bg-brand", {
+	variants: {
+		variant: {
+			small: "h-5 w-5",
+			default: "h-6 w-6",
+		},
+	},
+	defaultVariants: {
+		variant: "default",
+	},
+});
+
+export type Props = Partial<VariantProps<typeof logoVariants>>;
+const { variant } = Astro.props;
 ---
 
 <Flex
@@ -8,8 +40,8 @@ import { siteInfo } from "~/lib";
 	href="/"
 	inline
 	alignment="center/between"
-	className="gap-x-3 rounded-lg bg-dark-blue-900 px-4 py-2 ring-1 ring-border transition-colors hover:bg-dark-blue-700"
+	className={logoVariants({ variant })}
 >
-	<div class="aspect-square h-6 w-6 rounded-sm bg-brand"></div>
+	<div class={iconVariants({ variant })}></div>
 	<span class="text-foreground">{siteInfo.name}</span>
 </Flex>

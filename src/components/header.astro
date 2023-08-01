@@ -10,6 +10,7 @@ const t = useTranslations();
 
 const navLinkslabels = navLinks.map((link) => t(link.label));
 const translateLabel = t("mobileNav.languages");
+const madeByLabel = t("footer.madeBy");
 ---
 
 <header class="sticky inset-0 z-20">
@@ -23,7 +24,11 @@ const translateLabel = t("mobileNav.languages");
 
 			<MobileNav
 				client:idle
-				labels={{ navLinks: navLinkslabels, translate: translateLabel }}
+				labels={{
+					navLinks: navLinkslabels,
+					translate: translateLabel,
+					madeBy: madeByLabel,
+				}}
 			/>
 		</Flex>
 	</div>

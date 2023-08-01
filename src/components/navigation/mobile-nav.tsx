@@ -1,14 +1,14 @@
 import { useStore } from "@nanostores/react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
-import { Flex, Button, Sheet, Dropdown, Link, VStack } from "~/components/ui";
+import { Flex, Button, Sheet, Dropdown, Link, VStack, HStack } from "~/components/ui";
 import { locales, navLinks, siteInfo } from "~/lib";
 import { currentPathnameAtom } from "~/lib/current-url";
 
 export const MobileNav = ({
 	labels,
 }: {
-	labels: { translate: string; navLinks: string[] };
+	labels: { translate: string; navLinks: string[]; madeBy: string };
 }) => {
 	const pathname = useStore(currentPathnameAtom);
 
@@ -20,9 +20,12 @@ export const MobileNav = ({
 				</Button>
 			</Sheet.Trigger>
 
-			<Sheet.Content side="left" className="w-screen bg-background px-6">
+			<Sheet.Content
+				side="left"
+				className="flex w-screen flex-col justify-between bg-background px-6"
+			>
 				<VStack className="gap-y-8">
-					<Flex direction="row-reverse" alignment="start/between" className="w-full">
+					<Flex stretch="width" direction="row-reverse" alignment="start/between">
 						<Sheet.Close asChild>
 							<Button size="square">
 								<X />
@@ -80,6 +83,16 @@ export const MobileNav = ({
 						))}
 					</VStack>
 				</VStack>
+
+				<HStack alignment="baseline/between">
+					<p className="text-xs text-text-secondary">{siteInfo.trademark}</p>
+					<Link.Social
+						href={siteInfo.rizesqlLink.href}
+						className="text-sm text-text-secondary"
+					>
+						{labels.madeBy} {siteInfo.rizesqlLink.platform}
+					</Link.Social>
+				</HStack>
 			</Sheet.Content>
 		</Sheet.Root>
 	);
