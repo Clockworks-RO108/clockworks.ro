@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useStore } from "@nanostores/react";
+import { ArrowUpRight } from "lucide-react";
 
 import { cn } from "~/lib";
 import { currentLocaleAtom } from "~/lib/current-url";
@@ -37,16 +38,19 @@ const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(
 type SocialLinkProps = { href: string } & React.ComponentPropsWithRef<"a">;
 
 const SocialLink = React.forwardRef<HTMLAnchorElement, SocialLinkProps>(
-	({ href, className, ...props }, ref?) => {
+	({ href, className, children, ...props }, ref?) => {
 		return (
 			<a
 				ref={ref}
 				target="_blank"
 				referrerPolicy="no-referrer"
-				className={className}
+				className={cn("hover: inline-flex items-center justify-center gap-2", className)}
 				href={href}
 				{...props}
-			/>
+			>
+				{children}
+				<ArrowUpRight className="h-4 w-4" />
+			</a>
 		);
 	},
 );

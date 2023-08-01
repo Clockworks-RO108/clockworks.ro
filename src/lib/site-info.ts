@@ -1,15 +1,11 @@
-type SocialLink = {
-	platform: string;
-	href: string;
-	// text: string;
-	// icon: string;
-};
+import type { SocialLink, NavLink } from "./links";
 
 type SiteInfo = {
 	name: string;
 	title: string;
 	description: string;
 	imageSrc: string;
+	trademark: string;
 	socialLinks: Readonly<SocialLink[]>;
 	rizesqlLink: SocialLink;
 };
@@ -19,6 +15,7 @@ export const siteInfo = {
 	title: "",
 	description: "",
 	imageSrc: "",
+	trademark: "2023 Clockworks team ©",
 	socialLinks: [
 		{
 			platform: "facebook",
@@ -45,11 +42,6 @@ export const siteInfo = {
 	},
 } as const satisfies SiteInfo;
 
-export type NavLink = {
-	label: string;
-	href: string;
-};
-
 export const navLinks = [
 	{
 		label: "navLink.about",
@@ -63,4 +55,4 @@ export const navLinks = [
 		label: "navLink.blog",
 		href: "/blog",
 	},
-] as const;
+] as const satisfies Readonly<NavLink[]>;

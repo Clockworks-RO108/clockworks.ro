@@ -1,4 +1,5 @@
 import { atom, computed } from "nanostores";
+
 import { toLocale } from "./i18n";
 
 export const currentURLAtom = atom<string>("");
