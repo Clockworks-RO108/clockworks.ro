@@ -13,6 +13,7 @@ type Props = Partial<{
 	cols: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 	rows: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 	inline: boolean;
+	stretch: "width" | "height" | "all" | "none";
 	className?: string;
 }>;
 
@@ -56,24 +57,31 @@ const gridVariants = cva("", {
 			true: "inline-grid",
 			false: "grid",
 		},
+		stretch: {
+			none: "",
+			width: "w-full",
+			height: "h-full",
+			all: "h-full w-full",
+		},
 	},
 	defaultVariants: {
 		cols: 1,
 		rows: 1,
 		inline: false,
+		stretch: "none",
 	},
 });
 
 export const Grid: GridComponent = React.forwardRef(
 	<C extends React.ElementType = "div">(props: GridProps<C>, ref?: PolymorphicRef<C>) => {
-		const { children, as, className, cols, rows, inline, ...other } = props;
+		const { children, as, className, cols, rows, inline, stretch, ...other } = props;
 
 		const Element = as || "div";
 
 		return (
 			<Element
 				ref={ref}
-				className={cn(gridVariants({ cols, rows, inline }), className)}
+				className={cn(gridVariants({ cols, rows, inline, stretch }), className)}
 				{...other}
 			>
 				{children}

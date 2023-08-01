@@ -29,6 +29,8 @@ type Props = Partial<{
 	direction: Direction;
 	wrap: boolean;
 	inline: boolean;
+	grow: boolean;
+	stretch: "width" | "height" | "all" | "none";
 	alignment: Alignment;
 	className?: string;
 }>;
@@ -56,6 +58,16 @@ const flexVariants = cva("", {
 			true: "flex-wrap",
 			false: "flex-nowrap",
 		},
+		grow: {
+			true: "grow",
+			false: "",
+		},
+		stretch: {
+			none: "",
+			width: "w-full",
+			height: "h-full",
+			all: "h-full w-full",
+		},
 		align: {
 			start: "items-start",
 			end: "items-end",
@@ -78,6 +90,8 @@ const flexVariants = cva("", {
 		direction: "row",
 		wrap: true,
 		inline: false,
+		grow: false,
+		stretch: "none",
 	},
 });
 
@@ -94,6 +108,8 @@ export const Flex: FlexComponent = React.forwardRef(
 			wrap,
 			inline,
 			alignment = "start/start",
+			grow,
+			stretch,
 			...other
 		} = props;
 
@@ -104,7 +120,7 @@ export const Flex: FlexComponent = React.forwardRef(
 			<Element
 				ref={ref}
 				className={cn(
-					flexVariants({ direction, wrap, inline, align, justify }),
+					flexVariants({ direction, wrap, inline, align, justify, grow, stretch }),
 					className,
 				)}
 				{...other}

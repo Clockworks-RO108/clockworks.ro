@@ -1,20 +1,14 @@
 import React from "react";
 
-import { type Direction, Flex } from "./flex";
+import { Flex, type FlexProps } from "./flex";
 import type {
 	PolymorphicComponentPropsWithRef,
 	PolymorphicRef,
 } from "./polymorphic-component";
 
-type Props = Partial<{
-	inline: boolean;
-	className?: string;
-	direction: Direction;
-}>;
-
 type CenterProps<C extends React.ElementType = "div"> = PolymorphicComponentPropsWithRef<
 	C,
-	Props
+	Omit<FlexProps<C>, "alignment">
 >;
 
 type CenterComponent = <C extends React.ElementType = "div">(
@@ -26,20 +20,10 @@ export const Center: CenterComponent = React.forwardRef(
 		props: CenterProps<C>,
 		ref?: PolymorphicRef<C>,
 	) => {
-		const { className, children, direction, ...other } = props;
-
 		return (
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			//@ts-ignore
-			<Flex
-				direction={direction}
-				alignment="center/center"
-				ref={ref}
-				className={className}
-				{...other}
-			>
-				{children}
-			</Flex>
+			<Flex alignment="center/center" ref={ref} {...props} />
 		);
 	},
 );

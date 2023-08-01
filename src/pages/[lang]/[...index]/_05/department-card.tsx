@@ -15,7 +15,7 @@ export const DepartmentCard = ({
 
 	return (
 		<Card.Root variant="default" className="col-span-full lg:col-span-1">
-			<Card.Header as={HStack} alignment="center/between" className="w-full">
+			<Card.Header as={HStack} stretch="width" alignment="center/between">
 				<Button as="span" size="square" variant="alternative">
 					<Icon />
 				</Button>

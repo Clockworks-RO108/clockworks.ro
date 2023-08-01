@@ -18,7 +18,10 @@ import { cn } from "~/lib";
 	className={cn("bg-gradient", "h-auto mx-6 lg:mt-32 lg:h-[90vh] rounded-b-3xl")}
 >
 	<VStack alignment="center/start" className="gap-20 pb-8">
-		<Flex className="w-full flex-col items-center gap-4 lg:flex-row lg:items-start">
+		<Flex
+			stretch="width"
+			className="flex-col items-center gap-4 lg:flex-row lg:items-start"
+		>
 			<Center className="mx-auto rounded-xl border-2 border-border lg:m-1">
 				<Center
 					className="m-1 rounded-lg bg-gradient-to-br from-brand-secondary to-brand p-4 ring-2 ring-brand-secondary/20"

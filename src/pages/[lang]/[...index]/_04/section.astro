@@ -18,7 +18,8 @@ import {
 <SectionLayout className="mt-32 h-auto">
 	<Grid
 		cols={6}
-		className="mx-6 w-full grid-rows-[repeat(4,1fr)] gap-4 lg:aspect-[5/4] lg:h-[85vh] lg:max-h-[85vh] lg:max-w-min"
+		stretch="width"
+		className="mx-6 grid-rows-4 gap-4 lg:aspect-[5/4] lg:h-[85vh] lg:max-w-min"
 	>
 		<Card.Root
 			variant="alternative"
@@ -85,13 +86,8 @@ import {
 				variant="alternative"
 				className="aspect-square bg-gradient-to-b from-dark-blue-800 to-background"
 			>
-				<HStack
-					as={Link.Nav}
-					href="/blog/latest"
-					alignment="start/end"
-					className="h-full w-full"
-				>
-					<HStack alignment="center/between" className="w-full p-4">
+				<HStack stretch="all" as={Link.Nav} href="/blog/latest" alignment="start/end">
+					<HStack stretch="width" alignment="center/between" className="p-4">
 						<VStack>
 							<p class="text-lg text-off-white-200">title</p>
 							<p class="text-sm text-text-secondary">description</p>
@@ -141,8 +137,8 @@ import {
 				className="aspect-square bg-gradient-to-b from-dark-blue-800 to-background"
 			>
 				<!-- TODO make carousel component -->
-				<VStack alignment="start/end" className="h-full w-full">
-					<HStack alignment="center/start" className="w-full gap-x-2 p-4">
+				<VStack stretch="all" alignment="start/end">
+					<HStack stretch="width" alignment="center/start" className="gap-x-2 p-4">
 						<ChevronLeft className="lg:h-5 lg:w-5" />
 						<ChevronRight className="lg:h-5 lg:w-5" />
 

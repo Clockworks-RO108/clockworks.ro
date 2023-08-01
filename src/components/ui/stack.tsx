@@ -1,20 +1,13 @@
 import React from "react";
 
-import { Flex, type Alignment } from "./flex";
+import { Flex, type FlexProps } from "./flex";
 import type {
 	PolymorphicComponentPropsWithRef,
 	PolymorphicRef,
 } from "./polymorphic-component";
 
-type Props = Partial<{
-	wrap: boolean;
-	inline: boolean;
-	alignment: Alignment;
-	className?: string;
-}>;
-
 export type StackProps<C extends React.ElementType = "div"> =
-	PolymorphicComponentPropsWithRef<C, Props>;
+	PolymorphicComponentPropsWithRef<C, Omit<FlexProps<C>, "direction">>;
 
 type StackComponent = <C extends React.ElementType = "div">(
 	props: StackProps<C>,
