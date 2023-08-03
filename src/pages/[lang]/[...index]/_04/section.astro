@@ -1,9 +1,7 @@
 ---
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import {
-	Badge,
-	Button,
 	Card,
 	Center,
 	Grid,
@@ -15,16 +13,16 @@ import {
 } from "~/components/ui";
 ---
 
-<SectionLayout className="mt-32 h-auto">
+<SectionLayout className="relative mt-32 h-auto">
 	<Grid
-		cols={6}
+		cols={3}
 		stretch="width"
-		className="mx-6 grid-rows-4 gap-4 lg:aspect-[5/4] lg:h-[85vh] lg:max-w-min"
+		className="z-10 mx-6 gap-4 lg:aspect-[5/2] lg:h-[55vh] lg:max-w-min lg:grid-rows-2"
 	>
 		<Card.Root
 			variant="alternative"
 			shape="square"
-			className="col-span-full row-span-1 lg:col-span-3"
+			className="col-span-full lg:col-span-1 lg:row-span-1"
 		>
 			<Center className="relative z-[9] my-auto">
 				<Text.H2
@@ -54,7 +52,7 @@ import {
 		<Card.Root
 			variant="alternative"
 			shape="square"
-			className="col-span-full row-span-2 lg:col-span-3"
+			className="col-span-full lg:col-span-1 lg:row-span-2"
 		>
 			un chat sa mimam o colaborare in echipa? Also link catre about
 		</Card.Root>
@@ -62,23 +60,7 @@ import {
 		<Card.Root
 			variant="alternative"
 			shape="square"
-			className="col-span-full row-span-1 lg:col-span-3"
-		>
-			nu stiu
-		</Card.Root>
-
-		<!-- <Card.Root
-			variant="alternative"
-			shape="square"
-			className="col-span-full row-span-2 lg:col-span-2"
-		>
-			ceva pattern
-		</Card.Root> -->
-
-		<Card.Root
-			variant="alternative"
-			shape="square"
-			className="col-span-full row-span-2 lg:col-span-2"
+			className="col-span-full row-span-2 lg:col-span-1"
 		>
 			<!-- TODO get latest blog post -->
 			<Card.Header>latest blog article</Card.Header>
@@ -102,76 +84,9 @@ import {
 		<Card.Root
 			variant="alternative"
 			shape="square"
-			className="col-span-full row-span-2 bg-gradient-to-br from-brand/90 to-brand-secondary/90 lg:col-span-2"
+			className="col-span-full row-span-1 bg-gradient-to-br from-brand/90 to-brand-secondary/90 lg:col-span-1"
 		>
-			<!-- TODO obviously schimba textul -->
-			<Text.H2 className="m-auto">the more you fuck around the more you find out</Text.H2>
-			<Button
-				variant="alternative"
-				as={Link.Nav}
-				href="/team"
-				fullWidth
-				className="group scale-95 rounded-xl transition-transform hover:scale-100"
-			>
-				Descopera echipa <ArrowRight
-					className="transition-transform group-hover:translate-x-2"
-				/>
-			</Button>
+			nu stiu
 		</Card.Root>
-
-		<!-- <Card.Root
-			variant="alternative"
-			shape="square"
-			className="col-span-full row-span-1 lg:col-span-2"
-		>
-			dracu stie
-		</Card.Root> -->
-
-		<Card.Root
-			variant="alternative"
-			shape="square"
-			className="col-span-full row-span-2 lg:col-span-2"
-		>
-			<Card.Content
-				variant="alternative"
-				className="aspect-square bg-gradient-to-b from-dark-blue-800 to-background"
-			>
-				<!-- TODO make carousel component -->
-				<VStack stretch="all" alignment="start/end">
-					<HStack stretch="width" alignment="center/start" className="gap-x-2 p-4">
-						<ChevronLeft className="lg:h-5 lg:w-5" />
-						<ChevronRight className="lg:h-5 lg:w-5" />
-
-						<Badge className="text-sm">
-							<span class="text-brand">•</span>
-							<span>•</span>
-							<span>•</span>
-							<span>•</span>
-						</Badge>
-					</HStack>
-				</VStack>
-			</Card.Content>
-			<Card.Header>plm</Card.Header>
-		</Card.Root>
-
-		<!-- <Card.Root
-			variant="alternative"
-			shape="square"
-			className="col-span-full row-span-2 lg:col-span-2"
-		>
-			citat?
-		</Card.Root> -->
-
-		<!-- <Card.Root
-			variant="alternative"
-			shape="square"
-			className="col-span-full row-span-1 lg:col-span-2"
-		>
-			<Text.H2
-				className="m-auto text-center font-inter font-bold leading-tight tracking-tight text-off-white-200"
-			>
-				#Robotics
-			</Text.H2>
-		</Card.Root> -->
 	</Grid>
 </SectionLayout>
