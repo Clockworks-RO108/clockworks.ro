@@ -4,6 +4,8 @@ data: 18-07-2023
 
 # Decizii tehnice 101 - 03. Traduceri
 
+Table of contents:
+
 - [Decizii tehnice 101 - 03. Traduceri](#decizii-tehnice-101---03-traduceri)
   - [Decizii](#decizii)
     - [`Content collections`](#content-collections)
@@ -11,6 +13,9 @@ data: 18-07-2023
     - ["Sursa unica de adevar"](#sursa-unica-de-adevar)
       - [Exemplu](#exemplu)
   - [Configurarea unei noi pagini](#configurarea-unei-noi-pagini)
+    - [Conventii pentru fisierele cu traduceri](#conventii-pentru-fisierele-cu-traduceri)
+    - [Folosirea traducerilor](#folosirea-traducerilor)
+      - [Exemplu](#exemplu-1)
 
 Unul dintre requirement-urile pentru acest site a fost ca el sa fie disponibil in limba engleza, dar si in romana. Pentru a nu fi nevoie ca orice pagina predefinita (adica nu cele din blog) sa fie scrisa de 2 ori, dar cu un continut diferit, am decis sa managariez continutul independent de prezentarea acestuia.
 
@@ -32,24 +37,24 @@ Astro se foloseste de conceptul de file based routing, adica fiecare fisier/fold
 
 ### "Sursa unica de adevar"
 
-Traducerile respecta o schema predefinita, care trebuie sa corespunda pentru ambele limbi, engleza si romana. Am ales ca schema originala sa fie cea in engleza, iar daca orice alta schema nu corespunde in exactitate, atunci ar aparea o eroare, care specifica textul lipsa din schema.
+Traducerile respecta o schema predefinita, care trebuie sa corespunda pentru ambele limbi, engleza si romana. Am ales ca schema originala sa fie cea in romana, iar daca orice alta schema nu corespunde in exactitate, atunci ar aparea o eroare, care specifica textul lipsa din schema.
 
 #### Exemplu
-
-```json
-// en.json
-
-{
-  "page.title": "page title",
-  "page.subtitle": "page subtitle"
-}
-```
 
 ```json
 // ro.json
 
 {
-  "page.title": "titlul paginii"
+  "page.title": "titlul paginii",
+  "page.subtitle": "subtitlul paginii"
+}
+```
+
+```json
+// en.json
+
+{
+  "page.title": "page title"
   // subtitlul lipseste
 }
 ```
@@ -57,8 +62,8 @@ Traducerile respecta o schema predefinita, care trebuie sa corespunda pentru amb
 Cand cele doua scheme nu corespund, se va afisa acest mesaj in consola si in site:
 
 ```
- error   Translations are different! `ro.json` is missing content:
-    - page.title
+ error   Translations are different! `en.json` is missing content:
+    - page.subtitle
 
     Please check the files in `src/content/i18n` for differences
 ```
@@ -89,3 +94,44 @@ export const getStaticPaths = generateStaticPaths; //!!!
 ```
  error   `getStaticPaths()` function is required for dynamic routes. Make sure that you `export` a `getStaticPaths` function from your dynamic route.
 ```
+
+### Conventii pentru fisierele cu traduceri
+
+Formatul fisierelor care contin traduceri este de tip `json`, ele fiind pastrate sub forma de perechi `key-value`.
+Cheile ar trebui sa respecte o conventie de nume specifica, pentru a pastra fisierul organizat si pentru a corela mai usor continutul tradus cu sectiunea in care apare.
+
+> Formatul este `{namespace}.{sub-namespace(optional)}.{key}`.
+> <br>
+> ex: `index.landing.subtitle` ->
+> <br> textul apare in pagina principala(index), in sectiunea de landing, continutul este subtitlul sectiunii
+
+Legenda:
+
+- `namespace`: componentul/sectiunea/locul in care acel text apare in site (ex: de mai sus `index` adica acel text apare pe pagina principala(index)).
+- `sub-namespace`: (<u>optional</u>) subdiviziunea in care continutul apare (ex: de mai sus `landing` confera un scope mai explicit traducerii si poti sa iti dai seama mai usor unde este localizata in pagina).
+- `key`: desemneaza cheia dupa care este identificat continutul(ex: de mai sus `subtitle`, adica (obvious) continutul este subtitlul paginii)
+
+### Folosirea traducerilor
+
+> ### Atentie!!!
+>
+> traducerile pot fi folosite doar in fisierele de tip "`*.astro`"; folosirea in orice alt loc va arunca o eroare!!
+
+Pentru a folosi traducerile, este necesara invocarea functiei `useTranslations`, importata din modulul "`~/lib`". Apelul functiei `useTranslations` returneaza la randul sau o functie prin care se poate accesa continutul unei traduceri pe baza unei chei(O conventie este asignarea functiei in variabila "`t`" de la `translations`).
+
+#### Exemplu
+
+```astro
+---
+import { useTranslations } from "~/lib";
+
+const t = useTranslations();
+---
+
+<!-- ⬇️ prin invocarea de acest tip se acceseaza titlul unei pagini -->
+<h1>{t("page.title")}</h1>
+```
+
+> ### Atentie!!!
+>
+> Apelul functiei permite auto-completarea cheilor de catre IDE(editor) si va semnala o eroare daca accesezi o cheie inexistenta.
