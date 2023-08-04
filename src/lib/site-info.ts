@@ -1,4 +1,7 @@
+import type { Locale } from "./i18n";
 import type { SocialLink, NavLink } from "./links";
+
+export const defaultLocale: Locale = "ro";
 
 type SiteInfo = {
 	name: string;

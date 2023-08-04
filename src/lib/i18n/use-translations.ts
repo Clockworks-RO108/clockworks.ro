@@ -1,14 +1,17 @@
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
+
+import { currentLocaleAtom } from "../current-url";
+
+import { checkTranslations } from "./check-translations";
 import { locales } from "./locales";
 import type { Locale } from "./locales";
-import { checkTranslations } from "./check-translations";
 
 import en from "~/content/i18n/en.json";
 import ro from "~/content/i18n/ro.json";
-import { currentLocaleAtom } from "../current-url";
 
-checkTranslations(en, ro, "`ro.json`");
+
+checkTranslations(ro, en, "`en.json`");
 
 type Keys = keyof CollectionEntry<"i18n">["data"];
 
@@ -18,7 +21,7 @@ try {
 	translations = Object.fromEntries(
 		collection.map((t) => [t.id, t.data] as const),
 	) as Record<Locale, CollectionEntry<"i18n">["data"]>;
-} catch {}
+} catch { }
 
 // I keep it just in case
 // export const useTranslations = (lang: string | undefined) => {

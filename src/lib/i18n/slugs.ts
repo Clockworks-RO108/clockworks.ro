@@ -1,3 +1,5 @@
+import { defaultLocale } from "../site-info";
+
 import { locales } from "./locales";
 import type { Locale } from "./locales";
 
@@ -11,7 +13,7 @@ export const isLocale = (value: string | undefined): value is Locale => {
 export const toLocale = (value: string | undefined) => {
 	if (isLocale(value)) return value;
 
-	return "en";
+	return defaultLocale;
 };
 
 export const slugToLocale = (slug: string) => {
@@ -19,14 +21,14 @@ export const slugToLocale = (slug: string) => {
 
 	if (isLocale(baseSegment)) return baseSegment;
 
-	return "en";
+	return defaultLocale;
 };
 
 export const localizedSlug = (slug: string, locale: Locale | undefined) => {
 	const slugLocale = slugToLocale(slug);
 	if (slugLocale === locale) return slug;
 
-	locale = locale ?? "en";
+	locale = locale ?? defaultLocale;
 	if (slugLocale === slug) return locale;
 
 	if (slugLocale)

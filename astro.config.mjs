@@ -6,7 +6,7 @@ import { defineConfig } from "astro/config";
 // https://astro.build/config
 export default defineConfig({
 	redirects: {
-		"/": "/en",
+		"/": "/ro",
 	},
 	vite: {
 		resolve: {
@@ -25,7 +25,7 @@ export default defineConfig({
 		react(),
 		sitemap({
 			i18n: {
-				defaultLocale: "en",
+				defaultLocale: "ro",
 				locales: {
 					en: "en",
 					ro: "ro",
