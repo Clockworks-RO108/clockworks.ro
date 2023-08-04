@@ -4,11 +4,11 @@ import { FooterCol } from "./footer-col";
 import Logo from "./logo.astro";
 
 import { Center, Flex, HStack, Link, VStack } from "~/components/ui";
-import { locales, navLinks, siteInfo, useTranslations } from "~/lib";
+import { locales, navLinks, siteInfo, getTranslations } from "~/lib";
 import { currentPathnameAtom } from "~/lib/current-url";
 
 const pathname = currentPathnameAtom.get();
-const t = useTranslations();
+const t = getTranslations();
 
 const languagesLinks = locales.map((locale) => ({
 	href: `/${locale}${pathname}`,

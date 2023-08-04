@@ -3,11 +3,11 @@ import BackgroundImage from "./background-image.astro";
 import LatestBlogPost from "./latest-blogpost.astro";
 
 import { Text, Section as SectionLayout, Center } from "~/components/ui";
-import { siteInfo, useTranslations } from "~/lib";
+import { siteInfo, getTranslations } from "~/lib";
 
 const currentYear = new Date(Date.now()).getFullYear();
 
-const t = useTranslations();
+const t = getTranslations();
 ---
 
 <SectionLayout className="relative">

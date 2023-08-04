@@ -1,7 +1,7 @@
 ---
 import Seo from "./seo.astro";
 
-import { siteInfo, useTranslations, toLocale } from "~/lib";
+import { siteInfo, getTranslations, toLocale } from "~/lib";
 import type { Image } from "~/lib/seo";
 
 export type Props = {
@@ -13,7 +13,7 @@ export type Props = {
 };
 
 const locale = toLocale(Astro.params.lang);
-const t = useTranslations();
+const t = getTranslations();
 
 const {
 	description = t("siteInfo.description"),

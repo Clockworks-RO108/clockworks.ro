@@ -10,7 +10,6 @@ import type { Locale } from "./locales";
 import en from "~/content/i18n/en.json";
 import ro from "~/content/i18n/ro.json";
 
-
 checkTranslations(ro, en, "`en.json`");
 
 type Keys = keyof CollectionEntry<"i18n">["data"];
@@ -31,7 +30,7 @@ try {
 // 	return (key: keyof CollectionEntry<"i18n">["data"]) => translations[locale][key];
 // };
 
-export const useTranslations = () => {
+export const getTranslations = () => {
 	const locale = currentLocaleAtom.get();
 
 	return (key: Keys) => translations[locale][key];

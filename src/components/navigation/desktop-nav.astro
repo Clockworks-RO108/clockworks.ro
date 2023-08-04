@@ -3,13 +3,13 @@ import { Globe } from "lucide-react";
 
 import Logo from "~/components/logo.astro";
 import { Flex, Button, Badge, Link, HStack } from "~/components/ui";
-import { navLinks, useTranslations, cn } from "~/lib";
+import { navLinks, getTranslations, cn } from "~/lib";
 import { currentLocaleAtom, currentPathnameAtom } from "~/lib/current-url";
 
 const locale = currentLocaleAtom.get() === "en" ? "ro" : "en";
 const slug = currentPathnameAtom.get();
 
-const t = useTranslations();
+const t = getTranslations();
 ---
 
 <HStack alignment="center/between" className="hidden lg:flex">

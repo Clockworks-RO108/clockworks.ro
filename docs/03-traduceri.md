@@ -117,15 +117,15 @@ Legenda:
 >
 > traducerile pot fi folosite doar in fisierele de tip "`*.astro`"; folosirea in orice alt loc va arunca o eroare!!
 
-Pentru a folosi traducerile, este necesara invocarea functiei `useTranslations`, importata din modulul "`~/lib`". Apelul functiei `useTranslations` returneaza la randul sau o functie prin care se poate accesa continutul unei traduceri pe baza unei chei(O conventie este asignarea functiei in variabila "`t`" de la `translations`).
+Pentru a folosi traducerile, este necesara invocarea functiei `getTranslations`, importata din modulul "`~/lib`". Apelul functiei `getTranslations` returneaza la randul sau o functie prin care se poate accesa continutul unei traduceri pe baza unei chei(O conventie este asignarea functiei in variabila "`t`" de la `translations`).
 
 #### Exemplu
 
 ```astro
 ---
-import { useTranslations } from "~/lib";
+import { getTranslations } from "~/lib";
 
-const t = useTranslations();
+const t = getTranslations();
 ---
 
 <!-- ⬇️ prin invocarea de acest tip se acceseaza titlul unei pagini -->

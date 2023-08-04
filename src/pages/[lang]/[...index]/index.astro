@@ -7,10 +7,10 @@ import Section05 from "./_05/section.astro";
 import Section06 from "./_06/section.astro";
 
 import Layout from "~/components/ui/layout.astro";
-import { generateStaticPaths, useTranslations } from "~/lib";
+import { generateStaticPaths, getTranslations } from "~/lib";
 
 export const getStaticPaths = generateStaticPaths;
-const t = useTranslations();
+const t = getTranslations();
 ---
 
 <Layout title={t("siteInfo.title")}>

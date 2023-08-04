@@ -4,9 +4,9 @@ import DesktopNav from "./navigation/desktop-nav.astro";
 import { MobileNav } from "./navigation/mobile-nav";
 
 import { Flex } from "~/components/ui";
-import { useTranslations, navLinks } from "~/lib";
+import { getTranslations, navLinks } from "~/lib";
 
-const t = useTranslations();
+const t = getTranslations();
 
 const navLinkslabels = navLinks.map((link) => t(link.label));
 const translateLabel = t("mobileNav.languages");
