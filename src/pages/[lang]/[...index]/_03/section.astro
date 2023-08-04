@@ -1,20 +1,24 @@
 ---
-import { ArrowRight, Bot, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Bot } from "lucide-react";
+
+import { Carousel } from "./carousel";
 
 import {
-	Badge,
 	Button,
 	Card,
 	Center,
 	Flex,
 	Grid,
-	HStack,
 	Link,
 	Section as SectionLayout,
 	Text,
 	VStack,
 } from "~/components/ui";
 import { cn } from "~/lib";
+
+const images = Object.values(
+	await Astro.glob<{ default: ImageMetadata }>("~/assets/gallery/*"),
+).map((x) => x.default);
 ---
 
 <!-- TODO add content --><!-- TODO extract repetitive text styling -->
@@ -22,6 +26,7 @@ import { cn } from "~/lib";
 	className={cn("bg-gradient", "h-auto mx-6 lg:mt-32 lg:h-[90vh] rounded-b-3xl")}
 >
 	<VStack alignment="center/start" className="gap-20 pb-8">
+		<!-- {images.map((img) => <Image src={img} alt="" />)} -->
 		<Flex
 			stretch="width"
 			className="flex-col items-center gap-4 lg:flex-row lg:items-start"
@@ -51,32 +56,7 @@ import { cn } from "~/lib";
 			cols={12}
 			className="mx-4 mb-6 gap-6 lg:mx-0 lg:mb-0 lg:aspect-[2/1] lg:h-[50vh] lg:max-w-min"
 		>
-			<Card.Root
-				variant="alternative"
-				shape="square"
-				className="col-span-full lg:col-span-7"
-			>
-				<Card.Content
-					variant="alternative"
-					className="aspect-square bg-gradient-to-b from-dark-blue-800 to-background"
-				>
-					<!-- TODO make carousel component -->
-					<VStack stretch="all" alignment="start/end">
-						<HStack stretch="width" alignment="center/start" className="gap-x-2 p-4">
-							<ChevronLeft className="lg:h-5 lg:w-5" />
-							<ChevronRight className="lg:h-5 lg:w-5" />
-
-							<Badge className="text-sm">
-								<span class="text-brand">•</span>
-								<span>•</span>
-								<span>•</span>
-								<span>•</span>
-							</Badge>
-						</HStack>
-					</VStack>
-				</Card.Content>
-				<Card.Header>plm</Card.Header>
-			</Card.Root>
+			<Carousel client:visible images={images} />
 
 			<Card.Root shape="square" className="col-span-12 lg:col-span-5">
 				<!-- TODO obviously schimba textul -->
