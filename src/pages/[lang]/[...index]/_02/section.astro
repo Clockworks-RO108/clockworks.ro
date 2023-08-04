@@ -1,5 +1,6 @@
 ---
 import Callout from "./callout.astro";
+import Codeblock from "./codeblock.astro";
 
 import BgGradient from "~/components/bg-gradient.astro";
 import {
@@ -44,10 +45,5 @@ import {
 		</HStack>
 	</Center>
 
-	<!-- TODO add code-block -->
-	<div
-		class="absolute right-0 top-[10vh] hidden h-[90vh] w-[35vw] rounded-lg border border-border bg-dark-blue-900/90 p-8 ring-2 ring-off-white-900/20 lg:block"
-	>
-		code
-	</div>
+	<Codeblock />
 </SectionLayout>
