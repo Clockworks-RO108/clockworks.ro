@@ -3,7 +3,7 @@ import BgGradient from "./bg-gradient.astro";
 import { FooterCol } from "./footer-col";
 import Logo from "./logo.astro";
 
-import { Center, Flex, HStack, Link, VStack } from "~/components/ui";
+import { Center, Flex, HStack, Link, Text, VStack } from "~/components/ui";
 import { locales, navLinks, siteInfo, getTranslations } from "~/lib";
 import { currentPathnameAtom } from "~/lib/current-url";
 
@@ -44,17 +44,16 @@ const navigationLinks = navLinks.map((link) => ({
 			<HStack alignment="center/between" stretch="width">
 				<Flex className="flex-col items-start gap-4 lg:flex-row lg:items-center">
 					<Logo variant="small" />
-					<p class="text-xs text-text-secondary">{siteInfo.trademark}</p>
+					<Text.Tiny>{siteInfo.trademark}</Text.Tiny>
 				</Flex>
 
-				<Link.Social
-					href={siteInfo.rizesqlLink.href}
-					className="self-end text-sm text-text-secondary lg:self-center"
-				>
-					{t("footer.madeBy")}
-					{" "}
-					{siteInfo.rizesqlLink.platform}
-				</Link.Social>
+				<Text.Tiny className="self-end lg:self-center">
+					<Link.Social href={siteInfo.rizesqlLink.href}>
+						{t("footer.madeBy")}
+						{" "}
+						{siteInfo.rizesqlLink.platform}
+					</Link.Social>
+				</Text.Tiny>
 			</HStack>
 		</VStack>
 	</Center>

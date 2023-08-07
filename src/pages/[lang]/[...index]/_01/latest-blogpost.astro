@@ -1,7 +1,7 @@
 ---
 import { ArrowRight } from "lucide-react";
 
-import { Button, Link } from "~/components/ui";
+import { Button, Link, Text } from "~/components/ui";
 ---
 
 <!-- TODO use latest blog post -->
@@ -11,13 +11,13 @@ import { Button, Link } from "~/components/ui";
 	variant="darker"
 	size="wide"
 	rounded
-	className="group gap-x-4 transition-all duration-300 hover:scale-105"
+	className="group gap-x-3 transition-all duration-300 hover:scale-105"
 >
 	<!-- TODO translate -->
-	<p class="text-center font-medium text-dark-blue-100">
-		Blog
-		<span class="text-dark-blue-200">•</span>
-	</p>
-	<span class="font-normal">Hello world</span>
+	<Text.Subtitle align="center">Blog</Text.Subtitle>
+
+	<span class="text-base text-dark-blue-200">•</span>
+
+	<Text.P>Hello world</Text.P>
 	<ArrowRight className="transition-all group-hover:translate-x-3" />
 </Button>

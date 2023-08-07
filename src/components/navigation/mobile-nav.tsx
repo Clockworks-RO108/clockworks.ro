@@ -1,7 +1,16 @@
 import { useStore } from "@nanostores/react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
-import { Flex, Button, Sheet, Dropdown, Link, VStack, HStack } from "~/components/ui";
+import {
+	Flex,
+	Button,
+	Sheet,
+	Dropdown,
+	Link,
+	VStack,
+	HStack,
+	Text,
+} from "~/components/ui";
 import { locales, navLinks, siteInfo } from "~/lib";
 import { currentPathnameAtom } from "~/lib/current-url";
 
@@ -69,9 +78,8 @@ export const MobileNav = ({
 					</VStack>
 
 					<VStack className="gap-y-4">
-						<h3 className="font-jetbrains-mono text-xs uppercase tracking-wide text-text-secondary">
-							Social
-						</h3>
+						<Text.Subtitle>Social</Text.Subtitle>
+
 						{siteInfo.socialLinks.map((link, i) => (
 							<Link.Social
 								href={link.href}
@@ -85,13 +93,13 @@ export const MobileNav = ({
 				</VStack>
 
 				<HStack alignment="baseline/between">
-					<p className="text-xs text-text-secondary">{siteInfo.trademark}</p>
-					<Link.Social
-						href={siteInfo.rizesqlLink.href}
-						className="text-sm text-text-secondary"
-					>
-						{labels.madeBy} {siteInfo.rizesqlLink.platform}
-					</Link.Social>
+					<Text.Tiny>{siteInfo.trademark}</Text.Tiny>
+
+					<Text.Tiny>
+						<Link.Social href={siteInfo.rizesqlLink.href}>
+							{labels.madeBy} {siteInfo.rizesqlLink.platform}
+						</Link.Social>
+					</Text.Tiny>
 				</HStack>
 			</Sheet.Content>
 		</Sheet.Root>

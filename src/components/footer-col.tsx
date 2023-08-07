@@ -1,4 +1,4 @@
-import { VStack, Link } from "~/components/ui";
+import { VStack, Link, Text } from "~/components/ui";
 import { isNavLink, type NavLink, type SocialLink } from "~/lib";
 
 type Props = { title: string } & (
@@ -7,27 +7,25 @@ type Props = { title: string } & (
 );
 
 export const FooterCol = ({ title, links, withI18n }: Props) => {
-	const className =
+	const linkStyles =
 		"font-dm-mono uppercase tracking-wider before:mr-2 before:text-brand before:content-['>']";
 
 	return (
 		<VStack className="gap-2">
-			<h3 className="font-jetbrains-mono text-xs uppercase tracking-wide text-text-secondary">
-				{title}
-			</h3>
+			<Text.Subtitle className="text-xs">{title}</Text.Subtitle>
 			<VStack as="ul" className="gap-2">
 				{links.map((link, i) => (
 					<li key={`footer-col.${title}.${i}`}>
 						{isNavLink(link) ? (
 							<Link.Nav
 								href={link.href}
-								className={className}
+								className={linkStyles}
 								withI18n={withI18n ?? true}
 							>
 								{link.label}
 							</Link.Nav>
 						) : (
-							<Link.Social href={link.href} className={className}>
+							<Link.Social href={link.href} className={linkStyles}>
 								{link.platform}
 							</Link.Social>
 						)}

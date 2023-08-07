@@ -17,8 +17,9 @@ const t = getTranslations();
 		<LatestBlogPost />
 
 		<Text.H1
-			gradient="to-top-left"
-			className="from-off-white-300 to-off-white-100 text-center font-inter text-5xl font-bold leading-tight tracking-tight lg:text-7xl"
+			gradient="to-bottom-left"
+			align="center"
+			className="from-off-white-300 to-off-white-100"
 		>
 			<span>{t("index.landing.we-are")}</span>
 
@@ -28,18 +29,18 @@ const t = getTranslations();
 				<span>{siteInfo.name}</span>
 
 				<span class="hidden font-jetbrains-mono lg:inline-flex">
-					<p>[</p>
+					<span>[</span>
 					<Text.P
 						gradient="to-top"
 						className="from-brand to-brand-secondary font-jetbrains-mono"
 					>
 						{currentYear}
 					</Text.P>
-					<p>]</p>
+					<span>]</span>
 				</span>
 			</Center>
 		</Text.H1>
 
-		<p class="text-lg text-text-secondary">{t("index.landing.subtitle")}</p>
+		<Text.P className="text-lg text-text-secondary">{t("index.landing.subtitle")}</Text.P>
 	</Center>
 </SectionLayout>

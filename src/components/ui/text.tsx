@@ -2,10 +2,17 @@ import { type VariantProps, cva } from "class-variance-authority";
 
 import { cn } from "~/lib";
 
-// TODO change text component based on used text styles
-
-const gradientVariants = cva("", {
+const textVariants = cva("[text-wrap:balance]", {
 	variants: {
+		align: {
+			auto: "",
+			left: "text-left",
+			center: "text-center",
+			right: "text-right",
+			justify: "text-justify",
+			start: "text-start",
+			end: "text-end",
+		},
 		gradient: {
 			none: "",
 			"to-top": "bg-gradient-to-t bg-clip-text text-transparent",
@@ -19,19 +26,20 @@ const gradientVariants = cva("", {
 		},
 	},
 	defaultVariants: {
+		align: "auto",
 		gradient: "none",
 	},
 });
 
-type TextProps<C extends React.ElementType> = VariantProps<typeof gradientVariants> &
+type TextProps<C extends React.ElementType> = VariantProps<typeof textVariants> &
 	React.ComponentPropsWithoutRef<C>;
 
-const H1 = ({ className, gradient, ...props }: TextProps<"h1">) => {
+const H1 = ({ className, gradient, align, ...props }: TextProps<"h1">) => {
 	return (
 		<h1
 			className={cn(
-				"scroll-m-20 text-4xl font-extrabold tracking-tight [text-wrap:balance] lg:text-5xl",
-				gradientVariants({ gradient }),
+				"scroll-m-20 font-inter text-5xl font-bold leading-tight tracking-tight lg:text-7xl",
+				textVariants({ gradient, align }),
 				className,
 			)}
 			{...props}
@@ -39,12 +47,12 @@ const H1 = ({ className, gradient, ...props }: TextProps<"h1">) => {
 	);
 };
 
-const H2 = ({ className, gradient, ...props }: TextProps<"h2">) => {
+const H2 = ({ className, gradient, align, ...props }: TextProps<"h2">) => {
 	return (
 		<h2
 			className={cn(
-				"scroll-m-20 text-3xl font-semibold tracking-tight transition-colors [text-wrap:balance]",
-				gradientVariants({ gradient }),
+				"scroll-m-20 font-inter text-4xl font-bold leading-tight tracking-tight lg:text-5xl",
+				textVariants({ gradient, align }),
 				className,
 			)}
 			{...props}
@@ -52,10 +60,53 @@ const H2 = ({ className, gradient, ...props }: TextProps<"h2">) => {
 	);
 };
 
-const P = ({ className, gradient, ...props }: TextProps<"p">) => {
+const H3 = ({ className, gradient, align, ...props }: TextProps<"h2">) => {
+	return (
+		<h3
+			className={cn("text-lg lg:text-2xl", textVariants({ gradient, align }), className)}
+			{...props}
+		/>
+	);
+};
+
+const Subtitle = ({ className, gradient, align, ...props }: TextProps<"h4">) => {
+	return (
+		<h4
+			className={cn(
+				"font-jetbrains-mono text-sm uppercase tracking-wide text-text-secondary",
+				textVariants({ gradient, align }),
+				className,
+			)}
+			{...props}
+		/>
+	);
+};
+
+const P = ({ className, gradient, align, ...props }: TextProps<"p">) => {
+	return <p className={cn(textVariants({ gradient, align }), className)} {...props} />;
+};
+
+const Small = ({ className, gradient, align, ...props }: TextProps<"p">) => {
 	return (
 		<p
-			className={cn("[text-wrap:balance]", gradientVariants({ gradient }), className)}
+			className={cn(
+				"text-sm text-text-secondary",
+				textVariants({ gradient, align }),
+				className,
+			)}
+			{...props}
+		/>
+	);
+};
+
+const Tiny = ({ className, gradient, align, ...props }: TextProps<"p">) => {
+	return (
+		<p
+			className={cn(
+				"text-xs text-text-secondary",
+				textVariants({ gradient, align }),
+				className,
+			)}
 			{...props}
 		/>
 	);
@@ -64,5 +115,9 @@ const P = ({ className, gradient, ...props }: TextProps<"p">) => {
 export const Text = {
 	H1,
 	H2,
+	H3,
 	P,
+	Subtitle,
+	Small,
+	Tiny,
 };
