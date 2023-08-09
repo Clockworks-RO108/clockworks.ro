@@ -7,7 +7,7 @@ import { siteInfo, getTranslations } from "~/lib";
 
 const currentYear = new Date(Date.now()).getFullYear();
 
-const t = getTranslations();
+const t = getTranslations(Astro.params.lang);
 ---
 
 <SectionLayout className="relative">

@@ -12,6 +12,10 @@ import {
 	Section as SectionLayout,
 	Text,
 } from "~/components/ui";
+import { getTranslations } from "~/lib";
+
+const lang = Astro.params.lang;
+const t = getTranslations(lang);
 ---
 
 <!-- TODO add content -->
@@ -26,24 +30,22 @@ import {
 					align="center"
 					className="from-off-white-300 to-off-white-100 lg:text-start"
 				>
-					Construim roboti si o facem bine
+					{t("index.about-us.title")}
 				</Text.H2>
 
-				<Text.Small className="lg:text-base">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe esse officia
-					exercitationem, enim cumque adipisci porro ut aspernatur eum, est iusto tempora
-					inventore at, quam minus possimus nisi voluptates! Cumque?
+				<Text.Small>
+					{t("index.about-us.description")}
 				</Text.Small>
 
-				<CTAButton href="/work">Descopera proiectele noastre</CTAButton>
+				<CTAButton href={`${lang}/work`}>{t("index.about-us.cta-button")}</CTAButton>
 			</Flex>
 
-			<Grid cols={2} rows={2} stretch="width" className="gap-6 lg:gap-8">
+			<!-- <Grid cols={2} rows={2} stretch="width" className="gap-6 lg:gap-8">
 				<Callout title="Title 1" subtitle="some small text" />
 				<Callout title="Title 2" subtitle="some small text" />
 				<Callout title="Title 3" subtitle="some small text" />
 				<Callout title="Title 4" subtitle="some small text" />
-			</Grid>
+			</Grid> -->
 		</HStack>
 	</Center>
 

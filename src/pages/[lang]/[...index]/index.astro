@@ -10,7 +10,7 @@ import Layout from "~/components/ui/layout.astro";
 import { generateStaticPaths, getTranslations } from "~/lib";
 
 export const getStaticPaths = generateStaticPaths;
-const t = getTranslations();
+const t = getTranslations(Astro.params.lang);
 ---
 
 <Layout title={t("siteInfo.title")}>

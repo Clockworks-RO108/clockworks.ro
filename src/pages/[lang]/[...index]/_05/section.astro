@@ -12,6 +12,10 @@ import {
 	Text,
 	VStack,
 } from "~/components/ui";
+import { getTranslations } from "~/lib";
+
+const lang = Astro.params.lang;
+const t = getTranslations(lang);
 ---
 
 <SectionLayout className="relative mt-32 h-auto">
@@ -20,32 +24,31 @@ import {
 	<Center direction="col" className="z-10 gap-20">
 		<VStack alignment="center/center" className="max-w-prose gap-10">
 			<Center className="gap-6">
-				<Text.H2 align="center">Departamente</Text.H2>
+				<Text.H2 align="center">{t("index.departments.title")}</Text.H2>
 				<Text.P align="center" className="text-text-secondary">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum voluptate
-					molestiae aliquid autem
+					{t("index.departments.subtitle")}
 				</Text.P>
 			</Center>
 
-			<CTAButton href="/members">Descopera toti membrii</CTAButton>
+			<CTAButton href={`${lang}/departments`}>Descopera toti membrii</CTAButton>
 		</VStack>
 
 		<Center className="w-screen">
 			<Grid stretch="width" cols={3} className="mx-6 gap-6 lg:max-w-[70vw]">
 				<DepartmentCard
 					icon={Laptop}
-					title="Foo fighters"
-					description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe esse officia exercitationem, enim cumque adipisci porro ut aspernatur eum, est iusto tempora inventore at, quam minus possimus nisi voluptates! Cumque?"
+					title={t("index.departments.mechanics.title")}
+					description={t("index.departments.mechanics.description")}
 				/>
 				<DepartmentCard
 					icon={Laptop}
-					title="Foo fighters"
-					description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe esse officia exercitationem, enim cumque adipisci porro ut aspernatur eum, est iusto tempora inventore at, quam minus possimus nisi voluptates! Cumque?"
+					title={t("index.departments.programming.title")}
+					description={t("index.departments.programming.description")}
 				/>
 				<DepartmentCard
 					icon={Laptop}
-					title="Foo fighters"
-					description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe esse officia exercitationem, enim cumque adipisci porro ut aspernatur eum, est iusto tempora inventore at, quam minus possimus nisi voluptates! Cumque?"
+					title={t("index.departments.marketing.title")}
+					description={t("index.departments.marketing.description")}
 				/>
 			</Grid>
 		</Center>
