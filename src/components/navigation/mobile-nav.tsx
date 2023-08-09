@@ -1,4 +1,3 @@
-import { useStore } from "@nanostores/react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 import {
@@ -11,16 +10,17 @@ import {
 	HStack,
 	Text,
 } from "~/components/ui";
-import { locales, navLinks, siteInfo } from "~/lib";
-import { currentPathnameAtom } from "~/lib/current-url";
+import { type Locale, locales, navLinks, siteInfo } from "~/lib";
 
 export const MobileNav = ({
 	labels,
+	pathname,
+	locale,
 }: {
 	labels: { translate: string; navLinks: string[]; madeBy: string };
+	pathname: string;
+	locale: Locale;
 }) => {
-	const pathname = useStore(currentPathnameAtom);
-
 	return (
 		<Sheet.Root>
 			<Sheet.Trigger asChild>
@@ -51,15 +51,13 @@ export const MobileNav = ({
 						</Dropdown.Trigger>
 
 						<Dropdown.Content className="mt-2 w-[calc(100vw-3rem)]">
-							{locales.map((locale) => (
+							{locales.map((l) => (
 								<Dropdown.Item
-									key={`mobile-nav.locales.${locale}`}
+									key={`mobile-nav.locales.${l}`}
 									className="py-2 uppercase"
 									asChild
 								>
-									<Link.Nav withI18n={false} href={`/${locale}${pathname}`}>
-										{locale}
-									</Link.Nav>
+									<Link.Nav href={`/${l}${pathname.slice(3)}`}>{l}</Link.Nav>
 								</Dropdown.Item>
 							))}
 						</Dropdown.Content>
@@ -68,7 +66,7 @@ export const MobileNav = ({
 					<VStack as="nav" className="gap-y-3">
 						{navLinks.map((link, i) => (
 							<Link.Nav
-								href={link.href}
+								href={`${locale}${link.href}`}
 								className="font-dm-mono text-3xl font-semibold uppercase tracking-wider"
 								key={`mobile-nav.nav-links.${i}`}
 							>

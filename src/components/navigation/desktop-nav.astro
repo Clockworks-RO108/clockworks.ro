@@ -4,12 +4,12 @@ import { Globe } from "lucide-react";
 import Logo from "~/components/logo.astro";
 import { Flex, Button, Badge, Link, HStack } from "~/components/ui";
 import { navLinks, getTranslations, cn } from "~/lib";
-import { currentLocaleAtom, currentPathnameAtom } from "~/lib/current-url";
 
-const locale = currentLocaleAtom.get() === "en" ? "ro" : "en";
-const slug = currentPathnameAtom.get();
+const lang = Astro.params.lang;
+const locale = lang === "en" ? "ro" : "en";
+const slug = Astro.url.pathname.slice(3);
 
-const t = getTranslations();
+const t = getTranslations(Astro.params.lang);
 ---
 
 <HStack alignment="center/between" className="hidden lg:flex">
@@ -30,7 +30,7 @@ const t = getTranslations();
 						<div class="pl-2">
 							<Button
 								as={Link.Nav}
-								href={href}
+								href={`${lang}${href}`}
 								disabled={disabled}
 								variant="ghost"
 								size="small"

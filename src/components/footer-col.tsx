@@ -1,12 +1,12 @@
 import { VStack, Link, Text } from "~/components/ui";
 import { isNavLink, type NavLink, type SocialLink } from "~/lib";
 
-type Props = { title: string } & (
-	| { links: Readonly<NavLink[]>; withI18n?: boolean }
-	| { links: Readonly<SocialLink[]>; withI18n?: undefined }
-);
+type Props = {
+	title: string;
+	links: readonly NavLink[] | readonly SocialLink[];
+};
 
-export const FooterCol = ({ title, links, withI18n }: Props) => {
+export const FooterCol = ({ title, links }: Props) => {
 	const linkStyles =
 		"font-dm-mono uppercase tracking-wider before:mr-2 before:text-brand before:content-['>']";
 
@@ -17,11 +17,7 @@ export const FooterCol = ({ title, links, withI18n }: Props) => {
 				{links.map((link, i) => (
 					<li key={`footer-col.${title}.${i}`}>
 						{isNavLink(link) ? (
-							<Link.Nav
-								href={link.href}
-								className={linkStyles}
-								withI18n={withI18n ?? true}
-							>
+							<Link.Nav href={link.href} className={linkStyles}>
 								{link.label}
 							</Link.Nav>
 						) : (

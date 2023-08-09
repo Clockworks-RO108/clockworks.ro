@@ -4,9 +4,12 @@ import DesktopNav from "./navigation/desktop-nav.astro";
 import { MobileNav } from "./navigation/mobile-nav";
 
 import { Flex } from "~/components/ui";
-import { getTranslations, navLinks } from "~/lib";
+import { getTranslations, navLinks, toLocale } from "~/lib";
 
-const t = getTranslations();
+const locale = toLocale(Astro.params.lang);
+const pathname = Astro.url.pathname;
+
+const t = getTranslations(locale);
 
 const navLinkslabels = navLinks.map((link) => t(link.label));
 const translateLabel = t("mobileNav.languages");
@@ -24,6 +27,8 @@ const madeByLabel = t("footer.madeBy");
 
 			<MobileNav
 				client:idle
+				pathname={pathname}
+				locale={locale}
 				labels={{
 					navLinks: navLinkslabels,
 					translate: translateLabel,

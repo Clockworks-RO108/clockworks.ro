@@ -1,28 +1,23 @@
 import React from "react";
 
-import { useStore } from "@nanostores/react";
 import { ArrowUpRight } from "lucide-react";
 
 import { cn } from "~/lib";
-import { currentLocaleAtom } from "~/lib/current-url";
 
 type NavLinkProps = {
-	withI18n?: boolean;
 	disabled?: boolean;
 	href: string;
 } & React.ComponentPropsWithRef<"a">;
 
 const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(
-	({ disabled, withI18n = true, className, ...props }, ref?) => {
+	({ disabled, className, ...props }, ref?) => {
 		if (disabled) return <span ref={ref} {...props} />;
 
 		const { href, ...other } = props;
 
-		const locale = useStore(currentLocaleAtom);
-
 		return (
 			<a
-				href={withI18n ? `/${locale}${href}` : href}
+				href={href}
 				rel="prefetch"
 				className={cn(
 					disabled && "pointer-events-none text-off-white-100",

@@ -5,10 +5,10 @@ import Logo from "./logo.astro";
 
 import { Center, Flex, HStack, Link, Text, VStack } from "~/components/ui";
 import { locales, navLinks, siteInfo, getTranslations } from "~/lib";
-import { currentPathnameAtom } from "~/lib/current-url";
 
-const pathname = currentPathnameAtom.get();
-const t = getTranslations();
+const lang = Astro.params.lang;
+const pathname = Astro.url.pathname.slice(3);
+const t = getTranslations(lang);
 
 const languagesLinks = locales.map((locale) => ({
 	href: `/${locale}${pathname}`,
@@ -16,7 +16,7 @@ const languagesLinks = locales.map((locale) => ({
 }));
 
 const navigationLinks = navLinks.map((link) => ({
-	href: link.href,
+	href: `${lang}${link.href}`,
 	label: t(link.label),
 }));
 ---
@@ -31,11 +31,7 @@ const navigationLinks = navLinks.map((link) => ({
 		<VStack stretch="all" alignment="center/between" className="gap-4">
 			<Flex grow stretch="width" alignment="center/start">
 				<HStack className="gap-8">
-					<FooterCol
-						title={t("footer.languages.title")}
-						links={languagesLinks}
-						withI18n={false}
-					/>
+					<FooterCol title={t("footer.languages.title")} links={languagesLinks} />
 					<FooterCol title={t("footer.navigation.title")} links={navigationLinks} />
 					<FooterCol title={t("footer.social.title")} links={siteInfo.socialLinks} />
 				</HStack>

@@ -10,15 +10,12 @@ import "@fontsource-variable/inter";
 import Footer from "~/components/footer.astro";
 import Head, { type Props as HeadProps } from "~/components/head.astro";
 import Header from "~/components/header.astro";
-import { currentURLAtom } from "~/lib/current-url";
 
 export type Props = HeadProps;
 
 const { ...head } = Astro.props;
 
 const { lang } = Astro.params;
-const pathname = Astro.url.pathname;
-currentURLAtom.set(pathname);
 ---
 
 <!DOCTYPE html>
@@ -41,10 +38,5 @@ currentURLAtom.set(pathname);
 		</main>
 
 		<Footer />
-
-		<script define:vars={{ pathname }}>
-			import { currentURLAtom } from "../../lib/current-url";
-			currentURLAtom.set(pathname);
-		</script>
 	</body>
 </html>

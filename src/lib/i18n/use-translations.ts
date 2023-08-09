@@ -1,11 +1,11 @@
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
-import { currentLocaleAtom } from "../current-url";
 
 import { checkTranslations } from "./check-translations";
 import { locales } from "./locales";
 import type { Locale } from "./locales";
+import { isLocale } from "./slugs";
 
 import en from "~/content/i18n/en.json";
 import ro from "~/content/i18n/ro.json";
@@ -22,16 +22,9 @@ try {
 	) as Record<Locale, CollectionEntry<"i18n">["data"]>;
 } catch { }
 
-// I keep it just in case
-// export const useTranslations = (lang: string | undefined) => {
-// 	const locale = isLocale(lang) ? lang : "en";
-// 	// const locale = currentLocaleAtom.get();
 
-// 	return (key: keyof CollectionEntry<"i18n">["data"]) => translations[locale][key];
-// };
-
-export const getTranslations = () => {
-	const locale = currentLocaleAtom.get();
+export const getTranslations = (lang: string | undefined) => {
+	const locale = isLocale(lang) ? lang : "ro";
 
 	return (key: Keys) => translations[locale][key];
 };

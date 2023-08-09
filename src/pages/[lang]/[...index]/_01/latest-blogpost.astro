@@ -2,12 +2,14 @@
 import { ArrowRight } from "lucide-react";
 
 import { Button, Link, Text } from "~/components/ui";
+
+const lang = Astro.params.lang;
 ---
 
 <!-- TODO use latest blog post -->
 <Button
 	as={Link.Nav}
-	href="/blog/hello-world"
+	href={`${lang}/blog/hello-world`}
 	variant="darker"
 	size="wide"
 	rounded
