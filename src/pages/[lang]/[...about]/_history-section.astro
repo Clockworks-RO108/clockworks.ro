@@ -1,0 +1,82 @@
+---
+import BgGradient from "~/components/bg-gradient.astro";
+import { VStack, Center, Separator, Section, Text } from "~/components/ui";
+import { getTranslations } from "~/lib";
+
+const foundedYear = 2018;
+const yearsSinceFounded = new Date(Date.now()).getFullYear() - foundedYear;
+
+const t = getTranslations(Astro.params.lang);
+---
+
+<Section
+	className="relative h-auto border border-off-white-200 bg-off-white-100/95 text-background ring-2 ring-off-white-900/20 lg:h-auto"
+>
+	<BgGradient />
+
+	<VStack className="z-10 mx-8 mt-32 gap-16 lg:mx-auto lg:gap-32">
+		<Text.H2 className="mx-auto">{t("about-us.history.title")}</Text.H2>
+
+		<VStack className="max-w-prose gap-8">
+			<Text.H3>{t("about-us.history.beginning.title")}</Text.H3>
+
+			<Text.P className="leading-relaxed text-off-white-600">
+				{t("about-us.history.beginning.par-1")}
+			</Text.P>
+
+			<Text.P className="leading-relaxed text-off-white-600">
+				{t("about-us.history.beginning.par-2")}
+			</Text.P>
+
+			<Text.P className="leading-relaxed text-off-white-600">
+				{t("about-us.history.beginning.par-3")}
+			</Text.P>
+
+			<Text.P className="leading-relaxed text-off-white-600">
+				{t("about-us.history.beginning.par-4")}
+			</Text.P>
+
+			<Separator className="my-16 bg-text-secondary" />
+
+			<Text.P className="leading-relaxed text-off-white-600">
+				{t("about-us.history.part-2.par-1")}
+			</Text.P>
+
+			<Text.P className="leading-relaxed text-off-white-600">
+				{t("about-us.history.part-2.par-2")}
+			</Text.P>
+
+			<Text.P className="leading-relaxed text-off-white-600">
+				{t("about-us.history.part-2.par-3")}
+			</Text.P>
+
+			<Separator className="my-16 bg-text-secondary" />
+
+			<Text.P className="leading-relaxed text-off-white-600">
+				{t("about-us.history.part-3.par-1")}
+			</Text.P>
+
+			<Text.P className="leading-relaxed text-off-white-600">
+				{t("about-us.history.part-3.par-2")}
+			</Text.P>
+
+			<Text.P className="leading-relaxed text-off-white-600">
+				{t("about-us.history.part-3.par-3.1")}
+				{yearsSinceFounded}
+				{t("about-us.history.part-3.par-3.2")}
+			</Text.P>
+		</VStack>
+	</VStack>
+
+	<Center stretch="width" className="mb-32 mt-12">
+		<Text.H2 className="mx-8 max-w-[55rem] lg:text-center">
+			{t("about-us.history.ending.1")}
+			<Text.P
+				gradient="to-top"
+				className="inline-block from-brand to-brand-secondary font-jetbrains-mono"
+			>
+				clockwork
+			</Text.P>{t("about-us.history.ending.2")}
+		</Text.H2>
+	</Center>
+</Section>

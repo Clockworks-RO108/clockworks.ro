@@ -1,0 +1,37 @@
+---
+import { CTAButton, Center, HStack, Section, Text } from "~/components/ui";
+import { cn, getTranslations } from "~/lib";
+
+const t = getTranslations(Astro.params.lang);
+---
+
+<Section className={cn("hero-gradient", "mx-6 lg:px-32 rounded-b-3xl")}>
+	<HStack stretch="width" alignment="center/between" className="px-4">
+		<Text.H3 className="font-jetbrains-mono uppercase text-off-white-300">
+			{t("about-us.head.brow")}
+		</Text.H3>
+		<Text.H1
+			gradient="to-bottom"
+			className="from-foreground to-off-white-300 text-4xl lg:text-5xl"
+		>
+			{t("about-us.head.title")}
+			<br />
+			<p class="opacity-0">hidden</p>
+		</Text.H1>
+
+		<Center stretch="width" className="mt-16">
+			<CTAButton href="#first-section">{t("about-us.head.cta-button")}</CTAButton>
+		</Center>
+	</HStack>
+</Section>
+
+<style>
+	.hero-gradient {
+		background: radial-gradient(
+			128.5% 107.13% at 50% 2.92%,
+			transparent 55%,
+			hsla(var(--brand)) 78.65%,
+			hsl(var(--off-white-100)) 100%
+		);
+	}
+</style>

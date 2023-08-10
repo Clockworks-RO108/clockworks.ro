@@ -1,0 +1,24 @@
+---
+import ActivitySection from "./_activity-section.astro";
+import DescriptionSection from "./_description-section.astro";
+import HeadSection from "./_head-section.astro";
+import HistorySection from "./_history-section.astro";
+
+import DepartmentsSection from "~/components/departments/section.astro";
+import Layout from "~/components/ui/layout.astro";
+import { generateStaticPaths } from "~/lib";
+
+export const getStaticPaths = generateStaticPaths;
+---
+
+<Layout>
+	<HeadSection />
+
+	<DescriptionSection />
+
+	<ActivitySection />
+
+	<HistorySection />
+
+	<DepartmentsSection />
+</Layout>

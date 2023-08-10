@@ -3,9 +3,9 @@ import Section01 from "./_01/section.astro";
 import Section02 from "./_02/section.astro";
 import Section03 from "./_03/section.astro";
 import Section04 from "./_04/section.astro";
-import Section05 from "./_05/section.astro";
 import Section06 from "./_06/section.astro";
 
+import DepartmentsSection from "~/components/departments/section.astro";
 import Layout from "~/components/ui/layout.astro";
 import { generateStaticPaths, getTranslations } from "~/lib";
 
@@ -18,6 +18,6 @@ const t = getTranslations(Astro.params.lang);
 	<Section02 />
 	<Section03 />
 	<Section04 />
-	<Section05 />
+	<DepartmentsSection />
 	<Section06 />
 </Layout>

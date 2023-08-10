@@ -24,7 +24,7 @@ const t = getTranslations(Astro.params.lang);
 			{
 				navLinks.map(({ href, label }) => {
 					// TODO create all routes and remove disabled prop
-					const disabled = label !== "navLink.blog";
+					const disabled = label !== "navLink.blog" && label !== "navLink.about";
 
 					return (
 						<div class="pl-2">

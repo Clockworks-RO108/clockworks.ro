@@ -1,0 +1,39 @@
+---
+import BgGradient from "~/components/bg-gradient.astro";
+import { VStack, Grid, Section, Text } from "~/components/ui";
+import { getTranslations } from "~/lib";
+
+const t = getTranslations(Astro.params.lang);
+---
+
+<Section className="relative h-auto">
+	<BgGradient />
+	<VStack className="z-10 mx-auto my-16 gap-16 lg:gap-32">
+		<Text.H2 className="mx-auto">{t("about-us.activity.title")}</Text.H2>
+
+		<Grid stretch="width" className="grid-cols-1 gap-12 px-8 lg:grid-cols-2 lg:px-32">
+			<VStack className="gap-4">
+				<Text.H3>{t("about-us.activity.build-design-comp.title")}</Text.H3>
+
+				<Text.P className="leading-relaxed text-off-white-200">
+					{t("about-us.activity.build-design-comp.description")}
+				</Text.P>
+			</VStack>
+
+			<VStack className="gap-4">
+				<Text.H3>{t("about-us.activity.support-and-learning.title")}</Text.H3>
+
+				<Text.P className="leading-relaxed text-off-white-200">
+					{t("about-us.activity.support-and-learning.description")}
+				</Text.P>
+			</VStack>
+
+			<VStack className="gap-4">
+				<Text.H3>{t("about-us.activity.collaboration.title")}</Text.H3>
+				<Text.P className="leading-relaxed text-off-white-200">
+					{t("about-us.activity.collaboration.description")}
+				</Text.P>
+			</VStack>
+		</Grid>
+	</VStack>
+</Section>

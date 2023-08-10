@@ -1,0 +1,18 @@
+---
+import { Section, VStack, Text } from "~/components/ui";
+import { getTranslations } from "~/lib";
+
+const t = getTranslations(Astro.params.lang);
+---
+
+<Section>
+	<VStack className="my-16 max-w-prose gap-12 px-8 lg:mx-32">
+		<Text.H2 id="first-section" className="scroll-m-28">
+			{t("about-us.description.title")}
+		</Text.H2>
+
+		<Text.P className="leading-relaxed text-off-white-200">
+			{t("about-us.description.text")}
+		</Text.P>
+	</VStack>
+</Section>
