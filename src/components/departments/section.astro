@@ -14,6 +14,12 @@ import {
 } from "~/components/ui";
 import { getTranslations } from "~/lib";
 
+export type Props = {
+	withCTA: boolean;
+};
+
+const { withCTA } = Astro.props;
+
 const lang = Astro.params.lang;
 const t = getTranslations(lang);
 ---
@@ -24,13 +30,19 @@ const t = getTranslations(lang);
 	<Center direction="col" className="z-10 gap-20">
 		<VStack alignment="center/center" className="max-w-prose gap-10">
 			<Center className="gap-6">
-				<Text.H2 align="center">{t("index.departments.title")}</Text.H2>
+				<Text.H2 align="center" id="departments" className="scroll-m-28">
+					{t("index.departments.title")}
+				</Text.H2>
 				<Text.P align="center" className="text-text-secondary">
 					{t("index.departments.subtitle")}
 				</Text.P>
 			</Center>
 
-			<CTAButton href={`${lang}/departments`}>Descopera toti membrii</CTAButton>
+			{
+				withCTA ? (
+					<CTAButton href={`${lang}/about#departments`}>Descopera toti membrii</CTAButton>
+				) : null
+			}
 		</VStack>
 
 		<Center className="w-screen">
