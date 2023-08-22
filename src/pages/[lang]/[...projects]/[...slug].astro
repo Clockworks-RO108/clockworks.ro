@@ -1,0 +1,73 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+
+import Aside from "./_components/aside.astro";
+import { BorderedContainer } from "./_components/bordered-container";
+import { TableOfContents } from "./_components/table-of-contents";
+
+import { components } from "~/components/mdx";
+import { Grid, Section } from "~/components/ui";
+import Layout from "~/components/ui/layout.astro";
+import { getTranslations } from "~/lib";
+
+export const getStaticPaths = async () => {
+	const projects = await getCollection(
+		"projects",
+		(project) => project.data.draft === false,
+	);
+
+	return projects.map((project) => {
+		const [lang, slug] = project.slug.split("/");
+
+		return {
+			params: { lang, slug },
+			props: { project },
+		};
+	});
+};
+
+export type Props = {
+	project: CollectionEntry<"projects">;
+};
+
+const t = getTranslations(Astro.params.lang);
+
+const { project } = Astro.props;
+const { Content, remarkPluginFrontmatter, headings } = await project.render();
+---
+
+<Layout title={project.data.name} description={project.data.description}>
+	<Section>
+		<Grid stretch="width" cols={6} className="mx-8 mt-16 gap-12 lg:px-32">
+			<aside class="col-[1/3] hidden lg:block">
+				<Aside project={project} minutesRead={remarkPluginFrontmatter.minutesRead} />
+
+				<BorderedContainer>
+					<TableOfContents
+						client:idle
+						headings={headings}
+						label={t("projects.table-of-contents")}
+						defaultOpen={true}
+					/>
+				</BorderedContainer>
+			</aside>
+
+			<div class="col-span-6 lg:col-[3/7] lg:mt-12">
+				<article
+					class="prose prose-invert max-w-prose text-off-white-200 prose-headings:text-foreground prose-a:text-foreground prose-blockquote:border-l-brand-secondary prose-blockquote:bg-brand/20"
+				>
+					<BorderedContainer className="not-prose block lg:hidden">
+						<TableOfContents
+							client:idle
+							headings={headings}
+							label={t("projects.table-of-contents")}
+							defaultOpen={false}
+						/>
+					</BorderedContainer>
+
+					<Content components={components} />
+				</article>
+			</div>
+		</Grid>
+	</Section>
+</Layout>

@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { ChevronLeft } from "lucide-react";
+
+import { BorderedContainer } from "./bordered-container";
+
+import { Button, Link, Text, VStack } from "~/components/ui";
+import { getTranslations } from "~/lib";
+
+export type Props = {
+	project: CollectionEntry<"projects">;
+	minutesRead: number;
+};
+const { project, minutesRead } = Astro.props;
+
+const lang = Astro.params.lang;
+const t = getTranslations(lang);
+
+const aproxMinutes = Math.ceil(minutesRead);
+const readTime =
+	aproxMinutes <= 1 ? t("projects.minute") : `${aproxMinutes} ${t("projects.minutes")}`;
+---
+
+<Button as={Link.Nav} href={`/${lang}/projects`} variant="ghost" className="mb-4">
+	<ChevronLeft />
+	<span>{t("projects.go-back")}</span>
+</Button>
+
+<BorderedContainer>
+	<Text.H2 className="m-2">{project.data.name}</Text.H2>
+</BorderedContainer>
+
+<BorderedContainer>
+	<VStack className="gap-1">
+		<Text.Subtitle>{t("projects.read-time")}</Text.Subtitle>
+		<Text.P>{readTime}</Text.P>
+	</VStack>
+</BorderedContainer>
+
+<BorderedContainer>
+	<VStack className="gap-1">
+		<Text.Subtitle>{t("projects.year")}</Text.Subtitle>
+		<Text.P>{project.data.year}</Text.P>
+	</VStack>
+</BorderedContainer>
+
+<BorderedContainer>
+	<VStack className="gap-1">
+		<Text.Subtitle>{t("projects.description")}</Text.Subtitle>
+		<Text.P>
+			{project.data.description}
+		</Text.P>
+	</VStack>
+</BorderedContainer>

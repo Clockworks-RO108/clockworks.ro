@@ -2,8 +2,8 @@
 import { Globe } from "lucide-react";
 
 import Logo from "~/components/logo.astro";
-import { Flex, Button, Badge, Link, HStack } from "~/components/ui";
-import { navLinks, getTranslations, cn } from "~/lib";
+import { Flex, Button, Link, HStack } from "~/components/ui";
+import { navLinks, getTranslations } from "~/lib";
 
 const lang = Astro.params.lang;
 const locale = lang === "en" ? "ro" : "en";
@@ -22,30 +22,19 @@ const t = getTranslations(Astro.params.lang);
 			className="hidden text-sm lg:flex [&>*+*]:before:px-2 [&>*+*]:before:text-brand [&>*+*]:before:content-['/']"
 		>
 			{
-				navLinks.map(({ href, label }) => {
-					// TODO create all routes and remove disabled prop
-					const disabled = label !== "navLink.blog" && label !== "navLink.about";
-
-					return (
-						<div class="pl-2">
-							<Button
-								as={Link.Nav}
-								href={`/${lang}${href}`}
-								disabled={disabled}
-								variant="ghost"
-								size="small"
-								className={cn(
-									disabled
-										? "text-off-white-30 pointer-events-none"
-										: "transition-all hover:border-border hover:bg-dark-blue-700",
-								)}
-							>
-								{t(label)}
-								{disabled && <Badge>{t("navLink.soon")}</Badge>}
-							</Button>
-						</div>
-					);
-				})
+				navLinks.map(({ href, label }) => (
+					<div class="pl-2">
+						<Button
+							as={Link.Nav}
+							href={`/${lang}${href}`}
+							variant="ghost"
+							size="small"
+							className="transition-all hover:border-border hover:bg-dark-blue-700"
+						>
+							{t(label)}
+						</Button>
+					</div>
+				))
 			}
 		</Flex>
 

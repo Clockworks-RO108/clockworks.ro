@@ -9,7 +9,7 @@ export const Section = ({
 	return (
 		<Center
 			as="section"
-			className={cn("h-[calc(100vh-82px)] lg:h-[calc(100vh-90px)]", className)}
+			className={cn("min-h-[calc(100vh-82px)] lg:min-h-[calc(100vh-90px)]", className)}
 			{...props}
 		/>
 	);

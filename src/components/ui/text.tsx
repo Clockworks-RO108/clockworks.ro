@@ -38,7 +38,7 @@ const H1 = ({ className, gradient, align, ...props }: TextProps<"h1">) => {
 	return (
 		<h1
 			className={cn(
-				"scroll-m-20 font-inter text-5xl font-bold leading-tight tracking-tight lg:text-7xl",
+				"scroll-m-24 font-inter text-5xl font-bold leading-tight tracking-tight lg:text-7xl",
 				textVariants({ gradient, align }),
 				className,
 			)}
@@ -51,7 +51,7 @@ const H2 = ({ className, gradient, align, ...props }: TextProps<"h2">) => {
 	return (
 		<h2
 			className={cn(
-				"scroll-m-20 font-inter text-4xl font-bold leading-tight tracking-tight lg:text-5xl",
+				"scroll-m-24 font-inter text-4xl font-bold leading-tight tracking-tight lg:text-5xl",
 				textVariants({ gradient, align }),
 				className,
 			)}
@@ -63,7 +63,11 @@ const H2 = ({ className, gradient, align, ...props }: TextProps<"h2">) => {
 const H3 = ({ className, gradient, align, ...props }: TextProps<"h2">) => {
 	return (
 		<h3
-			className={cn("text-lg lg:text-2xl", textVariants({ gradient, align }), className)}
+			className={cn(
+				"scroll-m-24 text-lg lg:text-2xl",
+				textVariants({ gradient, align }),
+				className,
+			)}
 			{...props}
 		/>
 	);

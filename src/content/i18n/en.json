@@ -2,18 +2,25 @@
   "siteInfo.title": "",
   "siteInfo.description": "",
   "siteInfo.image.alt": "",
+
   "mobileNav.languages": "Languages",
+
   "home.title": "Home",
+
   "page.title": "hello world",
+
   "index.landing.we-are": "We are",
   "index.landing.subtitle": "Dream. Build. Inspire. Repeat.",
+
   "index.about-us.title": "Who are we?",
   "index.about-us.description": "We are Clockworks, the robotics team of the \"Gheorghe Şincai\" National College.The robotics club is where beautiful friendships are made and where you can learn to work as a team. We spend our free time building various automated mechanisms, especially robots that have various purposes. Because of our passion for robots, we enter various competitions where we try to outdo ourselves every time. The biggest contest we enter is the BRD FIRST Tech Challenge, where we reached the national stage. The contest supports the moral values appropriate to fair competitiveness (Gracious Professionalism®), the functional-technical part of the robot, the marketing strategy of the created product and the entrepreneurial spirit.",
   "index.about-us.cta-button": "Find more about our work",
+
   "index.section-3.title": "What does Clockworks mean to us?",
   "index.section-3.subtitle": "More than a simple robotics club",
   "index.section-3.text": "All the activities and competitions we participated in help us to test our acquired skills every time, namely: building the robot, designing it and promoting the team and the built robot.Beyond the work of building robots, Clockworks is a true family where we support and try to learn from each other.",
   "index.section-3.cta-button": "Find more about the team",
+
   "index.departments.title": "Departments",
   "index.departments.subtitle": "Our club contains 3 departaments",
   "index.departments.mechanics.title": "Mechanical and design departament",
@@ -22,11 +29,14 @@
   "index.departments.programming.description": "The Programming department brings the robot to life. This is where the magic for the robot to work happens: it detects, throws, positions itself, but not only that. Programming has many other uses necessary for a competition-worthy robot.",
   "index.departments.marketing.title": "Marketing department",
   "index.departments.marketing.description": "The Marketing department's primary purpose is administering social media, ensuring the team's management and logistics, thereby providing captivating and educational materials for the general public. Members of this department strive to attract as many people of any kind as possible to take part in the FIRST®️ (For Inspiration and Recognition of Science and Technology) experience.",
+
   "about-us.head.brow": "About us",
   "about-us.head.title": "We are Clockworks, the robotics team of the \"Gheorghe Şincai\" National College.",
   "about-us.head.cta-button": "Find out more about us",
+
   "about-us.description.title": "Clockworks is the club where high school students share the same passion, robotics.",
   "about-us.description.text": "The robotics club is where beautiful friendships are made and where you can learn to work as a team. We spend our free time building various automated mechanisms, especially robots that have various purposes. Because of our passion for robots, we enter various competitions where we try to outdo ourselves every time. The biggest contest we enter is the BRD FIRST Tech Challenge, where we reached the national stage. The contest supports the moral values appropriate to fair competitiveness (Gracious Professionalism®), the functional-technical part of the robot, the marketing strategy of the created product and the entrepreneurial spirit.",
+
   "about-us.activity.title": "Our activity",
   "about-us.activity.build-design-comp.title": "Building, Design and Competitions",
   "about-us.activity.build-design-comp.description": "All the activities and competitions we participated in help us to test our acquired skills every time, namely: building the robot, designing it and promoting the team and the built robot.",
@@ -34,6 +44,7 @@
   "about-us.activity.support-and-learning.description": "Beyond the work of building robots, Clockworks is a true family where we support and try to learn from each other.",
   "about-us.activity.collaboration.title": "Collaboration for innovation",
   "about-us.activity.collaboration.description": "We are always looking for helping hands, advice and information. We are open to new collaborations to improve future robots and create as many projects as possible.",
+
   "about-us.history.title": "History of Clockworks",
   "about-us.history.beginning.title": "The Beginning:",
   "about-us.history.beginning.par-1": "To say that the Clockworks team had an unconventional start would be an understatement.",
@@ -49,10 +60,20 @@
   "about-us.history.part-3.par-3.2": " years we have continued to prove that we are among the best, that we are a close-knit team and that we will always face any challenge, regardless of the circumstances.",
   "about-us.history.ending.1": "Today we honor our legacy by living up to the motto \"We work like ",
   "about-us.history.ending.2": "\", through hard work and our limitless creativity.",
+
+  "projects.go-back": "Go back",
+  "projects.year": "Year",
+  "projects.description": "Description",
+  "projects.read-time": "Read time",
+  "projects.minute": "A minute",
+  "projects.minutes": "minutes",
+  "projects.table-of-contents": "Table of contents",
+
   "navLink.soon": "Soon",
   "navLink.about": "About",
   "navLink.work": "Our Work",
   "navLink.blog": "Blog",
+
   "footer.madeBy": "Made by",
   "footer.languages.title": "Languages",
   "footer.locales.en": "English",

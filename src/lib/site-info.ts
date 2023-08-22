@@ -52,10 +52,10 @@ export const navLinks = [
 	},
 	{
 		label: "navLink.work",
-		href: "/works",
+		href: "/projects",
 	},
 	{
 		label: "navLink.blog",
 		href: "/blog",
 	},
-] as const satisfies Readonly<NavLink[]>;
+] as const satisfies readonly NavLink[];

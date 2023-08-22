@@ -2,6 +2,7 @@ export * from "./button";
 export * from "./badge";
 export * from "./card";
 export * from "./center";
+export * from "./collapsible";
 export * from "./cta-button";
 export * from "./dropdown-menu";
 export * from "./flex";

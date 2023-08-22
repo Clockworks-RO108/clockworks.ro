@@ -2,18 +2,25 @@
   "siteInfo.title": "",
   "siteInfo.description": "",
   "siteInfo.image.alt": "",
+
   "mobileNav.languages": "Limbi",
+
   "home.title": "Acasa",
+
   "page.title": "salut lume",
+
   "index.landing.we-are": "Noi suntem",
   "index.landing.subtitle": "Visează. Construieşte. Inspiră. Repetă.",
+
   "index.about-us.title": "Cine suntem?",
   "index.about-us.description": "Noi suntem Clockworks, echipa de robotică a Colegiului Naţional „Gheorghe Șincai”.Clubul de robotică este locul în care se leagă prietenii frumoase și înveți să lucrezi în echipă. Ne petrecem timpul liber construind diferite mecanisme automatizate, roboți care au diverse scopuri. Din pasiunea pentru roboți, ne înscriem la diferite concursuri unde încercăm să ne auto-depășim de fiecare dată. Cel mai mare concurs la care participăm este BRD FIRST Tech Challenge, unde am ajuns până la etapa națională. Concursul susţine valorile morale adecvate competitivităţii corecte (Gracious Professionalism®), partea tehnică funcţională a robotului construit, strategia de marketing a produsului creat şi spiritul antreprenorial.",
   "index.about-us.cta-button": "Descopera proiectele noastre",
+
   "index.section-3.title": "Ce reprezinta Clockworks pentru noi?",
   "index.section-3.subtitle": "Mai mult decat un simplu club de robotica",
   "index.section-3.text": "Toate activitățile și concursurile la care am participat ne ajută să ne testăm de fiecare dată abilitățile dobândite și anume: construirea robotului, proiectarea acestuia și promovarea per total a echipei.Dincolo de munca depusă în construirea roboților, Clockworks reprezintă o adevărată familie în care ne susținem reciproc și încercam să învățam unii de la ceilalți.",
   "index.section-3.cta-button": "Descoperă echipa",
+
   "index.departments.title": "Departamente",
   "index.departments.subtitle": "Echipa noastră se bazează pe 3 departamente principale",
   "index.departments.mechanics.title": "Departamentul de mecanica si design",
@@ -22,11 +29,14 @@
   "index.departments.programming.description": "Departamentul de Programare dă viață robotului. Aici se întâmplă magia de care are nevoie robutul să funcționeze: detectează, aruncă, se poziționează, dar nu numai. Programarea are multe alte întrebuințări necesare pentru un robot demn de concurs.",
   "index.departments.marketing.title": "Departamentul de marketing",
   "index.departments.marketing.description": "Departamentul de Marketing are ca prim scop administrarea rețelelor sociale, asigurarea managementului și logisticii echipei, astfel furnizând materiale captivante și educative pentru publicul larg. Membrii acestui departament se străduiesc să atragă cât mai mulți elevi, studenți și nu numai, să ia parte la experiența FIRST®️ (For Inspiration and Recognition of Science and Technology).",
+
   "about-us.head.brow": "Despre noi",
   "about-us.head.title": "Noi suntem Clockworks, echipa de robotică a Colegiului Naţional „Gheorghe Șincai”",
   "about-us.head.cta-button": "Aflați mai multe despre noi",
+
   "about-us.description.title": "Clockworks este clubul unde liceenii împărtășesc aceeași pasiune, robotica.",
   "about-us.description.text": "Clubul de robotică este locul în care se leagă prietenii frumoase și înveți să lucrezi în echipă. Ne petrecem timpul liber construind diferite mecanisme automatizate, roboți care au diverse scopuri. Din pasiunea pentru roboți, ne înscriem la diferite concursuri unde încercăm să ne auto-depășim de fiecare dată. Cel mai mare concurs la care participăm este BRD FIRST Tech Challenge, unde am ajuns până la etapa națională. Concursul susţine valorile morale adecvate competitivităţii corecte (Gracious Professionalism®), partea tehnică funcţională a robotului construit, strategia de marketing a produsului creat şi spiritul antreprenorial.",
+
   "about-us.activity.title": "Activitatea noastra",
   "about-us.activity.build-design-comp.title": "Construire, design și competiții",
   "about-us.activity.build-design-comp.description": "Toate activitățile și concursurile la care am participat ne ajută să ne testăm de fiecare dată abilitățile dobândite și anume: construirea robotului, proiectarea acestuia și promovarea echipei și robotului construit.",
@@ -34,6 +44,7 @@
   "about-us.activity.support-and-learning.description": "Dincolo de munca depusă în construirea roboților, Clockworks reprezintă o adevărată familie în care ne susținem reciproc și încercam să învățam unii de la ceilalți.",
   "about-us.activity.collaboration.title": "Colaborare pentru inovare",
   "about-us.activity.collaboration.description": "Căutăm mereu mâini de ajutor, sfaturi și informaţii cât cuprinde. Suntem deschiși noilor colaborări pentru a îmbunătăți viitorii roboți și a dezvolta cât mai multe proiecte.",
+
   "about-us.history.title": "Istoria Clockworks",
   "about-us.history.beginning.title": "Începutul:",
   "about-us.history.beginning.par-1": "A spune că echipa Clockworks a avut un început neconvențional ar fi o afirmație modestă.",
@@ -49,10 +60,20 @@
   "about-us.history.part-3.par-3.2": " ani am continuat să dovedim că suntem printre cei mai buni, că suntem o echipă închegată și că mereu vom face față la orice provocare, indiferent de circumstanțe.",
   "about-us.history.ending.1": "În prezent ne onorăm moștenirea prin respectarea motto-ului „We work like ",
   "about-us.history.ending.2": "”, prin muncă asiduă și prin creativitatea noastră fară limite.",
+
+  "projects.go-back": "Înapoi",
+  "projects.year": "Anul",
+  "projects.description": "Descriere",
+  "projects.read-time": "Timp de citit",
+  "projects.minute": "Un minut",
+  "projects.minutes": "minute",
+  "projects.table-of-contents": "Cuprins",
+
   "navLink.soon": "Curand",
   "navLink.about": "Despre noi",
   "navLink.work": "Proiecte",
   "navLink.blog": "Blog",
+
   "footer.madeBy": "Creat de",
   "footer.languages.title": "Traduceri",
   "footer.locales.en": "Engleză",

@@ -1,0 +1,17 @@
+---
+import { Image as AstroImage } from "astro:assets";
+
+import { VStack, Text } from "~/components/ui";
+
+export type Props = {
+	img: ImageMetadata;
+	alt: string;
+};
+
+const { img, alt } = Astro.props;
+---
+
+<VStack inline className="my-8">
+	<AstroImage src={img} alt={alt} class="my-0" />
+	<Text.Small>{alt}</Text.Small>
+</VStack>
