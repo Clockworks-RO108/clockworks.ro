@@ -66,7 +66,7 @@ export const MobileNav = ({
 					<VStack as="nav" className="gap-y-3">
 						{navLinks.map((link, i) => (
 							<Link.Nav
-								href={`${locale}${link.href}`}
+								href={`/${locale}${link.href}`}
 								className="font-dm-mono text-3xl font-semibold uppercase tracking-wider"
 								key={`mobile-nav.nav-links.${i}`}
 							>

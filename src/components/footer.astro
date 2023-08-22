@@ -16,7 +16,7 @@ const languagesLinks = locales.map((locale) => ({
 }));
 
 const navigationLinks = navLinks.map((link) => ({
-	href: `${lang}${link.href}`,
+	href: `/${lang}${link.href}`,
 	label: t(link.label),
 }));
 ---
