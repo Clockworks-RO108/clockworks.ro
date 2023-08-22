@@ -5,7 +5,13 @@ import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { Badge, Button, Card, Center, Grid, HStack, VStack } from "~/components/ui";
 import { cn, useInterval } from "~/lib";
 
-export const Carousel = ({ images }: { images: ImageMetadata[] }) => {
+type Image = {
+	src: string;
+	width?: number | undefined;
+	height?: number | undefined;
+};
+
+export const Carousel = ({ images }: { images: Image[] }) => {
 	const imagesCount = images.length;
 
 	const [play, setPlay] = React.useState(true);

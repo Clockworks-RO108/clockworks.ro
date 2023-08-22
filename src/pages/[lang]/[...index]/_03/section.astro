@@ -1,4 +1,5 @@
 ---
+import { getImage } from "astro:assets";
 import { ArrowRight, Bot } from "lucide-react";
 
 import { Carousel } from "./carousel";
@@ -16,9 +17,11 @@ import {
 } from "~/components/ui";
 import { cn, getTranslations } from "~/lib";
 
-const images = Object.values(
-	await Astro.glob<{ default: ImageMetadata }>("~/assets/gallery/*"),
-).map((x) => x.default);
+const images = await Promise.all(
+	(
+		await Astro.glob<{ default: ImageMetadata }>("~/assets/gallery/*")
+	).map((x) => getImage({ src: x.default, format: "webp" })),
+);
 
 const lang = Astro.params.lang;
 const t = getTranslations(lang);
