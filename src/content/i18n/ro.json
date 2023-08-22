@@ -61,6 +61,7 @@
   "about-us.history.ending.1": "În prezent ne onorăm moștenirea prin respectarea motto-ului „We work like ",
   "about-us.history.ending.2": "”, prin muncă asiduă și prin creativitatea noastră fară limite.",
 
+  "projects.coming-soon": "În curand",
   "projects.go-back": "Înapoi",
   "projects.year": "Anul",
   "projects.description": "Descriere",
@@ -68,6 +69,8 @@
   "projects.minute": "Un minut",
   "projects.minutes": "minute",
   "projects.table-of-contents": "Cuprins",
+
+  "blog.more-soon": "Urmează mai multe. Rămâneţi aproape!",
 
   "navLink.soon": "Curand",
   "navLink.about": "Despre noi",

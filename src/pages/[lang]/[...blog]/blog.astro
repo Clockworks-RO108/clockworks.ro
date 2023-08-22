@@ -1,11 +1,43 @@
 ---
+import { getCollection } from "astro:content";
+
+import Aside from "./_components/aside.astro";
+import LatestPost from "./_components/latest-post.astro";
+import PostCard from "./_components/post-card.astro";
+
+import { BorderedContainer } from "~/components/bordered-container";
+import { Center, Grid, Section, Text } from "~/components/ui";
 import Layout from "~/components/ui/layout.astro";
-import { generateStaticPaths } from "~/lib";
+import { generateStaticPaths, getTranslations } from "~/lib";
+import { sortByDate } from "~/lib/sort";
 
 export const getStaticPaths = generateStaticPaths;
+
+const lang = Astro.params.lang;
+const t = getTranslations(lang);
+
+const [latest, ...blogPosts] = await getCollection(
+	"blog",
+	(bp) => bp.slug.startsWith(`${lang}/`) && bp.data.draft === false,
+).then(sortByDate);
 ---
 
-<!-- TODO translate -->
-<Layout title="Blog">
-	<h1>blog</h1>
+<Layout title={t("navLink.blog")}>
+	<Section className="mx-8 h-auto py-2 lg:h-auto">
+		<Grid className="grid-cols-1 lg:grid-cols-12">
+			<Aside />
+
+			<Grid className="col-span-8 grid-cols-1 lg:grid-cols-3">
+				{latest && <LatestPost post={latest} />}
+
+				{blogPosts.map((bp) => <PostCard post={bp} />)}
+
+				<BorderedContainer className="col-span-full lg:col-span-1">
+					<Center stretch="all">
+						<Text.H3 className="text-center">{t("blog.more-soon")}</Text.H3>
+					</Center>
+				</BorderedContainer>
+			</Grid>
+		</Grid>
+	</Section>
 </Layout>

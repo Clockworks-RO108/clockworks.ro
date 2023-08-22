@@ -1,0 +1,57 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import { BorderedContainer } from "~/components/bordered-container";
+import { Badge, Button, Grid, HStack, Link, Text, VStack } from "~/components/ui";
+
+export type Props = {
+	post: CollectionEntry<"blog">;
+};
+
+const { post } = Astro.props;
+
+const date = new Intl.DateTimeFormat("en-GB").format(post.data.publishedDate);
+
+const lang = Astro.params.lang;
+
+const href = `/${lang}/blog/${post.slug.slice(3)}`;
+---
+
+<Link.Nav href={href} className="col-[1/4]">
+	<BorderedContainer className="flex h-full flex-col gap-4">
+		<Grid stretch="all" className="grid-cols-1 gap-8 lg:grid-cols-2">
+			<div class="h-full w-full rounded-md bg-red-50">
+				<!-- IMAGE -->
+			</div>
+
+			<VStack stretch="all" alignment="start/around">
+				<VStack className="gap-2">
+					<time class="text-sm text-text-secondary" datetime={date}>{date}</time>
+					<HStack alignment="center/between" className="mb-2 max-w-fit gap-8">
+						<Text.H2>{post.data.title}</Text.H2>
+
+						<HStack
+							alignment="center/between"
+							className="[&>*+*]:before:pl-2 [&>*+*]:before:text-foreground [&>*+*]:before:content-['/']"
+						>
+							<div>
+								<Badge color="brand">{post.data.category}</Badge>
+							</div>
+							<div class="pl-2">
+								<Badge color="neutral">latest</Badge>
+							</div>
+						</HStack>
+					</HStack>
+				</VStack>
+
+				<Text.P className="max-w-prose text-off-white-200">
+					{post.data.description}
+				</Text.P>
+
+				<div>
+					<Button variant="ghost" className="underline">Read more</Button>
+				</div>
+			</VStack>
+		</Grid>
+	</BorderedContainer>
+</Link.Nav>

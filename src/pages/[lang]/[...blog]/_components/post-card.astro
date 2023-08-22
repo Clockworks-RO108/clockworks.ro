@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { CornerDownRight } from "lucide-react";
+
+import { BorderedContainer } from "~/components/bordered-container";
+import { Badge, HStack, Link, Text } from "~/components/ui";
+
+export type Props = {
+	post: CollectionEntry<"blog">;
+};
+
+const { post } = Astro.props;
+const date = new Intl.DateTimeFormat("en-GB").format(post.data.publishedDate);
+
+const lang = Astro.params.lang;
+
+const href = `/${lang}/blog/${post.slug.slice(3)}`;
+---
+
+<Link.Nav href={href} className="col-span-full lg:col-span-1">
+	<BorderedContainer>
+		<HStack alignment="center/between" className="mb-2">
+			<time class="text-sm text-text-secondary" datetime={date}>{date}</time>
+
+			<Badge color="brand">{post.data.category}</Badge>
+		</HStack>
+
+		<Text.H3 className="mb-4 font-jetbrains-mono">
+			{post.data.title}
+		</Text.H3>
+		<Text.Small>{post.data.description}</Text.Small>
+
+		<CornerDownRight className="mt-4 text-text-secondary" />
+	</BorderedContainer>
+</Link.Nav>

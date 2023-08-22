@@ -1,6 +1,5 @@
 import React from "react";
 
-import type { CollectionEntry } from "astro:content";
 import {
 	type MotionValue,
 	motion,
@@ -8,9 +7,8 @@ import {
 	useMotionValue,
 } from "framer-motion";
 
-import { BorderedContainer } from "./bordered-container";
-
-import { Link, Text, VStack } from "~/components/ui";
+import { BorderedContainer } from "~/components/bordered-container";
+import { Link, VStack } from "~/components/ui";
 
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -24,7 +22,10 @@ const generateRandomString = (length: number) => {
 	return result;
 };
 
-export const ProjectCard = ({ project }: { project: CollectionEntry<"projects"> }) => {
+export const ProjectCard = ({
+	href,
+	children,
+}: React.PropsWithChildren<{ href?: string }>) => {
 	const mouseX = useMotionValue(0);
 	const mouseY = useMotionValue(0);
 	const [randomString, setRandomString] = React.useState("");
@@ -46,7 +47,8 @@ export const ProjectCard = ({ project }: { project: CollectionEntry<"projects"> 
 	return (
 		<BorderedContainer>
 			<Link.Nav
-				href={`/${project.slug}`}
+				disabled={!href}
+				href={`${href ?? ""}`}
 				className="relative flex aspect-square h-full w-full items-center justify-center bg-transparent p-0.5"
 			>
 				<div
@@ -58,11 +60,8 @@ export const ProjectCard = ({ project }: { project: CollectionEntry<"projects"> 
 						<div className="relative flex h-64 w-64 items-center justify-center rounded-full text-4xl font-bold text-white">
 							<div className="absolute h-full w-full rounded-full bg-background/[0.8] blur-sm" />
 
-							<VStack alignment="center/between">
-								<Text.H3 className="z-20 text-white">{project.data.name}</Text.H3>
-								<Text.Small className="font-jetbrains-mono text-off-white-100">
-									{project.data.year}
-								</Text.Small>
+							<VStack alignment="center/between" className="z-20">
+								{children}
 							</VStack>
 						</div>
 					</div>

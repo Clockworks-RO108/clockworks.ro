@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+
+import { Categories } from "./categories";
+
+import { BorderedContainer } from "~/components/bordered-container";
+import { Text } from "~/components/ui";
+import { toLocale } from "~/lib";
+
+const locale = toLocale(Astro.params.lang);
+
+const topCategories = await getCollection(
+	"blog",
+	(bp) => bp.slug.startsWith(`${locale}/`) && bp.data.draft === false,
+)
+	.then((bp) => bp.slice(0, 10).map((bp) => bp.data.category))
+	// gets only unique items
+	.then((x) => [...new Set(x)]);
+---
+
+<aside class="col-span-4">
+	<BorderedContainer className="px-8 ring-1 ring-border lg:h-screen lg:py-16">
+		<Text.H1 className="mb-8">Blog</Text.H1>
+
+		<Text.Small className="text-text-secondary">
+			Welcome to the Clockworks blog!
+		</Text.Small>
+
+		<Text.Small className="text-text-secondary">
+			Find out what we are cooking, what is interesting us and the -~=*<em
+				class="text-brand">cool stuff</em
+			>*=~- that we do
+		</Text.Small>
+
+		<div class="mt-16">
+			<Categories client:idle categories={topCategories} locale={locale} />
+		</div>
+	</BorderedContainer>
+</aside>

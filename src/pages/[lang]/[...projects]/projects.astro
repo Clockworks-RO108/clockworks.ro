@@ -3,9 +3,10 @@ import { getCollection } from "astro:content";
 
 import { ProjectCard } from "./_components/project-card";
 
-import { Grid, Section } from "~/components/ui";
+import { Grid, Section, Text } from "~/components/ui";
 import Layout from "~/components/ui/layout.astro";
 import { generateStaticPaths, getTranslations } from "~/lib";
+import { sortByYear } from "~/lib/sort";
 
 export const getStaticPaths = generateStaticPaths;
 
@@ -15,7 +16,15 @@ const t = getTranslations(lang);
 const projects = await getCollection(
 	"projects",
 	(pr) => pr.slug.startsWith(`${lang}/`) && pr.data.draft === false,
-);
+)
+	.then(sortByYear)
+	.then((projects) =>
+		projects.map((proj) => {
+			const [lang, slug] = proj.slug.split("/");
+
+			return { ...proj, slug: `/${lang}/projects/${slug}` };
+		}),
+	);
 ---
 
 <Layout title={t("navLink.work")}>
@@ -24,9 +33,18 @@ const projects = await getCollection(
 			{
 				projects.map((project) => (
 					// the effect is working only on devices that support hover (have a mouse)
-					<ProjectCard client:media="(hover:hover)" project={project} />
+					<ProjectCard client:media="(hover:hover)" href={project.slug}>
+						<Text.H3>{project.data.name}</Text.H3>
+						<Text.Small className="font-jetbrains-mono text-off-white-100">
+							{project.data.year}
+						</Text.Small>
+					</ProjectCard>
 				))
 			}
+
+			<ProjectCard client:media="(hover:hover)">
+				<Text.H3 className="text-off-white-300">{t("projects.coming-soon")} 👀</Text.H3>
+			</ProjectCard>
 		</Grid>
 	</Section>
 </Layout>

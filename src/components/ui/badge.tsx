@@ -1,5 +1,7 @@
 import React from "react";
 
+import { type VariantProps, cva } from "class-variance-authority";
+
 import { Flex } from "./flex";
 import type {
 	PolymorphicComponentPropsWithRef,
@@ -8,8 +10,23 @@ import type {
 
 import { cn } from "~/lib";
 
+const badgeVariants = cva(
+	"ml-2 rounded-full px-[6px] text-[0.7rem] font-medium uppercase tracking-wide ring-2",
+	{
+		variants: {
+			color: {
+				neutral: "bg-off-white-900 text-off-white-300 ring-off-white-600",
+				brand: "bg-brand text-background ring-brand-secondary/30",
+			},
+		},
+		defaultVariants: {
+			color: "neutral",
+		},
+	},
+);
+
 type BadgeProps<C extends React.ElementType = "span"> =
-	PolymorphicComponentPropsWithRef<C>;
+	PolymorphicComponentPropsWithRef<C> & VariantProps<typeof badgeVariants>;
 
 type BadgeComponent = <C extends React.ElementType = "span">(
 	props: BadgeProps<C>,
@@ -17,7 +34,7 @@ type BadgeComponent = <C extends React.ElementType = "span">(
 
 export const Badge: BadgeComponent = React.forwardRef(
 	<C extends React.ElementType = "span">(
-		{ children, className, ...props }: BadgeProps<C>,
+		{ children, className, color, ...props }: BadgeProps<C>,
 		ref?: PolymorphicRef<C>,
 	) => {
 		return (
@@ -28,10 +45,7 @@ export const Badge: BadgeComponent = React.forwardRef(
 				ref={ref}
 				inline
 				alignment="center/center"
-				className={cn(
-					"ml-2 rounded-full bg-off-white-900 px-[6px] text-[0.7rem] font-medium uppercase tracking-wide text-off-white-300 ring-2 ring-off-white-600",
-					className,
-				)}
+				className={cn(badgeVariants({ color }), className)}
 				{...props}
 			>
 				{children}

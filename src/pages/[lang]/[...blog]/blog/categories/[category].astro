@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+
+import Aside from "../../_components/aside.astro";
+import LatestPost from "../../_components/latest-post.astro";
+import PostCard from "../../_components/post-card.astro";
+
+import { BorderedContainer } from "~/components/bordered-container";
+import { Grid, Section, Text } from "~/components/ui";
+import Layout from "~/components/ui/layout.astro";
+import { getTranslations } from "~/lib";
+import { sortByDate } from "~/lib/sort";
+
+export const getStaticPaths = async () => {
+	const posts = await getCollection("blog", (bp) => bp.data.draft === false);
+
+	return posts.map((post) => {
+		const lang = post.slug.split("/")[0];
+
+		return {
+			params: { lang, category: `${post.data.category.toLowerCase()}` },
+		};
+	});
+};
+
+const { lang, category } = Astro.params;
+
+const t = getTranslations(lang);
+
+const [latest, ...posts] = await getCollection(
+	"blog",
+	(bp) =>
+		bp.slug.startsWith(`${lang}/`) &&
+		bp.data.category.toLowerCase() === category &&
+		bp.data.draft === false,
+).then(sortByDate);
+---
+
+<Layout>
+	<Section className="mx-8 h-auto py-2 lg:h-auto">
+		<Grid className="grid-cols-1 lg:grid-cols-12">
+			<Aside />
+
+			<Grid className="col-span-8 grid-cols-1 lg:grid-cols-3">
+				{latest && <LatestPost post={latest} />}
+
+				{posts.map((bp) => <PostCard post={bp} />)}
+
+				<BorderedContainer className="col-span-full lg:col-span-1">
+					<Text.H3>{t("blog.more-soon")}<Text.H3 /></Text.H3>
+				</BorderedContainer>
+			</Grid>
+		</Grid>
+	</Section>
+</Layout>

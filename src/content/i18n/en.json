@@ -61,6 +61,7 @@
   "about-us.history.ending.1": "Today we honor our legacy by living up to the motto \"We work like ",
   "about-us.history.ending.2": "\", through hard work and our limitless creativity.",
 
+  "projects.coming-soon": "Coming soon",
   "projects.go-back": "Go back",
   "projects.year": "Year",
   "projects.description": "Description",
@@ -68,6 +69,8 @@
   "projects.minute": "A minute",
   "projects.minutes": "minutes",
   "projects.table-of-contents": "Table of contents",
+
+  "blog.more-soon": "More is coming. Stay tuned!",
 
   "navLink.soon": "Soon",
   "navLink.about": "About",
