@@ -73,9 +73,9 @@ const H3 = ({ className, gradient, align, ...props }: TextProps<"h2">) => {
 	);
 };
 
-const Subtitle = ({ className, gradient, align, ...props }: TextProps<"h4">) => {
+const Subtitle = ({ className, gradient, align, ...props }: TextProps<"p">) => {
 	return (
-		<h4
+		<p
 			className={cn(
 				"font-jetbrains-mono text-sm uppercase tracking-wide text-text-secondary",
 				textVariants({ gradient, align }),

@@ -44,7 +44,8 @@ const href = `/${lang}/blog/${post.slug.slice(3)}`;
 					<Image
 						src={post.data.cover}
 						alt="cover image"
-						class="h-full w-full rounded-md"
+						class="h-auto w-full rounded-md"
+						loading="eager"
 					/>
 				</Center>
 			</Card.Content>
@@ -63,7 +64,7 @@ const href = `/${lang}/blog/${post.slug.slice(3)}`;
 								<Badge color="brand">{t(`categories.${post.data.category.id}`)}</Badge>
 							</div>
 							<div class="pl-2">
-								<Badge color="neutral">{t("blog.latest")}</Badge>
+								<Badge color="brand">{t("blog.latest")}</Badge>
 							</div>
 						</HStack>
 					</HStack>

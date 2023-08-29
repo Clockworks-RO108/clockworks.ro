@@ -13,7 +13,7 @@ export const getStaticPaths = generateStaticPaths;
 const t = getTranslations(Astro.params.lang);
 ---
 
-<Layout title={t("siteInfo.title")}>
+<Layout title={t("siteInfo.title")} description={t("siteInfo.description")}>
 	<Section01 />
 	<Section02 />
 	<Section03 />

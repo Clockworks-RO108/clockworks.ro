@@ -13,7 +13,7 @@ export const getStaticPaths = generateStaticPaths;
 const t = getTranslations(Astro.params.lang);
 ---
 
-<Layout title={t("navLink.about")}>
+<Layout title={t("navLink.about")} description={t("siteInfo.description")}>
 	<HeadSection />
 
 	<DescriptionSection />

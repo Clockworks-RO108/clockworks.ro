@@ -21,7 +21,7 @@ const latest = await getCollection("blog", filterBlog(lang))
 	.then((x) => x[0]);
 ---
 
-<Layout title={t("navLink.blog")}>
+<Layout title={t("navLink.blog")} description={t("siteInfo.description")}>
 	<Section className="mx-8 h-auto py-2 lg:h-auto">
 		<Grid className="grid-cols-1 lg:grid-cols-12">
 			<Aside />
