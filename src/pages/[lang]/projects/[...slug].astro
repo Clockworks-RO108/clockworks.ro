@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 
-import Aside from "../_components/aside.astro";
+import Aside from "./_components/aside.astro";
 
 import { BorderedContainer } from "~/components/bordered-container";
 import { components, TableOfContents } from "~/components/mdx";
@@ -69,5 +69,4 @@ const { Content, remarkPluginFrontmatter, headings } = await project.render();
 			</div>
 		</Grid>
 	</Section>
-</Layout>
-../../../../components/mdx/table-of-contents
+</Layout>../../../../components/mdx/table-of-contents

@@ -6,12 +6,14 @@ import HistorySection from "./_history-section.astro";
 
 import DepartmentsSection from "~/components/departments/section.astro";
 import Layout from "~/components/ui/layout.astro";
-import { generateStaticPaths } from "~/lib";
+import { generateStaticPaths, getTranslations } from "~/lib";
 
 export const getStaticPaths = generateStaticPaths;
+
+const t = getTranslations(Astro.params.lang);
 ---
 
-<Layout>
+<Layout title={t("navLink.about")}>
 	<HeadSection />
 
 	<DescriptionSection />

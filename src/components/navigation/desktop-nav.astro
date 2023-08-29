@@ -3,9 +3,9 @@ import { Globe } from "lucide-react";
 
 import Logo from "~/components/logo.astro";
 import { Flex, Button, Link, HStack } from "~/components/ui";
-import { navLinks, getTranslations } from "~/lib";
+import { navLinks, getTranslations, toLocale } from "~/lib";
 
-const lang = Astro.params.lang;
+const lang = toLocale(Astro.params.lang);
 const locale = lang === "en" ? "ro" : "en";
 const slug = Astro.url.pathname.slice(3);
 

@@ -2,7 +2,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { Flex, Link } from "~/components/ui";
-import { siteInfo } from "~/lib";
+import { siteInfo, toLocale } from "~/lib";
 
 const logoVariants = cva(
 	" bg-dark-blue-900 ring-1 ring-border transition-colors hover:bg-dark-blue-700",
@@ -34,7 +34,7 @@ const iconVariants = cva("aspect-square rounded-sm bg-brand", {
 export type Props = Partial<VariantProps<typeof logoVariants>>;
 const { variant } = Astro.props;
 
-const locale = Astro.params.lang;
+const locale = toLocale(Astro.params.lang);
 ---
 
 <Flex

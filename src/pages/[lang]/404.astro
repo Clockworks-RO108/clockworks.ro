@@ -1,0 +1,67 @@
+---
+import "~/styles/globals.css";
+
+// Font imports
+import "@fontsource/dm-mono/400.css";
+import "@fontsource/dm-mono/500.css";
+import "@fontsource-variable/jetbrains-mono";
+import "@fontsource-variable/inter";
+
+import Head from "~/components/head.astro";
+import Logo from "~/components/logo.astro";
+import { Button, Flex, Link, Section, Text, VStack } from "~/components/ui";
+import { generateStaticPaths, getTranslations, navLinks, toLocale } from "~/lib";
+
+export const getStaticPaths = generateStaticPaths;
+
+const lang = toLocale(Astro.params.lang);
+const t = getTranslations(lang);
+
+const links = [{ href: "", label: "home.title" } as const, ...navLinks];
+---
+
+<!DOCTYPE html>
+<html
+	lang={lang}
+	dir="auto"
+	class="scroll-smooth bg-background font-dm-mono text-foreground [color-scheme:dark] [word-break:break-word]"
+>
+	<Head title="404" />
+
+	<body class="relative">
+		<header class="sticky inset-0 z-20">
+			<div
+				class="bg-gradient-to-b from-background to-transparent px-6 pb-4 pt-6 lg:px-16 lg:pt-8 lg:backdrop-blur-md"
+			>
+				<Logo />
+			</div>
+		</header>
+
+		<main class="z-10">
+			<Section>
+				<VStack alignment="center/center" className="gap-4">
+					<Text.H2>Ne pare rău, acea pagină nu a putut fi găsită.</Text.H2>
+					<Text.Small>
+						Pagina solicitată fie nu există, fie nu aveți acces la ea.
+					</Text.Small>
+
+					<Flex as="nav" alignment="center/around" stretch="width">
+						{
+							links.map(({ href, label }) => (
+								<Button
+									as={Link.Nav}
+									href={`/${lang}${href}`}
+									variant="ghost"
+									size="small"
+									className="transition-all hover:border-border hover:bg-dark-blue-700"
+								>
+									{t(label)}
+								</Button>
+							))
+						}
+					</Flex>
+				</VStack>
+			</Section>
+		</main>
+	</body>
+</html>

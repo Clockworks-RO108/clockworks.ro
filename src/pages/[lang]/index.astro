@@ -1,0 +1,9 @@
+---
+import IndexRoute from "./_index/index.astro";
+
+import { generateStaticPaths } from "~/lib";
+
+export const getStaticPaths = generateStaticPaths;
+---
+
+<IndexRoute />

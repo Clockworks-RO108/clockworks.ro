@@ -33,9 +33,9 @@ const twitter = {
 	image,
 	locale,
 	canonicalURL,
-	type: "website",
+	card: "summary_large_image",
 	...Astro.props.twitter,
-} satisfies OpenGraph;
+} satisfies Twitter;
 
 const ensureTrailingSlash = (url: string | URL) =>
 	url.toString().replace(/\/$/, "") + "/";

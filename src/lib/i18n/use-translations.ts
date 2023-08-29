@@ -1,7 +1,6 @@
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
-
 import { checkTranslations } from "./check-translations";
 import { locales } from "./locales";
 import type { Locale } from "./locales";
@@ -20,8 +19,7 @@ try {
 	translations = Object.fromEntries(
 		collection.map((t) => [t.id, t.data] as const),
 	) as Record<Locale, CollectionEntry<"i18n">["data"]>;
-} catch { }
-
+} catch {}
 
 export const getTranslations = (lang: string | undefined) => {
 	const locale = isLocale(lang) ? lang : "ro";
