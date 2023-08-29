@@ -1,0 +1,299 @@
+---
+draft: false
+
+name: "Test doc #1"
+year: 2023
+
+description: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus sed asperiores magnam at delectus sunt aut doloribus provident porro? Voluptatibus unde atque necessitatibus dolores possimus, neque placeat rem? Ad, nostrum.
+---
+
+import img1 from "../images/img1.png";
+
+import { Image } from "~/components/mdx";
+
+**Note:** This document is itself written using Markdown; you
+can [see the source for it by adding '.text' to the URL](/projects/markdown/syntax.text).
+
+---
+
+## Prezentare generală
+
+### Filosofie
+
+Markdown se dorește să fie cât se poate de ușor de citit și de scris.
+
+<Image img={img1} alt="Ceva scris dedesupt sa explice imaginea" />
+
+Cu toate acestea, lizibilitatea este accentuată mai presus de orice. Un format Markdown
+documentul ar trebui să fie publicat așa cum este, ca text simplu, fără a căuta
+ca și cum ar fi fost marcat cu etichete sau instrucțiuni de formatare. In timp ce
+Sintaxa lui Markdown a fost influențată de mai multe text-to-HTML existente
+filtre -- inclusiv [Setext](http://docutils.sourceforge.net/mirror/setext.html), [atx](http://www.aaronsw.com/2002/atx/), [Textile](http ://textism.com/tools/textile/), [reStructuredText](http://docutils.sourceforge.net/rst.html),
+[Grutatext](http://www.triptico.com/software/grutatxt.html) și [EtText](http://ettext.taint.org/doc/) -- cea mai mare sursă unică de
+inspirația pentru sintaxa lui Markdown este formatul de e-mail cu text simplu.
+
+## Elemente de bloc
+
+### Paragrafe și întreruperi de rând
+
+Un paragraf este pur și simplu una sau mai multe rânduri consecutive de text, separate
+printr-una sau mai multe rânduri goale. (O linie goală este orice linie care arată ca a
+linie goală -- este luată în considerare o linie care nu conține decât spații sau file
+gol.) Paragrafele normale nu ar trebui să fie indentate cu spații sau file.
+
+Implicația regulii „una sau mai multe rânduri consecutive de text” este
+că Markdown acceptă paragrafe de text „închegate”. Acest lucru diferă
+semnificativ față de majoritatea celorlalte formatatoare de text în HTML (inclusiv Movable
+Tastați opțiunea „Conversie întreruperi de linie” care traduce fiecare întrerupere de linie
+caracter dintr-un paragraf într-o etichetă „<br />”.
+
+Când _do_ doriți să inserați o etichetă de pauză `<br />` folosind Markdown, dvs
+terminați o linie cu două sau mai multe spații, apoi tastați return.
+
+### Anteturi
+
+Markdown acceptă două stiluri de antete, [Setext] [1] și [atx] [2].
+
+Opțional, puteți „închide” anteturile în stil atx. Acest lucru este pur
+cosmetice -- o poți folosi dacă crezi că arată mai bine. The
+hashe-urile de închidere nici măcar nu trebuie să se potrivească cu numărul de hashe-uri
+folosit pentru a deschide antetul. (Numărul de hashe-uri de deschidere
+determină nivelul antetului.)
+
+### Citate blocate
+
+Markdown folosește caractere `>` în stil e-mail pentru ghilimele. Daca esti
+familiarizat cu citarea pasajelor de text într-un mesaj de e-mail, apoi tu
+știți cum să creați un blockquote în Markdown. Arată cel mai bine dacă ești greu
+înfășurați textul și puneți un `>` înainte de fiecare rând:
+
+> Acesta este un blockquote cu două paragrafe. Lorem ipsum dolor sit amet,
+> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+>
+> Donec sit amet nisl. Aliquam sempre ipsum sit amet velit. Suspendisse
+> id sem consectetuer libero luctus adipiscing.
+
+Markdown vă permite să fiți leneși și să puneți doar `>` înainte de primul
+rândul unui paragraf complet:
+
+> Acesta este un blockquote cu două paragrafe. Lorem ipsum dolor sit amet,
+> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+
+> Donec sit amet nisl. Aliquam sempre ipsum sit amet velit. Suspendisse
+> id sem consectetuer libero luctus adipiscing.
+
+Citatele bloc pot fi imbricate (adică un citat bloc-în-un-blockquote) de
+adăugarea unor niveluri suplimentare de `>`:
+
+> Acesta este primul nivel de citare.
+>
+> > Acesta este blockquote imbricat.
+>
+> Înapoi la primul nivel.
+
+Citatele bloc pot conține alte elemente Markdown, inclusiv anteturi, liste,
+și blocuri de cod:
+
+> ## Acesta este un antet.
+>
+> 1. Acesta este primul element din listă.
+> 2. Acesta este al doilea element din listă.
+>
+> Iată un exemplu de cod:
+>
+> ```
+>   return shell_exec("echo $input | $markdown_script");
+> ```
+
+Orice editor de text decent ar trebui să faciliteze citarea în stilul e-mailului. Pentru
+de exemplu, cu BBEdit, puteți face o selecție și alegeți Crește
+Nivel citat din meniul Text.
+
+### Liste
+
+Markdown acceptă liste ordonate (numerotate) și neordonate (marcate).
+
+Listele neordonate folosesc asteriscuri, plusuri și cratime -- interschimbabile
+-- ca marcatori de listă:
+
+- Roșu
+- Verde
+- Albastru
+
+este echivalent cu:
+
+- Roșu
+- Verde
+- Albastru
+
+și:
+
+- Roșu
+- Verde
+- Albastru
+
+Listele ordonate folosesc numere urmate de puncte:
+
+1. Pasăre
+2. McHale
+3. Parohie
+
+Este important să rețineți că numerele reale pe care le utilizați pentru a marca
+lista nu au niciun efect asupra rezultatului HTML pe care Markdown o produce. HTML-ul
+Markdown produce din lista de mai sus este:
+
+Dacă ați scris lista în Markdown astfel:
+
+1. Pasăre
+1. McHale
+1. Parohie
+
+sau chiar:
+
+3. Pasăre
+1. McHale
+1. Parohie
+
+veți obține exact aceeași ieșire HTML. Ideea este, dacă vrei,
+puteți folosi numere ordinale în listele dvs. ordonate Markdown, astfel încât
+numerele din sursa dvs. se potrivesc cu numerele din HTML publicat.
+Dar dacă vrei să fii leneș, nu trebuie.
+
+Pentru ca listele să arate frumos, puteți împacheta articolele cu indentări suspendate:
+
+- Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+  Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+  viverra nec, fringilla in, laoreet vitae, risus.
+- Donec sit amet nisl. Aliquam sempre ipsum sit amet velit.
+  Suspendesse id sem consectetuer libero luctus adipiscing.
+
+Dar dacă vrei să fii leneș, nu trebuie să:
+
+- Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+  Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+  viverra nec, fringilla in, laoreet vitae, risus.
+- Donec sit amet nisl. Aliquam sempre ipsum sit amet velit.
+  Suspendesse id sem consectetuer libero luctus adipiscing.
+
+Elementele din listă pot consta din mai multe paragrafe. Fiecare ulterior
+paragraful dintr-un articol din listă trebuie să fie indentat cu 4 spații
+sau o filă:
+
+1. Acesta este un articol din listă cu două paragrafe. Lorem ipsum dolor
+   sit amet, consectetuer adipiscing elit. Aliquam hendrerit
+   mi posere lectus.
+
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet
+vitae, risus. Donec sit amet nisl. Aliquam sempre ipsum
+sit amet velit.
+
+2. Suspendisse id sem consectetuer libero luctus adipiscing.
+
+Arată bine dacă indentați fiecare rând din următorul
+paragrafe, dar din nou aici, Markdown vă va permite să fiți
+leneş:
+
+- Acesta este un articol din listă cu două paragrafe.
+
+  Acesta este al doilea paragraf din articolul din listă. Tu esti
+
+este necesar doar să indentați prima linie. Lorem ipsum dolor
+sit amet, consectetuer adipiscing elit.
+
+- Un alt articol din aceeași listă.
+
+Pentru a pune un blockquote într-un element de listă, blockquote-ul `>`
+delimitatorii trebuie să fie indentați:
+
+- Un articol din listă cu un ghilitar:
+
+> Acesta este un blockquote
+> în interiorul unui element de listă.
+
+Pentru a pune un bloc de cod într-un articol din listă, este necesar blocul de cod
+să fie indentat de _două ori_ -- 8 spații sau două file:
+
+- Un articol din listă cu un bloc de cod:
+
+  \<\< codul ajunge aici >>
+
+### Blocuri de cod
+
+Blocurile de cod preformatate sunt folosite pentru a scrie despre programare sau
+cod sursă de marcare. În loc să formeze paragrafe normale, rândurile
+ale unui bloc de cod sunt interpretate literal. Markdown împachetează un bloc de cod
+în ambele etichete `<pre>` și `<code>`.
+
+Pentru a produce un bloc de cod în Markdown, pur și simplu indentați fiecare linie a
+blocați cu cel puțin 4 spații sau 1 tab.
+
+Acesta este un paragraf normal:
+
+Acesta este un bloc de cod.
+
+Iată un exemplu de AppleScript:
+
+spune aplicației „Foo”
+bip
+sfârşitul spune
+
+Un bloc de cod continuă până când ajunge la o linie care nu este indentată
+(sau sfârșitul articolului).
+
+Într-un bloc de cod, ampersand (`&`) și paranteze unghiulare (`<` și `>`)
+sunt convertite automat în entități HTML. Acest lucru îl face foarte
+ușor de inclus exemplu de cod sursă HTML folosind Markdown -- doar lipiți
+îl și indentează, iar Markdown se va ocupa de problema codificării
+ampersand și paranteze unghiulare. De exemplu, aceasta:
+
+<div>© 2004 Foo Corporation</div>
+
+Sintaxa obișnuită Markdown nu este procesată în blocurile de cod. De exemplu.,
+asteriscurile sunt doar asteriscuri literale dintr-un bloc de cod. Acest lucru înseamnă
+de asemenea, este ușor să utilizați Markdown pentru a scrie despre propria sintaxa Markdown.
+
+```ts
+export const foo = (): șir => `fighters`;
+```
+
+## Elemente de întindere
+
+### Link-uri
+
+Markdown acceptă două stiluri de link-uri: _inline_ și _reference_.
+
+În ambele stiluri, textul linkului este delimitat de [paranteze pătrate].
+
+Pentru a crea o legătură inline, utilizați imediat un set de paranteze obișnuite
+după paranteza pătrată de închidere a textului linkului. Între paranteze,
+puneți adresa URL unde doriți să direcționeze linkul, împreună cu un _opțional_
+titlu pentru link, înconjurat între ghilimele. De exemplu:
+
+Acesta este [un exemplu](http://example.com/) link inline.
+
+[Acest link](http://example.net/) nu are atribut titlu.
+
+### Accentuarea
+
+Markdown tratează asteriscurile (`*`) și liniuțele de subliniere (`_`) ca indicatori ai
+accent. Textul împachetat cu un `*` sau `_` va fi împachetat cu un
+Eticheta HTML `<em>`; `*` sau `_` duble vor fi împachetate cu un HTML
+Eticheta `<strong>`. De exemplu, această intrare:
+
+_asteriscuri simple_
+
+_liniere de subliniere simple_
+
+**asteriscuri duble**
+
+**subliniere duble**
+
+### Cod
+
+Pentru a indica un interval de cod, împachetați-l cu ghilimele backtick (`` ` ``).
+Spre deosebire de un bloc de cod preformatat, un interval de cod indică codul din a
+paragraf normal. De exemplu:
+
+Utilizați funcția `printf()`.
