@@ -21,6 +21,8 @@
   "index.section-3.text": "All the activities and competitions we participated in help us to test our acquired skills every time, namely: building the robot, designing it and promoting the team and the built robot.Beyond the work of building robots, Clockworks is a true family where we support and try to learn from each other.",
   "index.section-3.cta-button": "Find more about the team",
 
+  "index.section-4.latest-article": "Latest article",
+
   "index.departments.title": "Departments",
   "index.departments.subtitle": "Our club contains 3 departaments",
   "index.departments.mechanics.title": "Mechanical and design departament",
@@ -70,7 +72,16 @@
   "projects.minutes": "minutes",
   "projects.table-of-contents": "Table of contents",
 
+  "blog.subtitle": "Welcome to the Clockworks blog!",
+  "blog.description.1": "Find out what we are cooking, what interests us and the",
+  "blog.description.2": "cool stuff",
+  "blog.description.3": "that we do",
+  "blog.latest": "latest",
+  "blog.read-more": "Read more",
   "blog.more-soon": "More is coming. Stay tuned!",
+  "blog.categories.label": "categories",
+  "categories.tech": "tech",
+  "categories.latest-news": "latest news",
 
   "navLink.soon": "Soon",
   "navLink.about": "About",

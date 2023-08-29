@@ -1,25 +1,40 @@
 ---
+import { getCollection } from "astro:content";
 import { ArrowRight } from "lucide-react";
 
 import { Button, Link, Text } from "~/components/ui";
+import { getTranslations } from "~/lib";
+import { sortByDate } from "~/lib/sort";
 
 const lang = Astro.params.lang;
+const t = getTranslations(lang);
+
+const latestPost = await getCollection("blog", (bp) => bp.data.draft === false)
+	.then(sortByDate)
+	.then((x) => x[0]);
+
+const href = `/${lang}/blog/${latestPost?.slug.slice(3) ?? ""}`;
 ---
 
-<!-- TODO use latest blog post -->
-<Button
-	as={Link.Nav}
-	href={`${lang}/blog/hello-world`}
-	variant="darker"
-	size="wide"
-	rounded
-	className="group gap-x-3 transition-all duration-300 hover:scale-105"
->
-	<!-- TODO translate -->
-	<Text.Subtitle align="center">Blog</Text.Subtitle>
+{
+	latestPost && (
+		<Button
+			as={Link.Nav}
+			href={href}
+			variant="darker"
+			size="wide"
+			rounded
+			className="group gap-x-3 transition-all duration-300 hover:scale-105"
+		>
+			<Text.Subtitle align="center">{t("navLink.blog")}</Text.Subtitle>
 
-	<span class="text-base text-dark-blue-200">•</span>
+			<span class="text-base text-dark-blue-200">•</span>
 
-	<Text.P>Hello world</Text.P>
-	<ArrowRight className="transition-all group-hover:translate-x-3" />
-</Button>
+			<div class="max-w-[30ch] lg:max-w-[60ch]">
+				<div class="truncate text-sm">{latestPost.data.title}</div>
+			</div>
+
+			<ArrowRight className="transition-all group-hover:translate-x-3" />
+		</Button>
+	)
+}

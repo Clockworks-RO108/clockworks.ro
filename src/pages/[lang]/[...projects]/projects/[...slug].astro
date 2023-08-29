@@ -2,10 +2,9 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 
 import Aside from "../_components/aside.astro";
-import { TableOfContents } from "../_components/table-of-contents";
 
 import { BorderedContainer } from "~/components/bordered-container";
-import { components } from "~/components/mdx";
+import { components, TableOfContents } from "~/components/mdx";
 import { Grid, Section } from "~/components/ui";
 import Layout from "~/components/ui/layout.astro";
 import { getTranslations } from "~/lib";
@@ -71,3 +70,4 @@ const { Content, remarkPluginFrontmatter, headings } = await project.render();
 		</Grid>
 	</Section>
 </Layout>
+../../../../components/mdx/table-of-contents

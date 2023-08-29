@@ -21,6 +21,8 @@
   "index.section-3.text": "Toate activitățile și concursurile la care am participat ne ajută să ne testăm de fiecare dată abilitățile dobândite și anume: construirea robotului, proiectarea acestuia și promovarea per total a echipei.Dincolo de munca depusă în construirea roboților, Clockworks reprezintă o adevărată familie în care ne susținem reciproc și încercam să învățam unii de la ceilalți.",
   "index.section-3.cta-button": "Descoperă echipa",
 
+  "index.section-4.latest-article": "Cel mai recent articol",
+
   "index.departments.title": "Departamente",
   "index.departments.subtitle": "Echipa noastră se bazează pe 3 departamente principale",
   "index.departments.mechanics.title": "Departamentul de mecanica si design",
@@ -70,7 +72,16 @@
   "projects.minutes": "minute",
   "projects.table-of-contents": "Cuprins",
 
+  "blog.subtitle": "Bun venit pe blogul Clockworks!",
+  "blog.description.1": "Aflați mai multe despre ce pregătim, despre ce ne interesează și despre",
+  "blog.description.2": "lucrurile cool",
+  "blog.description.3": "pe care le facem",
+  "blog.latest": "cel mai recent",
+  "blog.read-more": "Citeşte mai mult",
   "blog.more-soon": "Urmează mai multe. Rămâneţi aproape!",
+  "blog.categories.label": "categorii",
+  "categories.tech": "tehnologie",
+  "categories.latest-news": "ultimele știri",
 
   "navLink.soon": "Curand",
   "navLink.about": "Despre noi",

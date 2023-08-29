@@ -12,3 +12,4 @@ export const components = {
 };
 
 export { default as Image } from "./image.astro";
+export * from "./table-of-contents";

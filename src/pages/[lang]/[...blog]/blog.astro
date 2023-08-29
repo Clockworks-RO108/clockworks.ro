@@ -2,24 +2,23 @@
 import { getCollection } from "astro:content";
 
 import Aside from "./_components/aside.astro";
+import { BlogFeed } from "./_components/feed";
 import LatestPost from "./_components/latest-post.astro";
-import PostCard from "./_components/post-card.astro";
 
-import { BorderedContainer } from "~/components/bordered-container";
-import { Center, Grid, Section, Text } from "~/components/ui";
+import { Grid, Section } from "~/components/ui";
 import Layout from "~/components/ui/layout.astro";
-import { generateStaticPaths, getTranslations } from "~/lib";
+import { generateStaticPaths, getTranslations, toLocale } from "~/lib";
+import { filterBlog } from "~/lib/filters";
 import { sortByDate } from "~/lib/sort";
 
 export const getStaticPaths = generateStaticPaths;
 
-const lang = Astro.params.lang;
+const lang = toLocale(Astro.params.lang);
 const t = getTranslations(lang);
 
-const [latest, ...blogPosts] = await getCollection(
-	"blog",
-	(bp) => bp.slug.startsWith(`${lang}/`) && bp.data.draft === false,
-).then(sortByDate);
+const latest = await getCollection("blog", filterBlog(lang))
+	.then(sortByDate)
+	.then((x) => x[0]);
 ---
 
 <Layout title={t("navLink.blog")}>
@@ -30,13 +29,7 @@ const [latest, ...blogPosts] = await getCollection(
 			<Grid className="col-span-8 grid-cols-1 lg:grid-cols-3">
 				{latest && <LatestPost post={latest} />}
 
-				{blogPosts.map((bp) => <PostCard post={bp} />)}
-
-				<BorderedContainer className="col-span-full lg:col-span-1">
-					<Center stretch="all">
-						<Text.H3 className="text-center">{t("blog.more-soon")}</Text.H3>
-					</Center>
-				</BorderedContainer>
+				<BlogFeed client:only lang={lang} moreSoonLabel={t("blog.more-soon")} />
 			</Grid>
 		</Grid>
 	</Section>

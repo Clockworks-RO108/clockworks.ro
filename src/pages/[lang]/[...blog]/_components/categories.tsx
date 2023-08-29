@@ -6,11 +6,13 @@ import { Collapsible, Link, Text, VStack, HStack, Separator } from "~/components
 import { type Locale, cn } from "~/lib";
 
 export const Categories = ({
-	categories,
 	locale,
+	categories,
+	label,
 }: {
-	categories: string[];
 	locale: Locale;
+	categories: Array<{ slug: string; label: string }>;
+	label: string;
 }) => {
 	const [open, setOpen] = React.useState(true);
 
@@ -20,7 +22,7 @@ export const Categories = ({
 				<VStack className="sticky gap-1">
 					<Collapsible.Trigger className="w-full">
 						<HStack alignment="center/between">
-							<Text.Subtitle>Categories</Text.Subtitle>
+							<Text.Subtitle>{label}</Text.Subtitle>
 
 							<ChevronUp
 								className={cn(
@@ -37,12 +39,13 @@ export const Categories = ({
 						<VStack className="gap-2">
 							{categories.map((c) => (
 								<Link.Nav
-									href={`/${locale}/blog/categories/${c.toLowerCase()}`}
+									key={c.slug}
+									href={`/${locale}/blog/categories/${c.slug}`}
 									className="w-full"
 								>
 									<HStack alignment="center/start" className="gap-4 uppercase">
 										<span className="text-brand">&gt;</span>
-										<Text.Small>{c}</Text.Small>
+										<Text.Small>{c.label}</Text.Small>
 									</HStack>
 
 									<Separator className="mt-2" />

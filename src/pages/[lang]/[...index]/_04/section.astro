@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import { ArrowRight } from "lucide-react";
 
 import {
@@ -11,6 +12,16 @@ import {
 	Text,
 	VStack,
 } from "~/components/ui";
+import { getTranslations } from "~/lib";
+import { sortByDate } from "~/lib/sort";
+
+const latestPost = await getCollection("blog", (bp) => bp.data.draft === false)
+	.then(sortByDate)
+	.then((x) => x[0]);
+
+if (!latestPost) throw new Error("unreachable");
+
+const t = getTranslations(Astro.params.lang);
 ---
 
 <SectionLayout className="relative mt-32 h-auto">
@@ -64,20 +75,24 @@ import {
 			className="col-span-full row-span-2 lg:col-span-1"
 		>
 			<!-- TODO get latest blog post -->
-			<Card.Header>latest blog article</Card.Header>
+			<Card.Header>
+				<Text.H3>{t("index.section-4.latest-article")}</Text.H3>
+			</Card.Header>
 			<Card.Content
 				variant="alternative"
 				className="aspect-square bg-gradient-to-b from-dark-blue-800 to-background"
 			>
 				<HStack stretch="all" as={Link.Nav} href="/blog/latest" alignment="start/end">
-					<HStack stretch="width" alignment="center/between" className="p-4">
+					<VStack stretch="all" alignment="start/between" className="p-4">
 						<VStack>
-							<p class="text-lg text-off-white-200">title</p>
-							<p class="text-sm text-text-secondary">description</p>
+							<Text.H3>{latestPost.data.title}</Text.H3>
+							<Text.Small className="mt-4">
+								{latestPost.data.description}
+							</Text.Small>
 						</VStack>
 
 						<ArrowRight />
-					</HStack>
+					</VStack>
 				</HStack>
 			</Card.Content>
 		</Card.Root>

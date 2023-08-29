@@ -2,38 +2,34 @@
 import { getCollection } from "astro:content";
 
 import Aside from "../../_components/aside.astro";
+import { CategoryFeed } from "../../_components/feed";
 import LatestPost from "../../_components/latest-post.astro";
-import PostCard from "../../_components/post-card.astro";
 
-import { BorderedContainer } from "~/components/bordered-container";
-import { Grid, Section, Text } from "~/components/ui";
+import { Grid, Section } from "~/components/ui";
 import Layout from "~/components/ui/layout.astro";
-import { getTranslations } from "~/lib";
+import { getTranslations, locales } from "~/lib";
+import { filterByCategory } from "~/lib/filters";
 import { sortByDate } from "~/lib/sort";
 
 export const getStaticPaths = async () => {
-	const posts = await getCollection("blog", (bp) => bp.data.draft === false);
+	const categories = await getCollection("categories");
 
-	return posts.map((post) => {
-		const lang = post.slug.split("/")[0];
-
-		return {
-			params: { lang, category: `${post.data.category.toLowerCase()}` },
-		};
-	});
+	return locales.map((lang) =>
+		categories.map((c) => ({
+			params: { lang, category: c.id },
+		})),
+	);
 };
 
 const { lang, category } = Astro.params;
 
+if (!lang || !category) throw new Error("Unreachable");
+
 const t = getTranslations(lang);
 
-const [latest, ...posts] = await getCollection(
-	"blog",
-	(bp) =>
-		bp.slug.startsWith(`${lang}/`) &&
-		bp.data.category.toLowerCase() === category &&
-		bp.data.draft === false,
-).then(sortByDate);
+const latest = await getCollection("blog", filterByCategory(lang, category))
+	.then(sortByDate)
+	.then((x) => x[0]);
 ---
 
 <Layout>
@@ -44,11 +40,12 @@ const [latest, ...posts] = await getCollection(
 			<Grid className="col-span-8 grid-cols-1 lg:grid-cols-3">
 				{latest && <LatestPost post={latest} />}
 
-				{posts.map((bp) => <PostCard post={bp} />)}
-
-				<BorderedContainer className="col-span-full lg:col-span-1">
-					<Text.H3>{t("blog.more-soon")}<Text.H3 /></Text.H3>
-				</BorderedContainer>
+				<CategoryFeed
+					client:load
+					lang={lang}
+					category={category}
+					moreSoonLabel={t("blog.more-soon")}
+				/>
 			</Grid>
 		</Grid>
 	</Section>

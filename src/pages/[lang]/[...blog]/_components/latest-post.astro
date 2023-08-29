@@ -1,8 +1,20 @@
 ---
+import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 
 import { BorderedContainer } from "~/components/bordered-container";
-import { Badge, Button, Grid, HStack, Link, Text, VStack } from "~/components/ui";
+import {
+	Badge,
+	Button,
+	Card,
+	Center,
+	Grid,
+	HStack,
+	Link,
+	Text,
+	VStack,
+} from "~/components/ui";
+import { getTranslations } from "~/lib";
 
 export type Props = {
 	post: CollectionEntry<"blog">;
@@ -13,16 +25,29 @@ const { post } = Astro.props;
 const date = new Intl.DateTimeFormat("en-GB").format(post.data.publishedDate);
 
 const lang = Astro.params.lang;
+const t = getTranslations(lang);
 
 const href = `/${lang}/blog/${post.slug.slice(3)}`;
 ---
 
-<Link.Nav href={href} className="col-[1/4]">
+<Link.Nav href={href} className="col-[1/4] lg:max-h-[450px]">
 	<BorderedContainer className="flex h-full flex-col gap-4">
 		<Grid stretch="all" className="grid-cols-1 gap-8 lg:grid-cols-2">
-			<div class="h-full w-full rounded-md bg-red-50">
-				<!-- IMAGE -->
-			</div>
+			<Card.Content
+				variant="alternative"
+				className="relative grid aspect-square h-full w-full place-content-center bg-gradient-to-b from-dark-blue-800 to-background"
+			>
+				<Center
+					stretch="all"
+					className="pointer-events-none absolute inset-0 select-none bg-cover bg-clip-content bg-center bg-no-repeat bg-origin-padding"
+				>
+					<Image
+						src={post.data.cover}
+						alt="cover image"
+						class="h-full w-full rounded-md"
+					/>
+				</Center>
+			</Card.Content>
 
 			<VStack stretch="all" alignment="start/around">
 				<VStack className="gap-2">
@@ -35,10 +60,10 @@ const href = `/${lang}/blog/${post.slug.slice(3)}`;
 							className="[&>*+*]:before:pl-2 [&>*+*]:before:text-foreground [&>*+*]:before:content-['/']"
 						>
 							<div>
-								<Badge color="brand">{post.data.category}</Badge>
+								<Badge color="brand">{t(`categories.${post.data.category.id}`)}</Badge>
 							</div>
 							<div class="pl-2">
-								<Badge color="neutral">latest</Badge>
+								<Badge color="neutral">{t("blog.latest")}</Badge>
 							</div>
 						</HStack>
 					</HStack>
@@ -49,7 +74,7 @@ const href = `/${lang}/blog/${post.slug.slice(3)}`;
 				</Text.P>
 
 				<div>
-					<Button variant="ghost" className="underline">Read more</Button>
+					<Button variant="ghost" className="underline">{t("blog.read-more")}</Button>
 				</div>
 			</VStack>
 		</Grid>

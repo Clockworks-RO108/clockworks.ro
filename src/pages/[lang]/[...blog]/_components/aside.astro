@@ -5,35 +5,38 @@ import { Categories } from "./categories";
 
 import { BorderedContainer } from "~/components/bordered-container";
 import { Text } from "~/components/ui";
-import { toLocale } from "~/lib";
+import { getTranslations, toLocale } from "~/lib";
 
 const locale = toLocale(Astro.params.lang);
+const t = getTranslations(locale);
 
-const topCategories = await getCollection(
-	"blog",
-	(bp) => bp.slug.startsWith(`${locale}/`) && bp.data.draft === false,
-)
-	.then((bp) => bp.slice(0, 10).map((bp) => bp.data.category))
-	// gets only unique items
-	.then((x) => [...new Set(x)]);
+const categories = (await getCollection("categories")).map((c) => ({
+	slug: c.id,
+	label: t(`categories.${c.id}`),
+}));
 ---
 
 <aside class="col-span-4">
 	<BorderedContainer className="px-8 ring-1 ring-border lg:h-screen lg:py-16">
-		<Text.H1 className="mb-8">Blog</Text.H1>
+		<Text.H1 className="mb-8">{t("navLink.blog")}</Text.H1>
 
 		<Text.Small className="text-text-secondary">
-			Welcome to the Clockworks blog!
+			{t("blog.subtitle")}
 		</Text.Small>
 
-		<Text.Small className="text-text-secondary">
-			Find out what we are cooking, what is interesting us and the -~=*<em
-				class="text-brand">cool stuff</em
-			>*=~- that we do
+		<Text.Small className="text-text-secondary [text-wrap:wrap]">
+			{t("blog.description.1")} -~=*
+			<em class="text-brand">{t("blog.description.2")}</em>
+			*=~- {t("blog.description.3")}
 		</Text.Small>
 
 		<div class="mt-16">
-			<Categories client:idle categories={topCategories} locale={locale} />
+			<Categories
+				client:idle
+				locale={locale}
+				categories={categories}
+				label={t("blog.categories.label")}
+			/>
 		</div>
 	</BorderedContainer>
 </aside>
