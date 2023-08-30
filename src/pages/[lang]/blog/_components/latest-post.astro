@@ -46,22 +46,33 @@ const href = `/${lang}/blog/${post.slug.slice(3)}`;
 						alt="cover image"
 						class="h-auto w-full rounded-md"
 						loading="eager"
+						transition:persist={`blog-image__${post.slug}`}
 					/>
 				</Center>
 			</Card.Content>
 
 			<VStack stretch="all" alignment="start/around">
 				<VStack className="gap-2">
-					<time class="text-sm text-text-secondary" datetime={date}>{date}</time>
+					<time
+						class="text-sm text-text-secondary"
+						datetime={date}
+						transition:name={`blog-date__${post.slug}`}
+					>
+						{date}
+					</time>
 					<HStack alignment="center/between" className="mb-2 max-w-fit gap-8">
-						<Text.H2>{post.data.title}</Text.H2>
+						<Text.H2 transition:name={`blog-title__${post.slug}`}>
+							{post.data.title}
+						</Text.H2>
 
 						<HStack
 							alignment="center/between"
 							className="[&>*+*]:before:pl-2 [&>*+*]:before:text-foreground [&>*+*]:before:content-['/']"
 						>
 							<div>
-								<Badge color="brand">{t(`categories.${post.data.category.id}`)}</Badge>
+								<Badge color="brand" transition:name={`blog-badge__${post.slug}`}>
+									{t(`categories.${post.data.category.id}`)}
+								</Badge>
 							</div>
 							<div class="pl-2">
 								<Badge color="brand">{t("blog.latest")}</Badge>

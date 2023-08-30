@@ -12,14 +12,25 @@ export const PostCard = ({ post }: { post: CollectionEntry<"blog"> }) => {
 
 	const href = `/${lang}/blog/${slug}`;
 
+	const viewTransitionId = post.slug.replace(/\//g, "_");
+
 	return (
 		<Link.Nav href={href} className="col-span-full h-full lg:col-span-1">
 			<BorderedContainer className="h-full">
-				<time className="mb-2 text-sm text-text-secondary" dateTime={date}>
+				<time
+					className="mb-2 text-sm text-text-secondary"
+					style={{ viewTransitionName: `blog-date__${viewTransitionId}` }}
+					dateTime={date}
+				>
 					{date}
 				</time>
 
-				<Text.H3 className="mb-4 font-jetbrains-mono">{post.data.title}</Text.H3>
+				<Text.H3
+					className="mb-4 font-jetbrains-mono"
+					style={{ viewTransitionName: `blog-title__${viewTransitionId}` }}
+				>
+					{post.data.title}
+				</Text.H3>
 				<Text.Small>{post.data.description}</Text.Small>
 			</BorderedContainer>
 		</Link.Nav>

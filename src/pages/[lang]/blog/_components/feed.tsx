@@ -92,9 +92,7 @@ export const Feed = ({
 
 	return (
 		<>
-			{data?.map((post) => (
-				<PostCard key={post.id} post={post} />
-			))}
+			{data?.map((post) => <PostCard key={post.id} post={post} />)}
 
 			{isFetchingNextPage && (
 				<Center className="col-span-full p-8">

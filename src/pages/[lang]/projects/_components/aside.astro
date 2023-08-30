@@ -26,7 +26,13 @@ const readTime =
 </Button>
 
 <BorderedContainer>
-	<Text.H2 className="m-2">{project.data.name}</Text.H2>
+	<Text.H2
+		className="m-2"
+		transition:name={`project-title__${project.data.name}`}
+		transition:animate="fade"
+	>
+		{project.data.name}
+	</Text.H2>
 </BorderedContainer>
 
 <BorderedContainer>
@@ -39,7 +45,9 @@ const readTime =
 <BorderedContainer>
 	<VStack className="gap-1">
 		<Text.Subtitle>{t("projects.year")}</Text.Subtitle>
-		<Text.P>{project.data.year}</Text.P>
+		<Text.P transition:name={`project-year__${project.data.name}`}>
+			{project.data.year}
+		</Text.P>
 	</VStack>
 </BorderedContainer>
 

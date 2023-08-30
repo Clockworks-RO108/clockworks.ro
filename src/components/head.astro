@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+
 import Seo from "./seo.astro";
 
 import { siteInfo, getTranslations, toLocale } from "~/lib";
@@ -40,6 +42,8 @@ const resolvedImage: Image = {
 	<title>{title}</title>
 	<meta name="theme-color" content="#0C0C0E" />
 	<meta name="generator" content={Astro.generator} />
+
+	<ViewTransitions />
 
 	<!-- Low priority metadata -->
 	<!-- TODO change favicon -->

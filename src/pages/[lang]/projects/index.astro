@@ -34,8 +34,13 @@ const projects = await getCollection(
 				projects.map((project) => (
 					// the effect is working only on devices that support hover (have a mouse)
 					<ProjectCard client:media="(hover:hover)" href={project.slug}>
-						<Text.H3>{project.data.name}</Text.H3>
-						<Text.Small className="font-jetbrains-mono text-off-white-100">
+						<Text.H3 transition:name={`project-title__${project.data.name}`}>
+							{project.data.name}
+						</Text.H3>
+						<Text.Small
+							className="font-jetbrains-mono text-off-white-100"
+							transition:name={`project-year__${project.data.name}`}
+						>
 							{project.data.year}
 						</Text.Small>
 					</ProjectCard>

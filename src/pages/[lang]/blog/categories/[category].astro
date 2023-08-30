@@ -14,7 +14,7 @@ import { sortByDate } from "~/lib/sort";
 export const getStaticPaths = async () => {
 	const categories = await getCollection("categories");
 
-	return locales.map((lang) =>
+	return locales.flatMap((lang) =>
 		categories.map((c) => ({
 			params: { lang, category: c.id },
 		})),

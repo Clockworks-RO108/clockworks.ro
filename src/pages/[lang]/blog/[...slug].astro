@@ -72,24 +72,31 @@ const image = {
 
 				<span>•</span>
 
-				<time datetime={date}>
+				<time datetime={date} transition:name={`blog-date__${post.slug}`}>
 					<Text.P className="text-text-secondary">{date}</Text.P>
 				</time>
 			</HStack>
 
-			<Text.H1>{post.data.title}</Text.H1>
+			<Text.H1 transition:name={`blog-title__${post.slug}`}>{post.data.title}</Text.H1>
 
 			<HStack
 				alignment="center/between"
 				className="mt-4 [&>*+*]:before:pl-2 [&>*+*]:before:text-foreground [&>*+*]:before:content-['/']"
 			>
 				<div>
-					<Badge color="brand">{categoryBadgeLabel}</Badge>
+					<Badge color="brand" transition:name={`blog-badge__${post.slug}`}>
+						{categoryBadgeLabel}
+					</Badge>
 				</div>
 			</HStack>
 		</VStack>
 
-		<Image src={post.data.cover} alt="cover image" class="rounded-md lg:max-w-6xl" />
+		<Image
+			transition:persist={`blog-image__${post.slug}`}
+			src={post.data.cover}
+			alt="cover image"
+			class="rounded-md lg:max-w-6xl"
+		/>
 	</Section>
 
 	<Section>

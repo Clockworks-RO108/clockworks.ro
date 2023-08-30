@@ -2,7 +2,7 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import { defineConfig, sharpImageService } from "astro/config";
+import { defineConfig } from "astro/config";
 
 import { remarkReadingTime } from "./src/lib/markdown/reading-time.mjs";
 
@@ -17,12 +17,6 @@ export default defineConfig({
 				"~": new URL("./src", import.meta.url).pathname,
 			},
 		},
-	},
-	experimental: {
-		assets: true,
-	},
-	image: {
-		service: sharpImageService(),
 	},
 
 	// TODO change to actual domain; also change in public/robots.txt
