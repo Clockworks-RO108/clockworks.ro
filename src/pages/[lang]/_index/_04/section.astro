@@ -6,22 +6,26 @@ import {
 	Card,
 	Center,
 	Grid,
-	HStack,
 	Link,
 	Section as SectionLayout,
 	Text,
 	VStack,
 } from "~/components/ui";
-import { getTranslations } from "~/lib";
+import { getTranslations, toLocale } from "~/lib";
+import { filterLatestPost } from "~/lib/filters";
 import { sortByDate } from "~/lib/sort";
 
-const latestPost = await getCollection("blog", (bp) => bp.data.draft === false)
+const lang = toLocale(Astro.params.lang);
+
+const latestPost = await getCollection("blog", filterLatestPost(lang))
 	.then(sortByDate)
 	.then((x) => x[0]);
 
 if (!latestPost) throw new Error("unreachable");
 
-const t = getTranslations(Astro.params.lang);
+const t = getTranslations(lang);
+
+const href = `/${lang}/blog/${latestPost.slug.slice(3)}`;
 ---
 
 <SectionLayout className="relative mt-32 h-auto">
@@ -42,7 +46,7 @@ const t = getTranslations(Astro.params.lang);
 					className="z-[12] inline-block from-off-white-300 to-off-white-100"
 				>
 					<!-- TODO translate -->
-					Colegiul National Gh. Sincai
+					 Colegiul National Gh. Sincai
 				</Text.H2>
 				<span class="absolute -top-2 left-12 -rotate-6 text-lg lg:left-16 lg:text-2xl">
 					💚
@@ -82,18 +86,19 @@ const t = getTranslations(Astro.params.lang);
 				variant="alternative"
 				className="aspect-square bg-gradient-to-b from-dark-blue-800 to-background"
 			>
-				<HStack stretch="all" as={Link.Nav} href="/blog/latest" alignment="start/end">
+				<Link.Nav href={href}>
 					<VStack stretch="all" alignment="start/between" className="p-4">
-						<VStack>
-							<Text.H3>{latestPost.data.title}</Text.H3>
-							<Text.Small className="mt-4">
+						<Text.H3 transition:name={`blog-title__${latestPost.slug}`}>
+							{latestPost.data.title}
+						</Text.H3>
+						<VStack className="gap-2">
+							<Text.Small className="mt-4 text-xs xl:text-sm">
 								{latestPost.data.description}
 							</Text.Small>
+							<ArrowRight />
 						</VStack>
-
-						<ArrowRight />
 					</VStack>
-				</HStack>
+				</Link.Nav>
 			</Card.Content>
 		</Card.Root>
 

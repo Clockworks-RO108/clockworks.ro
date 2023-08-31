@@ -3,17 +3,20 @@ import { getCollection } from "astro:content";
 import { ArrowRight } from "lucide-react";
 
 import { Button, Link, Text } from "~/components/ui";
-import { getTranslations } from "~/lib";
+import { getTranslations, toLocale } from "~/lib";
+import { filterLatestPost } from "~/lib/filters";
 import { sortByDate } from "~/lib/sort";
 
-const lang = Astro.params.lang;
+const lang = toLocale(Astro.params.lang);
 const t = getTranslations(lang);
 
-const latestPost = await getCollection("blog", (bp) => bp.data.draft === false)
+const latestPost = await getCollection("blog", filterLatestPost(lang))
 	.then(sortByDate)
 	.then((x) => x[0]);
 
-const href = `/${lang}/blog/${latestPost?.slug.slice(3) ?? ""}`;
+if (!latestPost) throw new Error("unreachable");
+
+const href = `/${lang}/blog/${latestPost.slug.slice(3)}`;
 ---
 
 {
@@ -24,13 +27,15 @@ const href = `/${lang}/blog/${latestPost?.slug.slice(3) ?? ""}`;
 			variant="darker"
 			size="wide"
 			rounded
-			className="group gap-x-3 transition-all duration-300 hover:scale-105"
+			className="group gap-x-1 transition-all duration-300 hover:scale-105 sm:gap-x-3"
 		>
-			<Text.Subtitle align="center">{t("navLink.blog")}</Text.Subtitle>
+			<Text.Subtitle align="center" className="hidden md:block">
+				{t("navLink.blog")}
+			</Text.Subtitle>
 
-			<span class="text-base text-dark-blue-200">•</span>
+			<span class="hidden text-base text-dark-blue-200 md:block">•</span>
 
-			<div class="max-w-[30ch] lg:max-w-[60ch]">
+			<div class="max-w-[22ch] sm:max-w-[25ch] lg:max-w-[60ch]">
 				<div class="truncate text-sm">{latestPost.data.title}</div>
 			</div>
 

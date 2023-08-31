@@ -8,3 +8,6 @@ export const filterByCategory =
 
 export const filterBlog = (lang: string) => (entry: CollectionEntry<"blog">) =>
 	entry.slug.startsWith(`${lang}/`) && entry.data.draft === false;
+
+export const filterLatestPost = (lang: string) => (entry: CollectionEntry<"blog">) =>
+	entry.slug.startsWith(`${lang}/`) && entry.data.draft === false;

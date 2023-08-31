@@ -18,9 +18,9 @@ import {
 import { cn, getTranslations } from "~/lib";
 
 const images = await Promise.all(
-	(
-		await Astro.glob<{ default: ImageMetadata }>("~/assets/gallery/*")
-	).map((x) => getImage({ src: x.default, format: "webp" })),
+	(await Astro.glob<{ default: ImageMetadata }>("~/assets/gallery/*")).map((x) =>
+		getImage({ src: x.default, format: "webp" }),
+	),
 );
 
 const lang = Astro.params.lang;
@@ -68,7 +68,7 @@ const t = getTranslations(lang);
 
 			<Card.Root shape="square" className="col-span-12 lg:col-span-5">
 				<Text.P
-					className="m-auto max-w-prose px-4 text-sm leading-relaxed text-off-white-200"
+					className="m-auto max-w-prose px-4 text-xs leading-relaxed text-off-white-200 lg:text-sm"
 				>
 					{t("index.section-3.text")}
 				</Text.P>

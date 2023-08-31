@@ -40,13 +40,15 @@ const t = getTranslations(lang);
 
 			{
 				withCTA ? (
-					<CTAButton href={`${lang}/about#departments`}>Descopera toti membrii</CTAButton>
+					<CTAButton href={`${lang}/about#departments`}>
+						{t("index.departments.cta")}
+					</CTAButton>
 				) : null
 			}
 		</VStack>
 
 		<Center className="w-screen">
-			<Grid stretch="width" cols={3} className="mx-6 gap-6 lg:max-w-[70vw]">
+			<Grid stretch="width" cols={3} className="mx-6 gap-6 xl:max-w-[70vw]">
 				<DepartmentCard
 					icon={Laptop}
 					title={t("index.departments.mechanics.title")}
