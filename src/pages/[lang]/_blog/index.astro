@@ -1,0 +1,38 @@
+---
+// TODO Cand avem blog mut din _blog in blog
+
+import { getCollection } from "astro:content";
+
+import Aside from "./_components/aside.astro";
+import { BlogFeed } from "./_components/feed";
+import LatestPost from "./_components/latest-post.astro";
+
+import { Grid, Section } from "~/components/ui";
+import Layout from "~/components/ui/layout.astro";
+import { generateStaticPaths, getTranslations, toLocale } from "~/lib";
+import { filterBlog } from "~/lib/filters";
+import { sortByDate } from "~/lib/sort";
+
+export const getStaticPaths = generateStaticPaths;
+
+const lang = toLocale(Astro.params.lang);
+const t = getTranslations(lang);
+
+const latest = await getCollection("blog", filterBlog(lang))
+	.then(sortByDate)
+	.then((x) => x[0]);
+---
+
+<Layout title={t("navLink.blog")} description={t("siteInfo.description")}>
+	<Section className="mx-8 h-auto py-2 lg:h-auto">
+		<Grid className="grid-cols-1 lg:grid-cols-12">
+			<Aside />
+
+			<Grid className="col-span-8 grid-cols-1 lg:grid-cols-3">
+				{latest && <LatestPost post={latest} />}
+
+				<BlogFeed client:only lang={lang} moreSoonLabel={t("blog.more-soon")} />
+			</Grid>
+		</Grid>
+	</Section>
+</Layout>

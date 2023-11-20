@@ -31,7 +31,7 @@ export const ProjectCard = ({
 	const [randomString, setRandomString] = React.useState("");
 
 	React.useEffect(() => {
-		const str = generateRandomString(1500);
+		const str = generateRandomString(15000);
 		setRandomString(str);
 	}, []);
 
@@ -40,7 +40,7 @@ export const ProjectCard = ({
 		mouseX.set(clientX - left);
 		mouseY.set(clientY - top);
 
-		const str = generateRandomString(1500);
+		const str = generateRandomString(15000);
 		setRandomString(str);
 	}
 

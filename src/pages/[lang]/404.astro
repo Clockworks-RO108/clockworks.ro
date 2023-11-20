@@ -7,6 +7,8 @@ import "@fontsource/dm-mono/500.css";
 import "@fontsource-variable/jetbrains-mono";
 import "@fontsource-variable/inter";
 
+import BackgroundImage from "./_index/_01/background-image.astro";
+
 import Head from "~/components/head.astro";
 import Logo from "~/components/logo.astro";
 import { Button, Flex, Link, Section, Text, VStack } from "~/components/ui";
@@ -20,7 +22,7 @@ const t = getTranslations(lang);
 const links = [{ href: "", label: "home.title" } as const, ...navLinks];
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html
 	lang={lang}
 	dir="auto"
@@ -38,8 +40,8 @@ const links = [{ href: "", label: "home.title" } as const, ...navLinks];
 		</header>
 
 		<main class="z-10">
-			<Section>
-				<VStack alignment="center/center" className="gap-4">
+			<Section className="relative">
+				<VStack alignment="center/center" className="z-10 mx-6 gap-4 text-center">
 					<Text.H2>Ne pare rău, acea pagină nu a putut fi găsită.</Text.H2>
 					<Text.Small>
 						Pagina solicitată fie nu există, fie nu aveți acces la ea.
@@ -61,6 +63,8 @@ const links = [{ href: "", label: "home.title" } as const, ...navLinks];
 						}
 					</Flex>
 				</VStack>
+
+				<BackgroundImage />
 			</Section>
 		</main>
 	</body>

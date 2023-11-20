@@ -2,11 +2,10 @@
 import { getImage } from "astro:assets";
 import { ArrowRight, Bot } from "lucide-react";
 
-import { Carousel } from "./carousel";
-
 import {
 	Button,
 	Card,
+	Carousel,
 	Center,
 	Flex,
 	Grid,
@@ -18,8 +17,8 @@ import {
 import { cn, getTranslations } from "~/lib";
 
 const images = await Promise.all(
-	(await Astro.glob<{ default: ImageMetadata }>("~/assets/gallery/*")).map((x) =>
-		getImage({ src: x.default, format: "webp" }),
+	(await Astro.glob<{ default: ImageMetadata }>("~/assets/galleries/section-3/*")).map(
+		(x) => getImage({ src: x.default, format: "webp" }),
 	),
 );
 
@@ -27,12 +26,10 @@ const lang = Astro.params.lang;
 const t = getTranslations(lang);
 ---
 
-<!-- TODO add content --><!-- TODO extract repetitive text styling -->
 <SectionLayout
 	className={cn("bg-gradient", "h-auto mx-6 lg:mt-32 lg:h-[90vh] rounded-b-3xl")}
 >
 	<VStack alignment="center/start" className="gap-20 pb-8">
-		<!-- {images.map((img) => <Image src={img} alt="" />)} -->
 		<Flex
 			stretch="width"
 			className="flex-col items-center gap-4 lg:flex-row lg:items-start"
@@ -54,9 +51,9 @@ const t = getTranslations(lang);
 					{t("index.section-3.title")}
 				</Text.H2>
 
-				<Text.Small className="mx-auto text-base lg:m-0">
+				<Text.P className="mx-auto text-base lg:m-0">
 					{t("index.section-3.subtitle")}
-				</Text.Small>
+				</Text.P>
 			</VStack>
 		</Flex>
 
@@ -64,7 +61,13 @@ const t = getTranslations(lang);
 			cols={12}
 			className="mx-4 mb-6 gap-6 lg:mx-0 lg:mb-0 lg:aspect-[2/1] lg:h-[50vh] lg:max-w-min"
 		>
-			<Carousel client:visible images={images} />
+			<Card.Root
+				variant="alternative"
+				shape="square"
+				className="col-span-full lg:col-span-7"
+			>
+				<Carousel client:visible images={images} />
+			</Card.Root>
 
 			<Card.Root shape="square" className="col-span-12 lg:col-span-5">
 				<Text.P

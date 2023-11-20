@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import { cva, type VariantProps } from "class-variance-authority";
 
+import logo from "~/assets/logo.png";
 import { Flex, Link } from "~/components/ui";
 import { siteInfo, toLocale } from "~/lib";
 
@@ -22,8 +24,8 @@ const logoVariants = cva(
 const iconVariants = cva("aspect-square rounded-sm bg-brand", {
 	variants: {
 		variant: {
-			small: "h-5 w-5",
-			default: "h-6 w-6",
+			small: "h-6 w-6",
+			default: "h-7 w-7",
 		},
 	},
 	defaultVariants: {
@@ -44,6 +46,8 @@ const locale = toLocale(Astro.params.lang);
 	alignment="center/between"
 	className={logoVariants({ variant })}
 >
-	<div class={iconVariants({ variant })}></div>
+	<div class={iconVariants({ variant })}>
+		<Image src={logo} alt="astro logo" />
+	</div>
 	<span class="text-foreground">{siteInfo.name}</span>
 </Flex>

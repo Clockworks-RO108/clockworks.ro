@@ -12,4 +12,5 @@ export const components = {
 };
 
 export { default as Image } from "./image.astro";
+export { default as Carousel } from "./carousel.astro";
 export * from "./table-of-contents";

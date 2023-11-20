@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+
+import { Center } from "~/components/ui";
+import { cn } from "~/lib";
+
+export type Props = {
+	src: ImageMetadata;
+	alt: string;
+	class?: string | undefined;
+};
+
+const { src, alt, class: className } = Astro.props;
+---
+
+<Center>
+	<Image
+		src={src}
+		alt={alt}
+		class={cn("block h-24 max-w-full object-contain", className)}
+	/>
+</Center>

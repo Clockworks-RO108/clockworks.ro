@@ -1,0 +1,27 @@
+---
+# IMPORTANT! Fiecare postare are un folder pentru imagini in `content/projects/images` care are acelasi nume ca fisierul cu postarea!
+
+# Acesta e modelul de postare; pentru a il folosi dai copy/paste continutului intr-un fisier nou
+
+# draft: true/false
+draft: false
+
+# name: string
+name: Lorem ipsum
+
+# year: int
+year: 2023
+
+# description: string
+description: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus sed asperiores magnam at delectus sunt aut doloribus provident porro? Voluptatibus unde atque necessitatibus dolores possimus, neque placeat rem? Ad, nostrum.
+---
+
+{/* pentru a folosi o poza trebuie importata */}
+import img1 from "../images/test-1/img1.png";
+
+{/* pentru a afisa o poza foloseste chestia asta */}
+import { Image } from "~/components/mdx";
+
+Exemplu de utilizare:
+
+<Image img={img1} alt="some alt text" />

@@ -3,7 +3,7 @@ import BgGradient from "./bg-gradient.astro";
 import { FooterCol } from "./footer-col";
 import Logo from "./logo.astro";
 
-import { Center, Flex, HStack, Link, Text, VStack } from "~/components/ui";
+import { Button, Center, Flex, HStack, Link, Text, VStack } from "~/components/ui";
 import { locales, navLinks, siteInfo, getTranslations } from "~/lib";
 
 const lang = Astro.params.lang;
@@ -29,12 +29,25 @@ const navigationLinks = navLinks.map((link) => ({
 		<BgGradient />
 
 		<VStack stretch="all" alignment="center/between" className="gap-4">
-			<Flex grow stretch="width" alignment="center/start">
+			<Flex grow stretch="width" alignment="center/between" className="lg:px-8">
 				<HStack className="gap-8">
 					<FooterCol title={t("footer.languages.title")} links={languagesLinks} />
 					<FooterCol title={t("footer.navigation.title")} links={navigationLinks} />
 					<FooterCol title={t("footer.social.title")} links={siteInfo.socialLinks} />
 				</HStack>
+
+				<div class="flex flex-col gap-8">
+					<FooterCol title="Contact" links={siteInfo.contact} />
+					<div>
+						<Button
+							className="text-foreground"
+							as={Link.Social}
+							href={siteInfo.contact[0].href}
+						>
+							Contact Us
+						</Button>
+					</div>
+				</div>
 			</Flex>
 
 			<HStack alignment="center/between" stretch="width">

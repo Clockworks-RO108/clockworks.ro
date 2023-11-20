@@ -3,6 +3,7 @@ import ActivitySection from "./_activity-section.astro";
 import DescriptionSection from "./_description-section.astro";
 import HeadSection from "./_head-section.astro";
 import HistorySection from "./_history-section.astro";
+import Sponsors from "./_sponsors.astro";
 
 import DepartmentsSection from "~/components/departments/section.astro";
 import Layout from "~/components/ui/layout.astro";
@@ -15,6 +16,8 @@ const t = getTranslations(Astro.params.lang);
 
 <Layout title={t("navLink.about")} description={t("siteInfo.description")}>
 	<HeadSection />
+
+	<Sponsors />
 
 	<DescriptionSection />
 

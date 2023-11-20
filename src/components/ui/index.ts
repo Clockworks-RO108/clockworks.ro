@@ -1,6 +1,7 @@
 export * from "./button";
 export * from "./badge";
 export * from "./card";
+export * from "./carousel";
 export * from "./center";
 export * from "./collapsible";
 export * from "./cta-button";

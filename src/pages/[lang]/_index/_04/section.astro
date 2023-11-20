@@ -1,35 +1,45 @@
 ---
-import { getCollection } from "astro:content";
-import { ArrowRight } from "lucide-react";
+import { getImage } from "astro:assets";
 
-import {
-	Card,
-	Center,
-	Grid,
-	Link,
-	Section as SectionLayout,
-	Text,
-	VStack,
-} from "~/components/ui";
-import { getTranslations, toLocale } from "~/lib";
-import { filterLatestPost } from "~/lib/filters";
-import { sortByDate } from "~/lib/sort";
+import chat from "~/assets/index/chat.gif";
+import { Card, Carousel, Grid, Section as SectionLayout } from "~/components/ui";
 
-const lang = toLocale(Astro.params.lang);
-
-const latestPost = await getCollection("blog", filterLatestPost(lang))
-	.then(sortByDate)
-	.then((x) => x[0]);
-
-if (!latestPost) throw new Error("unreachable");
-
-const t = getTranslations(lang);
-
-const href = `/${lang}/blog/${latestPost.slug.slice(3)}`;
+const images = await Promise.all(
+	(await Astro.glob<{ default: ImageMetadata }>("~/assets/galleries/section-4/*")).map(
+		(x) => getImage({ src: x.default, format: "webp" }),
+	),
+);
 ---
 
 <SectionLayout className="relative mt-32 h-auto">
 	<Grid
+		cols={3}
+		stretch="width"
+		className="mx-6 gap-4 lg:aspect-[5/2] lg:h-[55vh] lg:max-w-min"
+	>
+		<Card.Root
+			variant="alternative"
+			shape="square"
+			className="col-span-full bg-black lg:col-span-1"
+		>
+			<img
+				src={chat.src}
+				width={chat.width}
+				height={chat.height}
+				decoding="async"
+				loading="lazy"
+				alt=""
+			/>
+		</Card.Root>
+		<Card.Root
+			variant="alternative"
+			shape="square"
+			className="col-span-full lg:col-span-2"
+		>
+			<Carousel client:visible images={images} />
+		</Card.Root>
+	</Grid>
+	<!-- <Grid
 		cols={3}
 		stretch="width"
 		className="z-10 mx-6 gap-4 lg:aspect-[5/2] lg:h-[55vh] lg:max-w-min lg:grid-rows-2"
@@ -45,7 +55,6 @@ const href = `/${lang}/blog/${latestPost.slug.slice(3)}`;
 					align="center"
 					className="z-[12] inline-block from-off-white-300 to-off-white-100"
 				>
-					<!-- TODO translate -->
 					 Colegiul National Gh. Sincai
 				</Text.H2>
 				<span class="absolute -top-2 left-12 -rotate-6 text-lg lg:left-16 lg:text-2xl">
@@ -78,7 +87,6 @@ const href = `/${lang}/blog/${latestPost.slug.slice(3)}`;
 			shape="square"
 			className="col-span-full row-span-2 lg:col-span-1"
 		>
-			<!-- TODO get latest blog post -->
 			<Card.Header>
 				<Text.H3>{t("index.section-4.latest-article")}</Text.H3>
 			</Card.Header>
@@ -109,5 +117,5 @@ const href = `/${lang}/blog/${latestPost.slug.slice(3)}`;
 		>
 			nu stiu
 		</Card.Root>
-	</Grid>
+	</Grid> -->
 </SectionLayout>

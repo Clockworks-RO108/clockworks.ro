@@ -20,7 +20,7 @@ export default defineConfig({
 	},
 
 	// TODO change to actual domain; also change in public/robots.txt
-	site: "http://localhost:3000",
+	site: "https://clockworks.ro",
 	integrations: [
 		tailwind(),
 		react(),
