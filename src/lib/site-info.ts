@@ -10,6 +10,7 @@ type SiteInfo = {
 	imageSrc: string;
 	trademark: string;
 	socialLinks: Readonly<SocialLink[]>;
+	contact: Readonly<SocialLink[]>;
 	rizesqlLink: SocialLink;
 };
 
@@ -43,6 +44,17 @@ export const siteInfo = {
 		platform: "@rizesql",
 		href: "https://www.github.com/rizesql",
 	},
+
+	contact: [
+		{
+			platform: "mail: contact@clockworks.ro",
+			href: "mailto:contact@clockworks.ro",
+		},
+		{
+			platform: "address: Calea Șerban Vodă 167, București 040205",
+			href: "https://maps.app.goo.gl/kQ13efdPB9AYNPH49",
+		},
+	],
 } as const satisfies SiteInfo;
 
 export const navLinks = [
@@ -54,8 +66,9 @@ export const navLinks = [
 		label: "navLink.work",
 		href: "/projects",
 	},
-	{
-		label: "navLink.blog",
-		href: "/blog",
-	},
+	// TODO Cand avem blog scot comentariul
+	// {
+	// 	label: "navLink.blog",
+	// 	href: "/blog",
+	// },
 ] as const satisfies readonly NavLink[];

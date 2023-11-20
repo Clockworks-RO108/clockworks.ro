@@ -1,5 +1,4 @@
 ---
-import Callout from "./callout.astro";
 import Codeblock from "./codeblock.astro";
 
 import BgGradient from "~/components/bg-gradient.astro";
@@ -7,7 +6,6 @@ import {
 	Center,
 	CTAButton,
 	Flex,
-	Grid,
 	HStack,
 	Section as SectionLayout,
 	Text,
@@ -33,9 +31,9 @@ const t = getTranslations(lang);
 					{t("index.about-us.title")}
 				</Text.H2>
 
-				<Text.Small>
+				<Text.P className="text-text-secondary">
 					{t("index.about-us.description")}
-				</Text.Small>
+				</Text.P>
 
 				<CTAButton href={`${lang}/projects`}>{t("index.about-us.cta-button")}</CTAButton>
 			</Flex>

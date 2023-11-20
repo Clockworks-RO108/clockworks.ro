@@ -1,0 +1,31 @@
+---
+# Acesta e modelul de postare; pentru a il folosi dai copy/paste continutului intr-un fisier nou
+
+# draft: true/false
+draft: true
+
+# title: string
+title: Lorem ipsum
+
+# publishedDate: YYYY-MM-DD, YYYY = an(4cfr); MM = luna(2cfr); DD = zi(2cfr)
+publishedDate: 2023-08-22
+
+# category: una din categoriile din folderul `content/categories`; SCRIE EXACT NUMELE FISIERULUI!!
+category: tech
+
+# cover: path-ul catre imagine; fiecare postare are folderul ei dedicat in `content/blog/images` numit exact dupa acest fisier
+cover: "../images/test-1/cover.jpg"
+
+# description: string
+description: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus sed asperiores magnam at delectus sunt aut doloribus provident porro? Voluptatibus unde atque necessitatibus dolores possimus, neque placeat rem? Ad, nostrum.
+---
+
+{/* pentru a folosi o poza trebuie importata */}
+import img1 from "../images/test-1/img1.png";
+
+{/* pentru a afisa o poza foloseste chestia asta */}
+import { Image } from "~/components/mdx";
+
+Exemplu de utilizare:
+
+<Image img={img1} alt="some alt text" />

@@ -1,0 +1,74 @@
+---
+import SponsorList from "./_components/sponsor-list.astro";
+import Sponsor from "./_components/sponsor.astro";
+
+import alfaMechimLogo from "~/assets/about/sponsors/alfa-mechim.png";
+import brdEtAlLogo from "~/assets/about/sponsors/brd-first-natie.png";
+import bridgeximIndLogo from "~/assets/about/sponsors/bridgexim-ind.png";
+import cisPaintLogo from "~/assets/about/sponsors/cis-paint.jpg";
+import sincaiLogo from "~/assets/about/sponsors/cngs.png";
+import electricaLogo from "~/assets/about/sponsors/electrica.png";
+import eurobetaLogo from "~/assets/about/sponsors/eurobeta-colors.jpg";
+import matemanieLogo from "~/assets/about/sponsors/mate-manie.png";
+import nuclearelectricaLogo from "~/assets/about/sponsors/nuclearelectrica.png";
+import sedachimLogo from "~/assets/about/sponsors/sedachim.jpg";
+import siviCromLogo from "~/assets/about/sponsors/sivi-crom.jpg";
+import { VStack, Section, Text } from "~/components/ui";
+import { getTranslations } from "~/lib/i18n";
+
+const t = getTranslations(Astro.params.lang);
+---
+
+<Section className="relative my-32 h-auto">
+	<VStack className="max-w-4xl gap-12 px-8 lg:mx-32">
+		<Text.H2 className="mx-auto text-center">
+			{t("about-us.sponsors.title")}
+		</Text.H2>
+
+		<VStack className="gap-10">
+			<SponsorList>
+				<Sponsor
+					src={sincaiLogo}
+					alt="Logo of National College Gheorghe Sincai"
+					class="h-48"
+				/>
+			</SponsorList>
+
+			<SponsorList>
+				<Sponsor
+					src={brdEtAlLogo}
+					alt="Logo of BRD, First tech challenge romania and Natie prin educatie"
+				/>
+			</SponsorList>
+
+			<SponsorList>
+				<Sponsor src={electricaLogo} alt="Logo of Electrica S.A" />
+				<Sponsor src={nuclearelectricaLogo} alt="Logo of Nuclear Electrica" />
+				<Sponsor src={matemanieLogo} alt="Logo of Mate manie" />
+			</SponsorList>
+
+			<SponsorList>
+				<Sponsor
+					src={alfaMechimLogo}
+					alt="Logo of Alpha Mechim SRL"
+					class="contrast-0 invert saturate-0"
+				/>
+				<Sponsor src={bridgeximIndLogo} alt="Logo of Bridgexim Ind" />
+				<Sponsor src={cisPaintLogo} alt="Logo of Cis Paint" />
+				<Sponsor src={eurobetaLogo} alt="Logo of Euro Beta Colors" />
+			</SponsorList>
+
+			<SponsorList>
+				<Sponsor src={sedachimLogo} alt="Logo of Sedachim" />
+				<Sponsor src={siviCromLogo} alt="Logo of SiviCrom" />
+			</SponsorList>
+
+			<SponsorList>
+				<Text.P className="font-jetbrains-mono">VLACHIM SRL</Text.P>
+				<Text.P className="font-jetbrains-mono">SILVICOM SRL</Text.P>
+				<Text.P className="font-jetbrains-mono">ADACHIM SRL</Text.P>
+				<Text.P className="font-jetbrains-mono">PVC COMPOUND SRL</Text.P>
+			</SponsorList>
+		</VStack>
+	</VStack>
+</Section>

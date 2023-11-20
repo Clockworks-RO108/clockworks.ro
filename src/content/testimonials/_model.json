@@ -1,0 +1,5 @@
+{
+  "author": "Numele autorului",
+  "authorImage": "(optionala) imaginea autorului; e de forma ./images/<fisier> si trebuie pusa in `content/testimonials/images`",
+  "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sit, nulla unde vel molestiae fuga amet blanditiis sed iusto tempora, voluptas maiores quidem cumque molestias alias ullam repudiandae odio impedit!"
+}

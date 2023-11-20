@@ -8,7 +8,7 @@ export const InfiniteScroll = ({
 		<div className="relative flex max-w-[100vw] overflow-hidden">
 			<div
 				className={cn(
-					"flex w-max animate-loop items-stretch gap-[--gap] transition-transform [--gap:theme(spacing.5)] hover:[animation-play-state:paused]",
+					"flex w-max items-stretch gap-[--gap] transition-transform [--gap:theme(spacing.5)] hover:[animation-play-state:paused]",
 					direction === "normal" ? "animate-loop" : "animate-loop-reverse",
 				)}
 			>

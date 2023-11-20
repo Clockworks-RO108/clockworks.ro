@@ -1,0 +1,12 @@
+---
+import type { GetImageResult } from "astro";
+import { Carousel as BaseCarousel } from "../ui";
+
+export type Props = {
+	images: GetImageResult[];
+};
+
+const { images } = Astro.props;
+---
+
+<BaseCarousel images={images} client:visible />
