@@ -23,3 +23,5 @@ pnpm-debug.log*
 TODO.md
 
 .unlighthouse
+
+.vscode
