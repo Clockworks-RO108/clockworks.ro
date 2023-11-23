@@ -75,16 +75,9 @@ const t = getTranslations(lang);
 				>
 					{t("index.section-3.text")}
 				</Text.P>
-				<Button
-					variant="alternative"
-					as={Link.Nav}
-					href={`${lang}/about`}
-					fullWidth
-					className="group scale-95 rounded-xl transition-transform hover:scale-100"
-				>
+				<CTAButton href={`/${lang}/about`} className="w-full">
 					{t("index.section-3.cta-button")}
-					<ArrowRight className="transition-transform group-hover:translate-x-2" />
-				</Button>
+				</CTAButton>
 			</Card.Root>
 		</Grid>
 	</VStack>
