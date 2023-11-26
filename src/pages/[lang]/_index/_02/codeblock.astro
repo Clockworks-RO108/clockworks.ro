@@ -18,12 +18,14 @@ import { Card, Center, Grid, HStack, Text } from "~/components/ui";
 		</Center>
 	</Grid>
 
-	<img
-		src={codeblockImage.src}
-		width={codeblockImage.width}
-		height={codeblockImage.height}
-		decoding="async"
-		loading="lazy"
-		alt=""
-	/>
+	<div class="h-full w-full overflow-hidden">
+		<img
+			src={codeblockImage.src}
+			width={codeblockImage.width}
+			height={codeblockImage.height}
+			decoding="async"
+			loading="lazy"
+			alt=""
+		/>
+	</div>
 </Card.Root>
