@@ -1,29 +1,22 @@
----
-data: 18-07-2023
----
-
-# Decizii tehnice 101 - 03. Traduceri
-
 Table of contents:
 
-- [Decizii tehnice 101 - 03. Traduceri](#decizii-tehnice-101---03-traduceri)
-  - [Decizii](#decizii)
-    - [`Content collections`](#content-collections)
-    - [`File based routing`](#file-based-routing)
-    - ["Sursa unica de adevar"](#sursa-unica-de-adevar)
-      - [Exemplu](#exemplu)
-  - [Configurarea unei noi pagini](#configurarea-unei-noi-pagini)
-    - [Conventii pentru fisierele cu traduceri](#conventii-pentru-fisierele-cu-traduceri)
-    - [Folosirea traducerilor](#folosirea-traducerilor)
-      - [Exemplu](#exemplu-1)
+- [Decizii](#decizii)
+  - [`Content collections`](#content-collections)
+  - [`File based routing`](#file-based-routing)
+  - ["Sursa unica de adevar"](#sursa-unica-de-adevar)
+    - [Exemplu](#exemplu)
+- [Configurarea unei noi pagini](#configurarea-unei-noi-pagini)
+  - [Conventii pentru fisierele cu traduceri](#conventii-pentru-fisierele-cu-traduceri)
+  - [Folosirea traducerilor](#folosirea-traducerilor)
+    - [Exemplu](#exemplu-1)
 
 Unul dintre requirement-urile pentru acest site a fost ca el sa fie disponibil in limba engleza, dar si in romana. Pentru a nu fi nevoie ca orice pagina predefinita (adica nu cele din blog) sa fie scrisa de 2 ori, dar cu un continut diferit, am decis sa managariez continutul independent de prezentarea acestuia.
 
 Procesul de traducere(internationalization) are o prescurtare `i18n` din motive care imi sunt exterioare mie:))
 
-Traducerile se gasesc in folderul [`src/content/i18n`](../src/content/i18n/) in format json.
+Traducerile se gasesc in folderul [`src/content/i18n`](https://github.com/Clockworks-RO108/clockworks.ro/tree/master/src/content/i18n/) in format json.
 
-Codul sursa care se ocupa cu acestea se gaseste in folderul [`src/lib/i18n`](../src/lib/i18n/).
+Codul sursa care se ocupa cu acestea se gaseste in folderul [`src/lib/i18n`](https://github.com/Clockworks-RO108/clockworks.ro/tree/master/src/lib/i18n/).
 
 ## Decizii
 
