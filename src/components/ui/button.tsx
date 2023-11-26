@@ -44,7 +44,9 @@ const buttonVariants = cva("gap-x-2 border ring-2", {
 	},
 });
 
-type Props = Partial<VariantProps<typeof buttonVariants> & { className: string }>;
+type Props = Partial<
+	VariantProps<typeof buttonVariants> & { className?: string | undefined }
+>;
 
 type ButtonProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<
 	C,

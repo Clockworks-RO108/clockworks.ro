@@ -32,7 +32,7 @@ type Props = Partial<{
 	grow: boolean;
 	stretch: "width" | "height" | "all" | "none";
 	alignment: Alignment;
-	className?: string;
+	className?: string | undefined;
 }>;
 
 export type FlexProps<T extends React.ElementType = "div"> =
