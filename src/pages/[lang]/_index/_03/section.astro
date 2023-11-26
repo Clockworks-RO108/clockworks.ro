@@ -64,9 +64,9 @@ const t = getTranslations(lang);
 			<Card.Root
 				variant="alternative"
 				shape="square"
-				className="col-span-full lg:col-span-7"
+				className="col-span-full flex items-center justify-center lg:col-span-7"
 			>
-				<Carousel client:visible images={images} />
+				{(images ?? [{ src: "plm" }]) && <Carousel client:only images={images} />}
 			</Card.Root>
 
 			<Card.Root shape="square" className="col-span-12 lg:col-span-5">

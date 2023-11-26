@@ -1,6 +1,7 @@
 ---
 import type { GetImageResult } from "astro";
-import { Carousel as BaseCarousel } from "../ui";
+
+import { Carousel as BaseCarousel, Card } from "../ui";
 
 export type Props = {
 	images: GetImageResult[];
@@ -9,4 +10,10 @@ export type Props = {
 const { images } = Astro.props;
 ---
 
-<BaseCarousel images={images} client:visible />
+<Card.Root
+	variant="alternative"
+	shape="square"
+	className="flex items-center justify-center"
+>
+	<BaseCarousel images={images} client:visible />
+</Card.Root>

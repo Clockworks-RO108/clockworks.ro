@@ -1,9 +1,10 @@
 import React from "react";
 
+import * as carousel from "@zag-js/carousel";
+import { normalizeProps, useMachine } from "@zag-js/react";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
-import { Badge, Button, Card, Center, Grid, HStack, VStack } from "~/components/ui";
-import { cn, useInterval } from "~/lib";
+import { Button, Card, Center, Grid, VStack } from "~/components/ui";
 
 type Image = {
 	src: string;
@@ -12,78 +13,75 @@ type Image = {
 };
 
 export const Carousel = ({ images }: { images: Image[] }) => {
-	const imagesCount = images.length;
+	const id = React.useId();
+	const [state, send] = useMachine(
+		carousel.machine({
+			id,
+			index: 0,
+			slidesPerView: 1,
+			loop: true,
+			align: "center",
+		}),
+	);
 
-	const [play, setPlay] = React.useState(true);
-	const [currentPhoto, setCurrentPhoto] = React.useState(0);
+	if (!images) throw "unreachable";
 
-	const next = () => setCurrentPhoto((idx) => (idx === imagesCount - 1 ? 0 : idx + 1));
-
-	const previous = () =>
-		setCurrentPhoto((idx) => (idx === 0 ? imagesCount - 1 : idx - 1));
-
-	const togglePlay = () => setPlay((play) => (play === true ? false : true));
-
-	useInterval(() => {
-		if (imagesCount <= 1) return;
-		if (play) next();
-	}, 5000);
+	const api = carousel.connect(state, send, normalizeProps);
 
 	return (
-		<Card.Content variant="alternative" className="relative aspect-square">
+		<Card.Content variant="alternative" className="relative h-[430px]" {...api.rootProps}>
 			<Center
 				stretch="all"
-				className="pointer-events-none absolute inset-0 max-h-min select-none bg-cover bg-center bg-no-repeat"
+				className="overflow-hidden lg:h-[430px]"
+				{...api.viewportProps}
 			>
-				<img
-					src={images[currentPhoto]?.src}
-					width={images[currentPhoto]?.width}
-					height={images[currentPhoto]?.height}
-					decoding="async"
-					loading="lazy"
-					alt={`gallery-photo-${currentPhoto}`}
-					className="max-h-full"
-				/>
+				<div className="w-full lg:h-[430px]" {...api.itemGroupProps}>
+					{images.map((image, idx) => (
+						<div key={idx} className="my-auto" {...api.getItemProps({ index: idx })}>
+							<img
+								src={image.src}
+								decoding="async"
+								loading="lazy"
+								alt={`gallery-photo-${idx}`}
+								className="pointer-events-none mx-auto max-h-[480px] select-none bg-cover bg-center bg-no-repeat"
+							/>
+						</div>
+					))}
+				</div>
 			</Center>
 
-			{imagesCount <= 1 ? null : (
-				<VStack stretch="all" alignment="start/end" className="relative z-20 pb-2">
-					<Grid className="w-full grid-flow-row grid-cols-3 place-items-center lg:w-fit">
-						<HStack>
-							<Button size="square" onClick={previous}>
-								<ChevronLeft className="lg:h-5 lg:w-5" />
-							</Button>
-							<Button size="square" onClick={next}>
-								<ChevronRight className="lg:h-5 lg:w-5" />
-							</Button>
-						</HStack>
+			<div className="absolute bottom-0">
+				{images.length <= 1 ? null : (
+					<VStack
+						stretch="width"
+						alignment="start/end"
+						className="relative z-20 px-4 pb-2"
+					>
+						<Grid className="w-full grid-flow-row grid-cols-3 place-items-center lg:w-fit">
+							<div className="flex gap-2">
+								<Button size="square" {...api.prevTriggerProps}>
+									<ChevronLeft className="lg:h-5 lg:w-5" />
+								</Button>
+								<Button size="square" {...api.nextTriggerProps}>
+									<ChevronRight className="lg:h-5 lg:w-5" />
+								</Button>
+							</div>
 
-						<Badge className="text-sm">
-							{new Array(imagesCount).fill(0).map((_, i) => (
-								<span
-									key={`carousel-count-${i}`}
-									className={cn("select-none", i === currentPhoto && "text-brand")}
-								>
-									•
-								</span>
-							))}
-						</Badge>
-
-						<Button
-							variant="ghost"
-							size="square"
-							onClick={togglePlay}
-							className="max-w-min"
-						>
-							{play ? (
-								<Pause className="fill-current lg:h-5 lg:w-5" />
-							) : (
-								<Play className="fill-current lg:h-5 lg:w-5" />
-							)}
-						</Button>
-					</Grid>
-				</VStack>
-			)}
+							<Button
+								size="square"
+								className="max-w-min"
+								onClick={() => (api.isAutoplay ? api.pause() : api.play())}
+							>
+								{api.isAutoplay ? (
+									<Pause className="fill-current lg:h-5 lg:w-5" />
+								) : (
+									<Play className="fill-current lg:h-5 lg:w-5" />
+								)}
+							</Button>
+						</Grid>
+					</VStack>
+				)}
+			</div>
 		</Card.Content>
 	);
 };
