@@ -51,11 +51,11 @@ const { Content, remarkPluginFrontmatter, headings } = await project.render();
 				</BorderedContainer>
 			</aside>
 
-			<div class="col-span-6 lg:col-[3/7] lg:mt-12">
+			<div class="col-span-6 mx-auto lg:col-[3/7] lg:mt-12">
 				<article
 					class="prose prose-invert mx-auto max-w-prose text-off-white-200 prose-headings:text-foreground prose-a:text-foreground prose-blockquote:border-l-brand-secondary prose-blockquote:bg-brand/20 lg:mx-0"
 				>
-					<BorderedContainer className="not-prose block lg:hidden">
+					<BorderedContainer className="not-prose mb-8 block lg:hidden">
 						<TableOfContents
 							client:idle
 							headings={headings}
