@@ -16,12 +16,21 @@ year: 2023
 description: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus sed asperiores magnam at delectus sunt aut doloribus provident porro? Voluptatibus unde atque necessitatibus dolores possimus, neque placeat rem? Ad, nostrum.
 ---
 
-{/* pentru a folosi o poza trebuie importata */}
+{/* CONTINUTUL DE SUS ESTE OBLIGATORIU SI ESTE DEJA SCRIS IN FORMATUL CORESPUNZATOR */}
+{/* DE AICI IN JOS ESTE UN EXEMPLU DE CUM A ADAUGA O IMAGINE IN POSTARE, RESPECTIV UN CARUSEL */}
+{/* POTI STERGE TOT CE E DE LA LINIA 18 IN JOS SI SCRIE PROPRIUL CONTINUT */}
+
+{/* pentru a folosi o imagine trebuie importata */}
 import img1 from "../images/test-1/img1.png";
 
-{/* pentru a afisa o poza foloseste chestia asta */}
-import { Image } from "~/components/mdx";
+{/* pentru a afisa o imagine foloseste prima chestie */}
+{/* pentru a afisa un carusel de imagini foloseste a doua chestie */}
+import { Image ,Carousel } from "~/components/mdx";
 
-Exemplu de utilizare:
+Exemplu de utilizare pt imagini:
 
 <Image img={img1} alt="some alt text" />
+
+Exemplu de utilizare pt carusel:
+
+<Carousel images={[img1, img1, img1]} />
