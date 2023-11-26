@@ -1,17 +1,12 @@
----
-data: 18-07-2023
----
+Table of contents:
 
-# Decizii tehnice 101 - 01. Tech stack
-
-- [Decizii tehnice 101 - 01. Tech stack](#decizii-tehnice-101---01-tech-stack)
-  - [Overview](#overview)
-  - [Motivatii](#motivatii)
-    - [`Astro`](#astro)
-    - [`React`](#react)
-    - [`Tailwind CSS`](#tailwind-css)
-    - [`Typescript`](#typescript)
-    - [`Shadcn UI`](#shadcn-ui)
+- [Overview](#overview)
+- [Motivatii](#motivatii)
+  - [`Astro`](#astro)
+  - [`React`](#react)
+  - [`Tailwind CSS`](#tailwind-css)
+  - [`Typescript`](#typescript)
+  - [`Shadcn UI`](#shadcn-ui)
 
 ## Overview
 

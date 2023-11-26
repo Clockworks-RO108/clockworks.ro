@@ -1,130 +1,97 @@
----
-data: 18-07-2023
----
+Table of contents:
 
-# Decizii tehnice 101 - 02. Structura proiectului
+- [Overview](#overview)
+- [Motivatii](#motivatii)
+  - [`Astro`](#astro)
+  - [`React`](#react)
+  - [`Tailwind CSS`](#tailwind-css)
+  - [`Typescript`](#typescript)
+  - [`Shadcn UI`](#shadcn-ui)
 
-- [Decizii tehnice 101 - 02. Structura proiectului](#decizii-tehnice-101---02-structura-proiectului)
-  - [Structura generala](#structura-generala)
-  - [`Feature folders`](#feature-folders)
-    - [1. TL;DR](#1-tldr)
-    - [2. Folderul radacina](#2-folderul-radacina)
-    - [3. Fisierul radacina](#3-fisierul-radacina)
-    - [4. Alte foldere/fisiere "private"](#4-alte-folderefisiere-private)
+## Overview
 
-## Structura generala
+Tech stack-ul ales pentru site-ul clockworks este urmatorul:
 
-```bash
-.
-├── docs
-├── public
-├── src
-│   ├── assets
-│   ├── components
-│   ├── content
-│   │   └── i18n
-│   ├── lib
-│   │   ├── i18n
-│   │   └── site-info.ts
-│   ├── pages
-│   │   └── [lang]
-│   │       ├── [...blog]
-│   │       └── [...index]
-│   │           ├── _01
-│   │           │   └── section.astro
-│   │           ├── _02
-│   │           │   └── section.astro
-│   │           ├── _03
-│   │           │   └── section.astro
-│   │           ├── _04
-│   │           │   └── section.astro
-│   │           ├── _05
-│   │           │   └── section.astro
-│   │           ├── _06
-│   │           │   └── section.astro
-│   │           └── index.astro
-│   └── styles
-├── astro.config.mjs
-├── components.json
-├── package.json
-├── tailwind.config.cjs
-└── tsconfig.json
-```
+- [Astro](https://astro.build/)
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Shadcn UI](https://ui.shadcn.com/)
 
-Legenda:
+## Motivatii
 
-- [`docs`](/docs): documentatia pentru a parcurge tot site-ul cu succes:))
-- [`public`](/public): asseturi publice(favicon, robots.txt)
-- [`src`](/src): folderul in care se afla codul sursa
-  - [`src/assets`](/src/assets): asseturi media optimizate de `Astro`; sunt grupate in foldere dupa sectiunea in care apar
-  - [`src/components`](/src/components): componente generice care nu sunt specifice pentru o sectiune anume(butoane, carduri, layouts)
-  - [`src/content`](/src/content): folderul in care este organizat continutul site-ului(traduceri, blog posts etc...)
-    - [`src/content/i18n`](/src/content/i18n): traducerile
-    - more to come...
-  - [`src/lib`](/src/lib): feature-uri care adauga functionalitate, functii pentru utilitate(ex: traduceri, site-info, etc...)
-    - [`src/lib/i18n`](/src/lib/i18n): implementarea functionalitatii de traduceri
-    - [`src/lib/site-info`](/src/lib/site-info.ts): aici se gasesc mai multe informatii de baza despre site(titlu, descriere, liba de baza, linkuri de social media, linkuri de navigare)
-  - [`src/pages`](/src/pages): paginile care sunt afisate pe site
-    - [`src/pages/[lang]`](/src/pages/[lang]): folderul radacina sub care trebuie sa stea toate rutele pentru a fi traduse
-      - [`src/pages/[lang]/[...blog]`](/src/pages/[lang]/[...blog]): pagina de blog
-        - [`src/pages/[lang]/[...blog]/blog.astro`](/src/pages/[lang]/[...blog]/blog.astro): pagina principala in care sunt afisate toate articolele
-      - [`src/pages/[lang]/[...index]`](/src/pages/[lang]/[...index]/): pagina principala, care este impartita pe sectiuni
-        - `src/pages/[lang]/[...index]/[_01 -> _06]`: folderele care corespund fiecarei sectiuni din pagina principala
-          - `src/pages/[lang]/[...index]/[_01 -> _06]/section.astro`: sectiunea in sine care va aparea pe pagina; orice alt fisier din folder este pentru organizare
-        - [`src/pages/[lang]/[...index]/index.astro`](/src/pages/[lang]/[...index]/index.astro): pagina principala in sine care afiseaza fiecare sectiune
-  - [`src/styles`](/src/styles/): aici se gasesc fisierele de css
-- [`astro.config.mjs`](/astro.config.mjs): fisierul de configurare pentru `Astro`
-- [`components.json`](/components.json): fisierul de configurare pentru `Shadcn UI`
-- [`package.json`](/package.json): fisierul de configurare pentru proiect, scripturi, package management
-- [`tailwind.config.cjs`](/tailwind.config.cjs): fisierul de configurare pentru `Tailwind CSS`
-- [`tsconfig.json`](/tsconfig.json): fisierul de configurare pentru `Typescript`
+### `Astro`
 
-> ### Atentie!
->
-> Nici o ruta nou creata nu trebuie sa existe in afara folderului [`src/pages/[lang]`](../src/pages/[lang])
+`Astro` este un web framework creat pentru site-uri statice si aplicatii web, in special orientate pe continut si redactarea acestuia. Site-ul Clockworks este unul de prezentare a echipei, care trebuie sa fie usor de utilizat de catre aceasta si
+de modifiat. Continutul nostru este static, si de aceea `Astro` este perfect pentru noi.
 
-## `Feature folders`
+**De ce `Astro`**? [Aici](https://docs.astro.build/en/concepts/why-astro/) sunt cateva idei care sunt fundamentale pentru orientarea acestui framework.
 
-O pagina pentru site contine mai multe sectiuni care nu au vreo corelare intre ele, alta decat ca apar sub acelasi url. Daca toate ar fi definite in acelasi fisier, fara sa fie separate in vreun fel, acesta ar ajunge monstruos de mare si de greu de modificat in vreun fel. De aceea am ales ca fiecare pagina sa fie cat mai granulara cu putiinta, pentru a fi usor de manageriat codul, dar si de inteles structura in sine.
+Alte feature-uri foarte nice care m-au facut sa il aleg sunt:
 
-Functionalitatea de `feature folder` e folosita in special pentru afisarea paginilor website-ului(folderul [`/src/pages`](/src/pages/)), care au destul de multe sectiuni, componente care sunt specifice (nu sunt folosite in alt loc) si care sunt impartite in mai multe sectiuni care nu au vreo legatura intre ele.
+1. interoperabilitatea foarte facila cu alte tehnologii de front-end [Link](https://docs.astro.build/en/guides/integrations-guide/)
+2. redactarea foarte naturala si usor de integrat a continutului in format md, mdx sau markdoc [Link](https://docs.astro.build/en/guides/content-collections/)
+3. `File-based routing` [Link](https://docs.astro.build/en/core-concepts/routing/)
+4. optimizarea in timpul compilarii a continutului media [Link](https://docs.astro.build/en/guides/assets/)
+5. `Astro` faciliteaza reducerea bundle-ului de javascript, ceea ce duce la imbunatatirea performantei paginii [Link](https://docs.astro.build/en/concepts/why-astro/#fast-by-default)
 
-Un `feature folder` este un folder care contine tot codul care este specific pentru acel feature (care nu mai este folosit in alt loc). Pentru ca gruparea dupa feature sa fie posibila, este nevoie de o conventie anume pentru ca "`File based routing`"-ul sa poata afisa paginile asa cum trebuie.
+### `React`
 
-### 1. TL;DR
+`React` este cel mai folosit framework pentru crearea elementelor de front-end, avand un ecosistem vast in jurul sau.
+Conceptul principal dupa care se ghideaza este impartirea paginilor in componente independente, cat mai modulare, care sa se ocupe cu afisarea unui element specific de pe pagina. Fragmentarea unei paginii in bucati cat mai mici si independente duce la o coerenta mai buna a aspectului paginii noastre si la refolosirea codului.
 
-Pentru a crea o pagina noua, care e suficient de mare incat sa fie sparta in mai multe sectiuni pentru a fi inteligibila(cum e pagina `index`(principala)), trebuie sa respecte sintaxa:
+Caracteristicile și conceptele cheie ale React includ:
 
-```bash
-src/pages
-└── [...{feature}]
-    ├── _folder-privat
-    │   └── fisier-privat.*
-    ├── _fisier-privat.*
-    └── {feature}.astro
-```
+1. Componente: React permite dezvoltatorilor să construiască interfețe complexe prin împărțirea acestora în componente reutilizabile și independente. Aceste componente pot fi apoi asamblate pentru a forma interfețele complexe ale aplicației.
 
-Legenda:
+2. Reconciliere virtuală: React utilizează un "DOM virtual" pentru a efectua schimbările în interfața utilizator în mod eficient. Aceasta înseamnă că, în loc să actualizeze direct DOM-ul browser-ului, React efectuează schimbări într-un copil virtual al DOM-ului și apoi le compară cu copilul real, actualizând doar elementele care diferă. Această reconciliere virtuală face React să fie foarte rapid și eficient.
 
-- {feature}: numele featureului implementat
-- \_folder-privat: un folder al carui continut nu constituie o ruta de url
-- \_fisier-privat.\* sau \_folder-privat/fisier-privat.\*: orice fisier care nu este o ruta pentru url; poate fi de orice format(unde \* poate fi orice, ex: .astro, .ts, .tsx, .json, .md, .mdx, etc)
+3. Unidirectional Data Flow: Fluxul de date în React urmează o abordare unidirecțională, ceea ce înseamnă că datele se deplasează într-o singură direcție, de la componentele părinte către cele copil. Acest lucru face gestionarea stării aplicației mai ușoară și mai previzibilă.
 
-### 2. Folderul radacina<br>
+4. JSX (JavaScript XML): React folosește JSX, o extensie a limbajului JavaScript, care permite integrarea directă a codului HTML-like în codul JavaScript. Acest lucru face crearea de componente mai intuitivă și ușoară, combinând logica de afișare cu codul funcțional.
 
-Numele acestui folder semnifica o sectiune, o functionalitate(exemplu: blog, index, about...)
-<br><br>
+5. Comunitate puternică: React are o comunitate vastă și activă de dezvoltatori care contribuie cu biblioteci, componente și resurse pentru a sprijini dezvoltarea aplicațiilor React.
 
-> Folderul are o sintaxa specifica:<br> > `[...{nume-folder}]`
-> care trebuie respectata intrutocmai!!!
+React a devenit extrem de popular datorită performanței sale excelente, arhitecturii bine gândite și ecosistemului bogat de biblioteci și resurse. Este folosit în mod extensiv în industria dezvoltării web pentru a construi aplicații web interactive și scalabile.
 
-### 3. Fisierul radacina<br>
+### `Tailwind CSS`
 
-Daca folderul `[...{nume}]` reprezinta un grup de rute care au legatura intre ele(deci nu creeaza o ruta de url noua), fisierul `[...{nume}]/{nume}.astro` reprezinta pagina in sine care ar fi accesata la acea ruta, si este obligatoriu sa existe.
+`Tailwind CSS` este un framework CSS extrem de popular și în rapidă creștere. Acesta utilizează o abordare utilitară, având ca scop facilitarea și eficientizarea construirii interfețelor utilizator prin furnizarea unui set de clase utilitare care pot fi aplicate direct elementelor HTML pentru a le stiliza.
 
-### 4. Alte foldere/fisiere "private"
+Iată câteva puncte cheie despre Tailwind CSS:
 
-Pentru ca functionalitatea de `Feature folders` sa aiba vreo utilitate, ea trebuie sa faca publica doar o ruta de url, iar restul codului sa fie inaccesibil din orice alt loc in afara de interiorul folderului. Pentru ca aceasta sa fie posibila, orice fisier/folder "privat" trebuie sa fie prefixat cu "`_`"
-pentru a fi ignorat de `file-based routing`.
+1. Abordare utilitară: Tailwind CSS adoptă o metodă utilitară, oferind o gamă largă de clase mici, fiecare responsabilă de o proprietate CSS specifică. De exemplu, clasele precum `bg-blue-500` pot seta culoarea de fundal la o nuanță de albastru, iar `text-xl` poate fi folosit pentru a seta dimensiunea fontului ca fiind foarte mare (extra-large).
 
-> Daca un folder este prefixat cu "`_`", atunci orice fisier din interiorul folderului este privat si nu trebuie prefixat la randul sau.
+2. Personalizabil: Spre deosebire de alte framework-uri CSS care vin cu stiluri și componente predefinite, `Tailwind CSS` permite dezvoltatorilor să personalizeze design-ul prin configurarea culorilor, fonturilor, spațierilor și altele, prin intermediul unui fișier de configurare.
+
+3. Flexibilitate: Deoarece `Tailwind CSS` se bazează pe clase utilitare individuale, dezvoltatorii au flexibilitatea să le mixeze și asocieze pentru a crea design-uri unice, fără a fi necesară scrierea de CSS personalizat. Această abordare poate duce la fișiere CSS mai eficiente și mai mici în comparație cu framework-urile tradiționale.
+
+4. Prietenos cu componente: Deși `Tailwind CSS` se concentrează pe clase utilitare, acesta nu împiedică utilizarea de componente reutilizabile. Dezvoltatorii pot crea propriile componente și pot folosi clasele `Tailwind CSS` în cadrul lor pentru a construi interfețe mai complexe.
+
+5. Design responsiv: `Tailwind CSS` oferă clase utilitare responsive integrate, care permit dezvoltatorilor să creeze cu ușurință aspecte responsive pentru diferite dimensiuni de ecran și dispozitive.
+
+6. Comunitate activă: Până în 2021, `Tailwind CSS` câștigase o popularitate semnificativă și avea o comunitate dinamică care contribuia la dezvoltarea sa, oferea suport și împărtășea extensii și plugin-uri.
+
+### `Typescript`
+
+`TypeScript` este un limbaj de programare open-source dezvoltat de Microsoft. Acesta reprezintă o extensie a limbajului JavaScript și adaugă funcționalități de tipizare statică și alte caracteristici avansate la sintaxa JavaScript existentă.
+
+Principalele caracteristici ale `TypeScript` includ:
+
+1. Tipizare statică (static typing): O diferență majoră între `TypeScript` și JavaScript este că `TypeScript` permite specificarea tipurilor de date pentru variabile, parametri de funcții și valori de returnare. Aceasta înseamnă că dezvoltatorii pot defini clar și în mod explicit tipurile de date așteptate în cod, facilitând detectarea erorilor în timpul dezvoltării și îmbunătățind înțelegerea codului.
+
+2. Caracteristici avansate ale ECMAScript: `TypeScript` oferă suport pentru ultimele caracteristici ale standardului ECMAScript (ES), ceea ce înseamnă că dezvoltatorii pot utiliza funcționalități moderne ale limbajului, chiar dacă browser-urile nu le susțin încă pe deplin.
+
+3. Compatibilitate cu JavaScript: Codul JavaScript existent poate fi inclus și utilizat în proiectele `TypeScript` fără probleme, deoarece `TypeScript` este un superset al JavaScript-ului. Aceasta înseamnă că dezvoltatorii pot treptat să adauge tipizare în codul lor fără a schimba în mod radical arhitectura existentă.
+
+4. Instrumente de dezvoltare: `TypeScript` vine cu instrumente puternice de dezvoltare, cum ar fi transpilerul care convertește codul `TypeScript` în JavaScript, astfel încât să poată fi executat în browsere sau medii de execuție JavaScript.
+
+`TypeScript` este folosit pe scară largă în dezvoltarea de aplicații web, aplicații mobile, aplicații desktop și în alte proiecte de programare. Acesta oferă o experiență de dezvoltare mai robustă și mai sigură în comparație cu JavaScript, deoarece ajută la identificarea mai rapidă a erorilor și la crearea de cod mai structurat și mai ușor de întreținut.
+
+### `Shadcn UI`
+
+`Shadcn UI` este o librarie de componente `React` + `Tailwind CSS` + `Typescript` foarte bine realizata, care dispune de mai multe componente create special pentru a fi usor customizabile, codul sursa fiind importat direct.
+
+Am ales sa folosesc o librarie de componente, deoarece este inutil sa "reinventez roata" si sa fac de la 0 ceea ce altii au facut deja (si mult mai bine decat mine).
+
+Fiind usor de customizat, am aplicat styling-ul de care avem nevoie, incat sa nu disrupa estetica site-ului nostru.
