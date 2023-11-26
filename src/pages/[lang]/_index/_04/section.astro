@@ -34,9 +34,9 @@ const images = await Promise.all(
 		<Card.Root
 			variant="alternative"
 			shape="square"
-			className="col-span-full lg:col-span-2"
+			className="col-span-full flex items-center justify-center lg:col-span-2"
 		>
-			<Carousel client:visible images={images} />
+			{(images ?? [{ src: "plm" }]) && <Carousel client:only images={images} />}
 		</Card.Root>
 	</Grid>
 	<!-- <Grid
