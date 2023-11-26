@@ -1,6 +1,6 @@
 ---
-import SponsorList from "./_components/sponsor-list.astro";
 import Sponsor from "./_components/sponsor.astro";
+import SponsorsRow from "./_components/sponsors-row.astro";
 
 import alfaMechimLogo from "~/assets/about/sponsors/alfa-mechim.png";
 import brdEtAlLogo from "~/assets/about/sponsors/brd-first-natie.png";
@@ -26,28 +26,28 @@ const t = getTranslations(Astro.params.lang);
 		</Text.H2>
 
 		<VStack className="gap-10">
-			<SponsorList>
+			<SponsorsRow>
 				<Sponsor
 					src={sincaiLogo}
 					alt="Logo of National College Gheorghe Sincai"
 					class="h-48"
 				/>
-			</SponsorList>
+			</SponsorsRow>
 
-			<SponsorList>
+			<SponsorsRow>
 				<Sponsor
 					src={brdEtAlLogo}
 					alt="Logo of BRD, First tech challenge romania and Natie prin educatie"
 				/>
-			</SponsorList>
+			</SponsorsRow>
 
-			<SponsorList>
+			<SponsorsRow>
 				<Sponsor src={electricaLogo} alt="Logo of Electrica S.A" />
 				<Sponsor src={nuclearelectricaLogo} alt="Logo of Nuclear Electrica" />
 				<Sponsor src={matemanieLogo} alt="Logo of Mate manie" />
-			</SponsorList>
+			</SponsorsRow>
 
-			<SponsorList>
+			<SponsorsRow>
 				<Sponsor
 					src={alfaMechimLogo}
 					alt="Logo of Alpha Mechim SRL"
@@ -56,19 +56,19 @@ const t = getTranslations(Astro.params.lang);
 				<Sponsor src={bridgeximIndLogo} alt="Logo of Bridgexim Ind" />
 				<Sponsor src={cisPaintLogo} alt="Logo of Cis Paint" />
 				<Sponsor src={eurobetaLogo} alt="Logo of Euro Beta Colors" />
-			</SponsorList>
+			</SponsorsRow>
 
-			<SponsorList>
+			<SponsorsRow>
 				<Sponsor src={sedachimLogo} alt="Logo of Sedachim" />
 				<Sponsor src={siviCromLogo} alt="Logo of SiviCrom" />
-			</SponsorList>
+			</SponsorsRow>
 
-			<SponsorList>
+			<SponsorsRow>
 				<Text.P className="font-jetbrains-mono">VLACHIM SRL</Text.P>
 				<Text.P className="font-jetbrains-mono">SILVICOM SRL</Text.P>
 				<Text.P className="font-jetbrains-mono">ADACHIM SRL</Text.P>
 				<Text.P className="font-jetbrains-mono">PVC COMPOUND SRL</Text.P>
-			</SponsorList>
+			</SponsorsRow>
 		</VStack>
 	</VStack>
 </Section>

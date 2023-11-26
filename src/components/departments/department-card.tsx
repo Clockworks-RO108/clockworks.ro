@@ -1,6 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 
-import { Badge, Button, Card, HStack, Text } from "~/components/ui";
+import { Button, Card, HStack, Text } from "~/components/ui";
 
 export const DepartmentCard = ({
 	icon,
@@ -19,8 +19,6 @@ export const DepartmentCard = ({
 				<Button as="span" size="square" variant="alternative">
 					<Icon />
 				</Button>
-
-				<Badge>ceva</Badge>
 			</Card.Header>
 
 			<HStack className="gap-y-2 px-4 pb-4">
