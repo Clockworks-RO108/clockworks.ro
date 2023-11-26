@@ -15,7 +15,7 @@ const images = await Promise.all(
 	<Grid
 		cols={3}
 		stretch="width"
-		className="mx-6 gap-4 lg:aspect-[5/2] lg:h-[55vh] lg:max-w-min"
+		className="mx-6 gap-4 lg:aspect-[2/1] lg:h-[60vh] lg:max-w-min"
 	>
 		<Card.Root
 			variant="alternative"
@@ -39,83 +39,4 @@ const images = await Promise.all(
 			{(images ?? [{ src: "plm" }]) && <Carousel client:only images={images} />}
 		</Card.Root>
 	</Grid>
-	<!-- <Grid
-		cols={3}
-		stretch="width"
-		className="z-10 mx-6 gap-4 lg:aspect-[5/2] lg:h-[55vh] lg:max-w-min lg:grid-rows-2"
-	>
-		<Card.Root
-			variant="alternative"
-			shape="square"
-			className="col-span-full lg:col-span-1 lg:row-span-1"
-		>
-			<Center className="relative z-[9] my-auto">
-				<Text.H2
-					gradient="to-top"
-					align="center"
-					className="z-[12] inline-block from-off-white-300 to-off-white-100"
-				>
-					 Colegiul National Gh. Sincai
-				</Text.H2>
-				<span class="absolute -top-2 left-12 -rotate-6 text-lg lg:left-16 lg:text-2xl">
-					💚
-				</span>
-				<span class="absolute bottom-0 right-10 rotate-12 text-4xl lg:right-20">🤑</span>
-				<span
-					class="absolute -top-1 right-20 z-[-1] rotate-3 text-xl lg:right-24 lg:text-2xl"
-				>
-					🐸
-				</span>
-				<span
-					class="absolute bottom-4 left-20 -rotate-6 text-xl lg:bottom-3 lg:left-20 lg:text-3xl"
-				>
-					🤩
-				</span>
-			</Center>
-		</Card.Root>
-
-		<Card.Root
-			variant="alternative"
-			shape="square"
-			className="col-span-full lg:col-span-1 lg:row-span-2"
-		>
-			un chat sa mimam o colaborare in echipa? Also link catre about
-		</Card.Root>
-
-		<Card.Root
-			variant="alternative"
-			shape="square"
-			className="col-span-full row-span-2 lg:col-span-1"
-		>
-			<Card.Header>
-				<Text.H3>{t("index.section-4.latest-article")}</Text.H3>
-			</Card.Header>
-			<Card.Content
-				variant="alternative"
-				className="aspect-square bg-gradient-to-b from-dark-blue-800 to-background"
-			>
-				<Link.Nav href={href}>
-					<VStack stretch="all" alignment="start/between" className="p-4">
-						<Text.H3 transition:name={`blog-title__${latestPost.slug}`}>
-							{latestPost.data.title}
-						</Text.H3>
-						<VStack className="gap-2">
-							<Text.Small className="mt-4 text-xs xl:text-sm">
-								{latestPost.data.description}
-							</Text.Small>
-							<ArrowRight />
-						</VStack>
-					</VStack>
-				</Link.Nav>
-			</Card.Content>
-		</Card.Root>
-
-		<Card.Root
-			variant="alternative"
-			shape="square"
-			className="col-span-full row-span-1 bg-gradient-to-br from-brand/90 to-brand-secondary/90 lg:col-span-1"
-		>
-			nu stiu
-		</Card.Root>
-	</Grid> -->
 </SectionLayout>

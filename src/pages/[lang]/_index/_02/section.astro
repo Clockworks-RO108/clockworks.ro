@@ -16,8 +16,7 @@ const lang = Astro.params.lang;
 const t = getTranslations(lang);
 ---
 
-<!-- TODO add content -->
-<SectionLayout className="relative">
+<SectionLayout className="relative h-auto lg:h-auto">
 	<BgGradient />
 
 	<Center className="absolute left-0 h-full w-screen lg:w-[50vw]">
@@ -37,13 +36,6 @@ const t = getTranslations(lang);
 
 				<CTAButton href={`/${lang}/projects`}>{t("index.about-us.cta-button")}</CTAButton>
 			</Flex>
-
-			<!-- <Grid cols={2} rows={2} stretch="width" className="gap-6 lg:gap-8">
-				<Callout title="Title 1" subtitle="some small text" />
-				<Callout title="Title 2" subtitle="some small text" />
-				<Callout title="Title 3" subtitle="some small text" />
-				<Callout title="Title 4" subtitle="some small text" />
-			</Grid> -->
 		</HStack>
 	</Center>
 
