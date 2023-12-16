@@ -23,47 +23,54 @@ const locale = toLocale(lang);
 const form = await formsApi.getById(id, locale);
 ---
 
-<Layout theme="form">
-	<Section className={cn("gform-height")}>
-		<iframe
-			title="Form"
-			id="gform"
-			loading="lazy"
-			seamless
-			allowtransparency="true"
-			src={`${form.url}?embedded=true`}
-			sandbox="allow-forms allow-scripts allow-pointer-lock allow-same-origin allow-popups"
-			class={cn("w-full", "gform-height")}></iframe>
-	</Section>
+{
+	form.url === null ? (
+		<meta http-equiv="refresh" content={`0; url=/${locale}/forms`} />
+	) : (
+		<Layout theme="form">
+			<Section className={cn("gform-height")}>
+				<iframe
+					title="Form"
+					id="gform"
+					loading="lazy"
+					seamless
+					allowtransparency="true"
+					src={`${form.url}?embedded=true`}
+					sandbox="allow-forms allow-scripts allow-pointer-lock allow-same-origin allow-popups"
+					class={cn("w-full", "gform-height")}
+				/>
+			</Section>
+		</Layout>
+	)
+}
 
-	<style
-		define:vars={{
-			xs: `${form.height.xs}px`,
-			sm: `${form.height.sm}px`,
-			md: `${form.height.md}px`,
-			lg: `${form.height.lg}px`,
-		}}
-	>
+<style
+	define:vars={{
+		xs: `${form.height.xs}px`,
+		sm: `${form.height.sm}px`,
+		md: `${form.height.md}px`,
+		lg: `${form.height.lg}px`,
+	}}
+>
+	.gform-height {
+		height: var(--xs);
+	}
+
+	@media (min-width: 640px) {
 		.gform-height {
-			height: var(--xs);
+			height: var(--sm);
 		}
+	}
 
-		@media (min-width: 640px) {
-			.gform-height {
-				height: var(--sm);
-			}
+	@media (min-width: 768px) {
+		.gform-height {
+			height: var(--md);
 		}
+	}
 
-		@media (min-width: 768px) {
-			.gform-height {
-				height: var(--md);
-			}
+	@media (min-width: 1024px) {
+		.gform-height {
+			height: var(--lg);
 		}
-
-		@media (min-width: 1024px) {
-			.gform-height {
-				height: var(--lg);
-			}
-		}
-	</style>
-</Layout>
+	}
+</style>
