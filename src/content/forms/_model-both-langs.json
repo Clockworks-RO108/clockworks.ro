@@ -1,0 +1,16 @@
+{
+  "data": {
+    "lang": "both",
+    "en": {
+      "url": "linkul catre formularul in engleza",
+      "title": "",
+      "description": ""
+    },
+    "ro": {
+      "url": "linkul catre formularul in romana",
+      "title": "",
+      "description": ""
+    }
+  },
+  "image": "./images/<fisier>"
+}
