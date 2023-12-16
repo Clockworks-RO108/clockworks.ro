@@ -9,12 +9,13 @@ Table of contents:
     - [Linkuri](#linkuri-1)
     - [Explicatie](#explicatie-1)
     - [Exemplu](#exemplu-1)
-  - [3. Traduceri (i18n)](#3-traduceri-i18n)
-  - [4. Proiecte](#4-proiecte)
+  - [3. Formulare](#3-formulare)
+  - [4. Traduceri (i18n)](#4-traduceri-i18n)
+  - [5. Proiecte](#5-proiecte)
     - [Linkuri](#linkuri-2)
     - [Explicatie](#explicatie-2)
     - [Exemplu](#exemplu-2)
-  - [5. Testimoniale](#5-testimoniale)
+  - [6. Testimoniale](#6-testimoniale)
     - [Linkuri](#linkuri-3)
     - [Explicatie](#explicatie-3)
     - [Exemplu](#exemplu-3)
@@ -123,11 +124,15 @@ Fisiere:
 }
 ```
 
-### 3. Traduceri (i18n)
+### 3. Formulare
+
+Citeste te rog la [docs/05-forms](https://github.com/Clockworks-RO108/clockworks.ro/wiki/05.-Forms)
+
+### 4. Traduceri (i18n)
 
 Citeste te rog la [docs/03-traduceri](https://github.com/Clockworks-RO108/clockworks.ro/wiki/03.-Traduceri)
 
-### 4. Proiecte
+### 5. Proiecte
 
 #### Linkuri
 
@@ -158,7 +163,7 @@ Pentru a adauga o imagine in proiect, aceasta trebuie salvata intai in folderul 
               └─── img-2.png
 ```
 
-### 5. Testimoniale
+### 6. Testimoniale
 
 #### Linkuri
 
