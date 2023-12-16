@@ -4,6 +4,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
 
+import formsgen from "./src/lib/forms/plugin";
 import { remarkReadingTime } from "./src/lib/markdown/reading-time.mjs";
 
 // https://astro.build/config
@@ -26,6 +27,7 @@ export default defineConfig({
 		tailwind(),
 		react(),
 
+		formsgen(),
 		sitemap({
 			i18n: {
 				defaultLocale: "ro",
