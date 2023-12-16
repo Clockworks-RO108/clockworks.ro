@@ -66,6 +66,10 @@ export const navLinks = [
 		label: "navLink.work",
 		href: "/projects",
 	},
+	{
+		label: "navLink.forms",
+		href: "/forms",
+	},
 	// TODO Cand avem blog scot comentariul
 	// {
 	// 	label: "navLink.blog",
