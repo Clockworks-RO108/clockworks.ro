@@ -1,0 +1,69 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+
+import { Section } from "~/components/ui";
+import Layout from "~/components/ui/layout.astro";
+import { cn, locales, toLocale } from "~/lib";
+import { formsApi } from "~/lib/forms/api";
+
+export const getStaticPaths = (async () => {
+	const forms = await getCollection("forms");
+
+	return locales.flatMap((lang) =>
+		forms.map((form) => ({
+			params: { lang, form: form.id },
+		})),
+	);
+}) satisfies GetStaticPaths;
+
+const { lang, form: id } = Astro.params;
+
+const locale = toLocale(lang);
+const form = await formsApi.getById(id, locale);
+---
+
+<Layout theme="form">
+	<Section className={cn("gform-height")}>
+		<iframe
+			title="Form"
+			id="gform"
+			loading="lazy"
+			seamless
+			allowtransparency="true"
+			src={`${form.url}?embedded=true`}
+			sandbox="allow-forms allow-scripts allow-pointer-lock allow-same-origin allow-popups"
+			class={cn("w-full", "gform-height")}></iframe>
+	</Section>
+
+	<style
+		define:vars={{
+			xs: `${form.height.xs}px`,
+			sm: `${form.height.sm}px`,
+			md: `${form.height.md}px`,
+			lg: `${form.height.lg}px`,
+		}}
+	>
+		.gform-height {
+			height: var(--xs);
+		}
+
+		@media (min-width: 640px) {
+			.gform-height {
+				height: var(--sm);
+			}
+		}
+
+		@media (min-width: 768px) {
+			.gform-height {
+				height: var(--md);
+			}
+		}
+
+		@media (min-width: 1024px) {
+			.gform-height {
+				height: var(--lg);
+			}
+		}
+	</style>
+</Layout>

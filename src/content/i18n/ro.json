@@ -77,6 +77,9 @@
   "projects.minutes": "minute",
   "projects.table-of-contents": "Cuprins",
 
+  "forms.title": "Formulare",
+  "forms.subtitle": "Alătură-te Valului de Inovație: Împuternicește-ți viitorul cu noi",
+
   "blog.subtitle": "Bun venit pe blogul Clockworks!",
   "blog.description.1": "Aflați mai multe despre ce pregătim, despre ce ne interesează și despre",
   "blog.description.2": "lucrurile cool",
@@ -92,6 +95,7 @@
   "navLink.soon": "Curand",
   "navLink.about": "Despre noi",
   "navLink.work": "Proiecte",
+  "navLink.forms": "Formulare",
   "navLink.blog": "Blog",
 
   "footer.madeBy": "Creat de",

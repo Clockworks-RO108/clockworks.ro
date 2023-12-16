@@ -10,10 +10,17 @@ import "@fontsource-variable/inter";
 import Footer from "~/components/footer.astro";
 import Head, { type Props as HeadProps } from "~/components/head.astro";
 import Header from "~/components/header.astro";
+import { cn } from "~/lib";
+import type { Theme } from "~/lib/theme";
 
-export type Props = HeadProps;
+export type Props = HeadProps & { theme?: Theme | undefined };
 
-const { ...head } = Astro.props;
+const { theme = "default", ...head } = Astro.props;
+
+const background = {
+	"bg-white": theme === "form",
+	"bg-background": theme === "default",
+};
 
 const { lang } = Astro.params;
 ---
@@ -22,18 +29,21 @@ const { lang } = Astro.params;
 <html
 	lang={lang}
 	dir="auto"
-	class="scroll-smooth bg-background font-dm-mono text-foreground [color-scheme:dark] [word-break:break-word]"
+	class={cn(
+		"scroll-smooth font-dm-mono text-foreground [color-scheme:dark] [word-break:break-word]",
+		background,
+	)}
 >
 	<Head {...head} />
 
-	<body class="relative w-screen">
-		<Header />
+	<body class={cn("relative w-screen", background)}>
+		<Header theme={theme} />
 
 		<main class="z-10 mb-[90vh] w-screen lg:mb-[60vh]">
 			<slot />
 
 			<div class="bg-off-white-100">
-				<div class="h-[82px] w-screen rounded-b-2xl bg-background lg:h-[90px]"></div>
+				<div class={cn("h-[82px] w-screen rounded-b-2xl lg:h-[90px]", background)}></div>
 			</div>
 		</main>
 
