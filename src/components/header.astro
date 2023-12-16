@@ -4,7 +4,14 @@ import DesktopNav from "./navigation/desktop-nav.astro";
 import { MobileNav } from "./navigation/mobile-nav";
 
 import { Flex } from "~/components/ui";
-import { getTranslations, navLinks, toLocale } from "~/lib";
+import { cn, getTranslations, navLinks, toLocale } from "~/lib";
+import type { Theme } from "~/lib/theme";
+
+export type Props = {
+	theme?: Theme | undefined;
+};
+
+const { theme = "default" } = Astro.props;
 
 const locale = toLocale(Astro.params.lang);
 const pathname = Astro.url.pathname;
@@ -18,9 +25,15 @@ const madeByLabel = t("footer.madeBy");
 
 <header class="sticky inset-0 z-20">
 	<div
-		class="bg-gradient-to-b from-background to-transparent px-6 pb-4 pt-6 lg:px-16 lg:pt-8 lg:backdrop-blur-md"
+		class={cn(
+			"bg-gradient-to-b to-transparent px-6 pb-4 pt-6 lg:px-16 lg:pt-8 lg:backdrop-blur-md",
+			{
+				"from-off-white-300": theme === "form",
+				"from-background": theme === "default",
+			},
+		)}
 	>
-		<DesktopNav />
+		<DesktopNav theme={theme} />
 
 		<Flex alignment="center/between" className="lg:hidden">
 			<Logo />

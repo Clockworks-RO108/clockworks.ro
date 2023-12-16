@@ -4,6 +4,15 @@ import { Globe } from "lucide-react";
 import Logo from "~/components/logo.astro";
 import { Flex, Button, Link, HStack } from "~/components/ui";
 import { navLinks, getTranslations, toLocale } from "~/lib";
+import type { Theme } from "~/lib/theme";
+
+export type Props = {
+	theme?: Theme | undefined;
+};
+
+const { theme = "default" } = Astro.props;
+
+const buttonsVariant = theme === "default" ? "ghost" : "primary";
 
 const lang = toLocale(Astro.params.lang);
 const locale = lang === "en" ? "ro" : "en";
@@ -27,7 +36,7 @@ const t = getTranslations(Astro.params.lang);
 						<Button
 							as={Link.Nav}
 							href={`/${lang}${href}`}
-							variant="ghost"
+							variant={buttonsVariant}
 							size="small"
 							className="transition-all hover:border-border hover:bg-dark-blue-700"
 						>
@@ -38,7 +47,7 @@ const t = getTranslations(Astro.params.lang);
 			}
 		</Flex>
 
-		<Button as="a" href={`/${locale}${slug}`} variant="ghost" className="group">
+		<Button as="a" href={`/${locale}${slug}`} variant={buttonsVariant} className="group">
 			<span class="uppercase">{locale}</span>
 			<Globe
 				className="h-5 w-5 text-text-secondary transition-all duration-300 group-hover:scale-110 group-hover:text-foreground"
