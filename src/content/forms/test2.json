@@ -1,19 +1,17 @@
 {
-  "en": {
-    "url": "https://docs.google.com/forms/d/e/1FAIpQLScIrurhNr9aeedMVshiHNn4C1oyWS-oy747vYKaDzmuMKtuUA/viewform",
-    "title": "Test 2 EN",
-    "description": "EN Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, veniam impedit accusamus nulla ab minima architecto voluptatibus expedita, cum, fugit quos quod rerum neque earum! Delectus corrupti odio voluptatibus magnam."
-  },
-  "ro": {
-    "url": "https://docs.google.com/forms/d/e/1FAIpQLScgafmw5x0JCrlA_9wbtUNnLx_CCV0rUHrcJgYmhkm7U78CKA/viewform",
-    "title": "Test 2 RO",
-    "description": "RO Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, veniam impedit accusamus nulla ab minima architecto voluptatibus expedita, cum, fugit quos quod rerum neque earum! Delectus corrupti odio voluptatibus magnam."
+  "data": {
+    "lang": "ro",
+    "ro": {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScgafmw5x0JCrlA_9wbtUNnLx_CCV0rUHrcJgYmhkm7U78CKA/viewform",
+      "title": "Test 2 RO",
+      "description": "RO Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, veniam impedit accusamus nulla ab minima architecto voluptatibus expedita, cum, fugit quos quod rerum neque earum! Delectus corrupti odio voluptatibus magnam."
+    }
   },
   "image": "./images/sample.svg",
   "height": {
-    "xs": 3396,
-    "sm": 3302,
-    "md": 2480,
-    "lg": 2480
+    "xs": 1131,
+    "sm": 1087,
+    "md": 759,
+    "lg": 759
   }
 }

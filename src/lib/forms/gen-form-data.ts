@@ -6,7 +6,7 @@ import { z } from "astro/zod";
 import { dim } from "kleur/colors";
 import { type Browser, KnownDevices } from "puppeteer";
 
-import { formData } from "./schema";
+import { translatedFormsSchema } from "./schema";
 
 type Breakpoint = "xs" | "sm" | "md" | "lg";
 
@@ -17,8 +17,7 @@ type DeviceData = {
 };
 
 const baseFormSchema = z.object({
-	en: formData,
-	ro: formData,
+	data: translatedFormsSchema,
 	image: z.string(),
 });
 
@@ -68,7 +67,14 @@ export const processFile =
 			logger.error(initialContent.error.toString());
 			return;
 		} else {
-			const height = await generateHeight(initialContent.data.en.url, browser);
+			const data = initialContent.data.data;
+			// prettier-ignore
+			const url =
+				data.lang === "both" ? data.en.url :
+				data.lang === "en" ? data.en.url :
+				data.ro.url;
+
+			const height = await generateHeight(url, browser);
 			const content = generateContent(initialContent.data, height);
 
 			const file = path.join(process.cwd(), filename);

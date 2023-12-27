@@ -9,7 +9,6 @@ import { formsApi } from "~/lib/forms/api";
 
 export const getStaticPaths = generateStaticPaths;
 
-// const forms = await getCollection("forms");
 const locale = toLocale(Astro.params.lang);
 const forms = await formsApi.getAll(locale);
 
@@ -89,7 +88,7 @@ const href = (id: string) => `/${locale}/forms/${id}`;
 										href={href(form.id)}
 										className="flex items-center justify-center gap-2 rounded-md border border-off-white-200/60 bg-off-white-200/20 px-4 py-1 font-medium text-off-white-600"
 									>
-										Fill out
+										{t("forms.cta")}
 										<ArrowUpRight className="text-brand-secondary" />
 									</Link.Nav>
 								</VStack>

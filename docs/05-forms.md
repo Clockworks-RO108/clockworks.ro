@@ -30,7 +30,8 @@ Formularele trebuie traduse in romana si engleza, de aceea trebuie creat cate un
    > `https://docs.google.com/forms/d/e/<random>/viewform`
    > nu
    > `https://docs.google.com/forms/d/e/<random>/viewform?usp=sf_link`
-4. in folderul `src/content/forms/`, creati un nou fisier (puteti copia `_model.json`) cu numele formularului (va rog ca numele sa fie kebab-case) care sa respecte template-ul din `_model.json`.
+4. in folderul `src/content/forms/`, creati un nou fisier (puteti copia unul dintre `_model-*.json` dupa caz) cu numele formularului (va rog ca numele sa fie kebab-case) care sa respecte template-ul din `_model-*.json`.
+5. Daca formularul e in ambele limbi, ghidati-va dupa `_model-both-langs.json`, altfel dupa `_model-<lang>-only.json`
 
 ### Adaugarea unei imagini
 
